@@ -1,0 +1,27 @@
+
+<div class="pad">
+  <h2> New User Sign Up </h2>
+<div class="row">
+  <div class="col-md-4">
+    <h3>
+      <%= label_tag "username" %><br>
+      <%= text_field_tag "username"%><br></br>
+
+      <%= label_tag "password" %><br>
+      <%= password_field_tag "password"%><br></br></h3> 
+    </div>        
+ <div class="col-md-4">
+      <h3><%= label_tag "password_confirmation" %><br>
+      <%= password_field_tag "password_confirmation" %><br></br>
+      
+      <%= label_tag "email_address" %><br>
+      <%= text_field_tag "email_address" %><br></br>
+</div>
+ <div class="col-md-4">
+ 
+      <%= submit_tag "Sign up", size: 40 %>
+    </h3>  
+  </div> 
+</div>
+</div>
+

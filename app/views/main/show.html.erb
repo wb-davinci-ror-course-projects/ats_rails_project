@@ -1,0 +1,47 @@
+<div class="ats_header_b">
+  <%= @header %>
+</div>
+
+<div class="container_left_panel">
+<div style="background-color: red;">
+      <th><a style="color: white" href="/">Sales Flyer</a></th><br>
+      <th><a style="color: white" href="/">Articles</a></th><br>
+    </div>
+</div>
+</div>
+
+<div class="pad_col">
+<div class="row">
+  <% @products.each do |p| %>
+  <div class="col-md-5">
+    <table> 
+    
+      <th>
+        <a class="a:hover" href='/images/<%= p.image %>.jpg/'>
+          <img src="/images/<%= p.image %>.jpg/" width="150" height="150"></img>
+        </a>
+      </th>
+          <td><b><h3 class="pad" style="color: blue")"><%= p.name.upcase %></h3></b>
+              <b><center><p style="color=black"><i>price  </i>$<%= p.price %></p></center></b>
+                <% CategorySale.where(category_id: p.category_id).each do |s| %>
+                  <% if s.percent_off > 1 %>
+                    <% price = (p.price.to_f) * ((100-s.percent_off)/100) %>
+                      <% if (price.to_f - price.to_i) == 0 %>
+                        <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{price.to_i}.00" %></h4></center>
+                          <% elsif (price.to_f - price.to_i) == 0.1 or 0.2 or 0.3 or 0.4 or 0.5 or
+                             0.6 or 0.7 or 0.8 or 0.9 %>
+                              <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{price.round(1)}0" %></h4></center>
+                      <% else %>
+                            <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{price.round(2)}" %></h4></center>
+                      <% end %>
+                    <% else %>
+                  <% end %>
+                        <h4><p><center><%= p.description %></p></h4></center>
+          <a href="/more_info/<%= p.id %>">More details and applications...</a></td>
+              <% end %>        
+    </table>             
+  </div> 
+  <% end %>
+  </div>
+</div>
+

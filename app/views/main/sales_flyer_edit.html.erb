@@ -1,0 +1,22 @@
+<% if @error != nil %>
+  <h2 style="color: blue"><%= @error %></h2>
+<% end %>
+
+<div class="pad">
+  <h2> Edit Category of Product on Sale </h2>
+<div class="row">
+  <div class="col-md-3">
+    <h3>
+      <%= label_tag "category_name", "Product category on sale" %><br>
+      <%= select_tag "category_name", options_from_collection_for_select(CategorySale.order(:id),
+       :category_name, :category_name), prompt: "Choose product category..." %><br></br>
+  
+      <%= label_tag "percent_off", "Enter the percentage off "%><h5><i>(if taking off sale enter 0)<i></h5><br>
+      <%= text_field_tag "percent_off", "", size: 4 %>%<br></br>
+
+      <%= submit_tag "Submit", size: 40 %>
+    </h3>  
+  </div> 
+</div>
+</div>
+
