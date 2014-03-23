@@ -1,0 +1,103 @@
+.ats_header {
+  font-size: 40pt;
+  margin: 0px auto -2px auto;
+  text-align: left;
+  color: white;
+  background-color: black;
+  height: 80px;
+  padding: 2px 0px 5px 10px;
+  text-shadow: 5px 5px 10px red;
+}
+
+.shadow {
+  font-size: 20pt;
+  text-align: center;
+  color: rgb(8, 8, 102);
+  text-shadow: 1px 1px 1px rgb(0, 133, 255);
+}
+
+.thumbnail_img:hover {
+    background-color: transparent;
+    z-index: 100;
+}
+
+a:hover
+{ 
+width: 240;
+height: 240;
+}
+
+.zoom {
+  zoom: 150%;
+}
+.shadow_big {
+  font-size: 40pt;
+  text-align: center;
+  color: rgb(8, 8, 102);
+  text-shadow: 1px 1px 1px rgb(0, 133, 255);
+}
+.ats_header_b {
+  font-size: 30pt;
+  margin: -20px auto 50px auto;
+  text-align: center;
+  color: rgb(8, 8, 102);
+  background-color: silver;
+  height: 60px;
+  padding: 0px 0px 0px 0px;
+  text-shadow: 1px 1px 1px rgb(0, 133, 255);
+}
+.ats_footer {
+  font-size: 15pt;
+  text-align: center;
+  color: white;
+  background-color: gray;
+  height: 30px;
+  text-shadow: 2px 2px 5px black;
+}
+.ats_header_c {
+  font-size: 30pt;
+  margin: -20px auto 50px auto;
+  text-align: center;
+  color: black;
+  background-color: white;
+  height: 60px;
+  padding: 0px 0px 0px 0px;
+  text-shadow: 1px 1px 1px red;
+}
+.container_mine {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.container_left_panel {
+  padding-right: 950px;
+  padding-left: 0px;
+  text-align: center;
+  font-size: 15pt;
+  color: white;
+  margin-right: auto;
+  margin-left: auto;
+}
+.pad_left {
+  padding: 10px 10px 10px 50px;
+}
+.pad_col {
+  padding: 0px 50px 10px 50px;
+}
+.pad {
+  padding: 10px 10px 10px 30px;
+}
+
+html {
+  background-color: #eee;
+}
+.body_b {
+  width: 700px;
+  margin: 5px auto;
+  background-color: gray;
+  border: 3px #ccc solid;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 16pt;
+}

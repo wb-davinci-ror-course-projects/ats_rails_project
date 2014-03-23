@@ -110,8 +110,8 @@ def action_edit_old_post
 end
 
 def action_add_new
-  @new_product = Product.first
-  render :edit_old and return
+  @old_product = Product.new
+  render :add_new and return
 end
 
 def action_add_new_post

@@ -21,7 +21,7 @@
           <img src="/images/<%= p.image %>.jpg/" width="150" height="150"></img>
         </a>
       </th>
-          <td><b><h3 class="pad" style="color: blue")"><%= p.name.upcase %></h3></b>
+          <td><b><h3 class="pad" style="color: rgb(9, 9, 158)")"><%= p.name.upcase %></h3></b>
               <b><center><p style="color=black"><i>price  </i>$<%= p.price %></p></center></b>
                 <% CategorySale.where(category_id: p.category_id).each do |s| %>
                   <% if s.percent_off > 1 %>

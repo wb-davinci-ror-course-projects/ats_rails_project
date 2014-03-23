@@ -1,0 +1,12 @@
+html {
+  background-color: #eee;
+}
+body {
+  width: 100000px;
+  margin: 5px auto;
+  background-color: gray;
+  border: 1px #ccc solid;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 16pt;
+}
