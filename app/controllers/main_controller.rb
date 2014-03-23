@@ -75,12 +75,43 @@ def action_sales_flyer_edit_post
 end
 
 def action_edit_old
+ @old_product = Product.last
   render :edit_old and return
+end
+
+def action_edit_old_post
+  if params["commit"] == "Update"
+    id = params[:id]
+    @edit_product = Product.find(id)
+    @edit_product.description = params["description"]
+    @edit_product.category       = params["category"]
+    @edit_product.product_code   = params["product_code"]
+    @edit_product.name           = params["name"]
+    @edit_product.quantity       = params["quantity"]
+    @edit_product.price          = params["price"]
+    @edit_product.image          = params["product_code"]
+    @edit_product.more_info      = params["more_info"]
+    category_id = Category.find_by(name: @edit_product.category)
+    @edit_product.category_id    = category_id.id
+    if @edit_product.save == true
+      redirect_to "/"
+    else
+      @old_product = @edit_product
+      flash.now[:error] = "Please fill out all the fields"
+      render :edit_old and return
+    end
+  else
+    if params[:commit] == "Select"
+      id = params[:id]
+      @old_product = Product.find(id)
+      render :edit_old and return
+    end
+  end
 end
 
 def action_add_new
   @new_product = Product.first
-  render :add_new and return
+  render :edit_old and return
 end
 
 def action_add_new_post

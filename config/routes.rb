@@ -20,6 +20,8 @@ post "/sales_flyer_edit/" => "main#action_sales_flyer_edit_post"
 
 get "/edit_old" => "main#action_edit_old"
 
+post "/edit_old" => "main#action_edit_old_post"
+
 get "/add_new" => "main#action_add_new"
 
 post "/add_new" => "main#action_add_new_post"
