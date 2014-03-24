@@ -1,11 +1,8 @@
 <div class="form-group">
-  <a class="btn btn-danger" href='/'>Home</a>
-  <a class="btn btn-primary" href='/Diamond Products'>Diamond Products</a>
-  <a class="btn btn-primary" href='/Safety Equipment'>Safety Equipment</a>
-  <a class="btn btn-primary" href='/Sand Paper'>Sand Paper</a>
-  <a class="btn btn-primary" href='/Glues & Sealer'>Glues & Sealer</a>
-  <a class="btn btn-primary" href='/Wet & Dry Pads'>Wet & Dry Pads</a>
-  <a class="btn btn-primary" href='/Other Products'>Other Products</a>
-  <a class="btn btn-info" href='/about'>About</a>
-  <a class="btn btn-default" href='/contact'>Contact Us</a>
+    <a class="btn btn-danger" href='/'>Home</a>
+  <% Category.order(:id).each do |c| %>
+    <a class="btn btn-primary" href='/<%= c.name %>'><%= c.name %></a>
+  <% end %>
+    <a class="btn btn-info" href='/about'>About</a>
+    <a class="btn btn-default" href='/contact'>Contact Us</a>
 </div>   
