@@ -1,36 +1,36 @@
 App::Application.routes.draw do
 
-get "/" => "main#action_home"
+get "/" => "main#home"
 
-get "/login" => "main#action_login"
+get "/login" => "main#login"
 
-get "/new_user" => "main#action_new_user"
+get "/new_user" => "main#new_user"
 
-post "/new_user" => "main#action_new_user_post"
+post "/new_user" => "main#new_user_post"
 
-get "/about" => "main#action_about"
+get "/about" => "main#about"
 
-get "/contact" => "main#action_contact"
+get "/contact" => "main#contact"
 
-get "/more_info/:id" => "main#action_more_info_id"
+get "/more_info/:id" => "main#more_info_id"
 
-get "/category_sale/" => "main#action_category_sale_edit"
+get "/category_sale/" => "main#category_sale_edit"
 
-post "/category_sale/" => "main#action_category_sale_edit_post"
+post "/category_sale/" => "main#category_sale_edit_post"
 
-get "/product_sale/" => "main#action_product_sale_edit"
+get "/product_sale/" => "main#product_sale_edit"
 
-post "/product_sale/" => "main#action_product_sale_edit_post"
+post "/product_sale/" => "main#product_sale_edit_post"
 
-get "/edit_old" => "main#action_edit_old"
+get "/edit_old" => "main#edit_old"
 
-post "/edit_old" => "main#action_edit_old_post"
+post "/edit_old" => "main#edit_old_post"
 
-get "/add_new" => "main#action_add_new"
+get "/add_new" => "main#add_new"
 
-post "/add_new" => "main#action_add_new_post"
+post "/add_new" => "main#_add_new_post"
   
-get "/:product_category" => "main#action_product_category"
+get "/:product_category" => "main#product_category"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,19 +1,19 @@
 class MainController < ApplicationController
 
-def action_home
+def home
   render :index and return
 end
 
-def action_login
+def login
   render :login and return
 end
 
-def action_new_user
+def new_user
   @user = User.new
   render :new_user and return
 end
 
-def action_new_user_post
+def new_user_post
   @user = User.new
   @user.username = params[:username]
   if @user.username == ""
@@ -40,26 +40,26 @@ def action_new_user_post
   end
 end
 
-def action_about
+def about
   render :about and return
 end
 
-def action_contact
+def contact
   render :contact and return
 end
 
-def action_more_info_id
+def more_info_id
   id = params[:id]
   @header = "Product Detail Page"
   @product = Product.find_by(id: id)
   render :more_info and return
 end
 
-def action_category_sale_edit
+def category_sale_edit
   render :category_sale and return
 end
 
-def action_category_sale_edit_post
+def category_sale_edit_post
   if params[:category_name] != ""
   category_name = params[:category_name]
   @category_on_sale = CategorySale.where(category_name: category_name).first
@@ -74,11 +74,11 @@ def action_category_sale_edit_post
   end
 end
 
-def action_product_sale_edit
+def product_sale_edit
   render :product_sale and return
 end
 
-def action_product_sale_edit_post
+def product_sale_edit_post
  if params[:product_code] != ""
   product_code = params[:product_code]
   @product_on_sale = Product.where(product_code: product_code).first
@@ -93,12 +93,12 @@ def action_product_sale_edit_post
  end
 end
 
-def action_edit_old
+def edit_old
   @old_product = Product.last
   render :edit_old and return
 end
 
-def action_edit_old_post
+def edit_old_post
   if params["commit"] == "Update"
     id = params[:id]
     @edit_product = Product.find(id)
@@ -129,12 +129,12 @@ def action_edit_old_post
   end
 end
 
-def action_add_new
+def add_new
   @old_product = Product.new
   render :add_new, layout: false and return
 end
 
-def action_add_new_post
+def add_new_post
   if params[:category] != ""
   @new_product                = Product.new
   @new_product.category       = params["category"]
@@ -157,7 +157,7 @@ def action_add_new_post
   end
 end
 
-def action_product_category
+def product_category
   product_category = params[:product_category]
   @header = "#{product_category}"
   @products = Product.where(category: product_category)
