@@ -4,8 +4,12 @@ def home
   render :index and return
 end
 
-def login
+def sign_in
   render :login and return
+end
+
+def log_out
+  redirect_to "/" and return
 end
 
 def new_user

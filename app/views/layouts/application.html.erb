@@ -7,12 +7,21 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-   <!-- <body class: "body_b"> --!>
+  <body class:"body_b">
       <nav class="navbar navbar-inverse" role="navigation">
-        <p class="ats_header">Action Tool & Supply</p>   
-          <form class="navbar-form navbar-left">
-            <%= render partial: "layouts/button" %>
-          </form>
+      <a class="pull-right pad" href="/log_out"><h3>Log out</h3></a>
+      <a class="pull-right pad" href="/sign_in"><h3>Sign in</h3></a>
+   
+        <p class="ats_header">Action Tool & Supply</p>
+         
+            <form class="navbar-form navbar-right"> 
+             
+            <form class="navbar-form navbar-left">
+              <%= render partial: "layouts/button" %>
+            </form>
+            
+            </form>
+            
       </nav>  
 </head> 
   <body class="back_gray"> 

@@ -2,7 +2,9 @@ App::Application.routes.draw do
 
 get "/" => "main#home"
 
-get "/login" => "main#login"
+get "/sign_in" => "main#sign_in"
+
+get "/log_out" => "main#log_out"
 
 get "/new_user" => "main#new_user"
 
