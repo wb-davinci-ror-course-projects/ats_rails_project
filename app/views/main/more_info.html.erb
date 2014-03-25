@@ -11,17 +11,23 @@
           </a>
         </th>
           <td><b><h3 class="pad" style="color: rgb(129, 16, 1)"><%= @product.name.upcase %></h3></b>
-              <p class="pad" style="color: rgb(9, 9, 145)"><%= @product.more_info %></p>
+            <p class="pad" style="color: rgb(9, 9, 145)"><%= @product.more_info %></p>
               <h4 class="pad" style="color=black"><i>price  </i>$<%= "%.2f" % @product.price %></h4>
                 <% CategorySale.where(category_id: @product.category_id).each do |s| %>
                   <% if s.percent_off > 1 %>
                     <% price = (@product.price.to_f) * ((100-s.percent_off)/100) %>
-                        <h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price.to_i}" %></h4>
-                    <% else %>
-                      <% end %>
-              <h4 class="pad"><%= @product.description %></h4>
+                      <h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price.to_i}" %></h4>
+                        <% else %>
+                            <% if @product.percent_off > 1 %>
+                              <% price = (@product.price.to_f) * ((100-s.percent_off)/100) %>
+                              <h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price.to_i}" %></h4>
+                                <% else %>
+                            <% end %>
+                  <% end %>
+                <% end %>
+            <h4 class="pad"><%= @product.description %></h4>
+          </td>
       </table>             
-  </div> 
-                 <% end %>
+    </div>         
   </div>
 </div>
