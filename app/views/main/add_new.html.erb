@@ -1,46 +1,44 @@
+<%= render "layouts/admin" %>
+
 <% if @error != nil %>
   <h2 style="color: blue"><%= @error %></h2>
 <% end %>
 
-<!--< error_messages_for @new_product --!>
+<!-- error_messages_for @new_product --!>
 
-<div class="pad">
-  <h2> Add New Product </h2>
-<div class="row">
-  <div class="col-md-4">
-   
-    <h3>
-      <%= label_tag "category", "Product Category" %><br>
-      <%= select_tag "category", options_for_select([
-      "Diamond Products", "Safety Equipment", "Sand Paper", "Glues & Sealer",
-      "Wet & Dry Pads", "Other Products"]), prompt: "Choose product category..." %><br></br>
+<div class="pad_left">
+  <h1 style="color: white"> Add New Product </h1>
+    <div class="row">
+      <div class="col-md-4" style="color: blue">
+        <h3>
+          <%= label_tag "category", "Product Category" %><br>
+          <%= select_tag "category", options_for_select([
+          "Diamond Products", "Safety Equipment", "Sand Paper", "Glues & Sealer",
+          "Wet & Dry Pads", "Other Products"]), prompt: "Choose product category..." %><br></br>
   
-      <%= label_tag "product_code", "Product Code" %><br>
-      <%= text_field_tag "product_code", "", size: 20 %><br></br>
+          <%= label_tag "product_code", "Product Code" %><br>
+          <%= text_field_tag "product_code", "", size: 20 %><br></br>
 
-      <%= label_tag "name", "Name" %><br>
-      <%= text_field_tag "name", "", size: 20 %><br></br> 
-         <%= label_tag "more_info", "More Infomation, Details and Applications" %><br>
-      <%= text_area_tag "more_info", "", size: 20 %><br></br>   
-    </h3>
-  </div>
-  <div class="col-md-3">
-    <h3>
-      <%= label_tag "quantity", "Quantity" %><br>
-      <%= text_field_tag "quantity", "", size: 20 %><br></br>
+          <%= label_tag "name", "Name" %><br>
+          <%= text_field_tag "name", "", size: 20 %><br></br> 
+          
+          <%= label_tag "more_info", "More Infomation, Details and Applications" %><br>
+          <%= text_area_tag "more_info", "", size: 20 %><br></br>   
+        </h3>
+      </div>
+      <div class="col-md-3" style="color: blue">
+        <h3>
+          <%= label_tag "quantity", "Quantity" %><br>
+          <%= text_field_tag "quantity", "", size: 20 %><br></br>
       
-      <%= label_tag "description", "Description" %><br>
-      <%= text_area_tag "description", "", size: 100 %><br></br>
+          <%= label_tag "description", "Description" %><br>
+          <%= text_area_tag "description", "", size: 100 %><br></br>
       
-    
-
-      <%= label_tag "price", "Price" %><br><h6><i>enter price with 2 decimal places</i></h6>
-      <%= text_field_tag "price", "", size: 20 %><br></br>
-  </div>
-  <div class="col-md-3">
-      <%= submit_tag "Submit", size: 40 %>
-    </h3>  
-  </div> 
-</div>
+          <%= label_tag "price", "Price" %><br><h6><i>enter price with 2 decimal places</i></h6>
+          <%= text_field_tag "price", "", size: 20 %><br></br>
+          <%= submit_tag "Submit", size: 100 %>
+        </h3> 
+      </div>
+    </div>
 </div>
 

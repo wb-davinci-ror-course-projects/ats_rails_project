@@ -7,14 +7,15 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-    <body class: "body_b">
+   <!-- <body class: "body_b"> --!>
       <nav class="navbar navbar-inverse" role="navigation">
         <p class="ats_header">Action Tool & Supply</p>   
           <form class="navbar-form navbar-left">
             <%= render partial: "layouts/button" %>
           </form>
       </nav>  
-</head>  
+</head> 
+  <body class="back_gray"> 
       <% if flash[:error] != nil %>
         <div class="alert alert-danger">
           <%= flash[:error] %>

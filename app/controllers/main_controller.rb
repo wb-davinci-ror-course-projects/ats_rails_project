@@ -75,7 +75,7 @@ def action_sales_flyer_edit_post
 end
 
 def action_edit_old
- @old_product = Product.last
+  @old_product = Product.last
   render :edit_old and return
 end
 
@@ -111,7 +111,7 @@ end
 
 def action_add_new
   @old_product = Product.new
-  render :add_new and return
+  render :add_new, layout: false and return
 end
 
 def action_add_new_post
@@ -132,6 +132,7 @@ def action_add_new_post
     end
   else
     @error = "Please fill out all the fields"
+    flash.now[:error] = "Something went wrong"
     render :add_new and return
   end
 end
