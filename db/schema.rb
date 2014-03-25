@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140319031536) do
     t.string "price"
     t.string "image"
     t.float  "category_id"
+    t.float  "percent_off"
     t.text   "more_info"
   end
 

@@ -14,9 +14,13 @@ get "/contact" => "main#action_contact"
 
 get "/more_info/:id" => "main#action_more_info_id"
 
-get "/sales_flyer_edit/" => "main#action_sales_flyer_edit"
+get "/category_sale/" => "main#action_category_sale_edit"
 
-post "/sales_flyer_edit/" => "main#action_sales_flyer_edit_post"
+post "/category_sale/" => "main#action_category_sale_edit_post"
+
+get "/product_sale/" => "main#action_product_sale_edit"
+
+post "/product_sale/" => "main#action_product_sale_edit_post"
 
 get "/edit_old" => "main#action_edit_old"
 

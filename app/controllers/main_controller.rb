@@ -55,11 +55,11 @@ def action_more_info_id
   render :more_info and return
 end
 
-def action_sales_flyer_edit
-  render :sales_flyer_edit and return
+def action_category_sale_edit
+  render :category_sale and return
 end
 
-def action_sales_flyer_edit_post
+def action_category_sale_edit_post
   if params[:category_name] != ""
   category_name = params[:category_name]
   @category_on_sale = CategorySale.where(category_name: category_name).first
@@ -70,8 +70,27 @@ def action_sales_flyer_edit_post
     end
   else 
     @error = "Please be sure to enter a category and percentage."
-      render :sales_flyer_edit and return
+      render :category_sale and return
   end
+end
+
+def action_product_sale_edit
+  render :product_sale and return
+end
+
+def action_product_sale_edit_post
+ if params[:product_code] != ""
+  product_code = params[:product_code]
+  @product_on_sale = Product.where(product_code: product_code).first
+  @product_on_sale.product_code = params[:product_code]
+  @product_on_sale.percent_off   = params[:percent_off]
+    if @product_on_sale.save == true
+      redirect_to "/" and return
+    end
+  else 
+    @error = "Please be sure to enter a category and percentage."
+      render :product_sale and return
+ end
 end
 
 def action_edit_old
@@ -91,6 +110,7 @@ def action_edit_old_post
     @edit_product.price          = params["price"]
     @edit_product.image          = params["product_code"]
     @edit_product.more_info      = params["more_info"]
+    @edit_product.percent_off      = params["percent_off"]
     category_id = Category.find_by(name: @edit_product.category)
     @edit_product.category_id    = category_id.id
     if @edit_product.save == true
