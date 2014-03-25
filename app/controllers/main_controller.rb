@@ -8,6 +8,10 @@ def sign_in
   render :login and return
 end
 
+def sign_in_post
+  redirect_to "/" and return
+end
+
 def log_out
   redirect_to "/" and return
 end

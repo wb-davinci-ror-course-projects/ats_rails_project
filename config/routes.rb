@@ -4,6 +4,8 @@ get "/" => "main#home"
 
 get "/sign_in" => "main#sign_in"
 
+post "/sign_in" => "main#sign_in_post"
+
 get "/log_out" => "main#log_out"
 
 get "/new_user" => "main#new_user"
