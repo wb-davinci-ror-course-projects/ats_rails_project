@@ -5,11 +5,15 @@ def home
 end
 
 def sign_in
-  render :login and return
+    render :login and return
 end
 
 def sign_in_post
-  redirect_to "/" and return
+  if params[:commit] = "Create account"
+    render :new_user and return
+  else
+    redirect_to "/" and return
+  end
 end
 
 def log_out
