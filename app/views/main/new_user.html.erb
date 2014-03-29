@@ -1,4 +1,5 @@
 
+<%= form_tag "/new_user" do %>
 <div class="pad">
   <h2> New User Sign Up </h2>
 <div class="row">
@@ -18,10 +19,10 @@
       <%= text_field_tag "email_address" %><br></br>
 </div>
  <div class="col-md-4">
- 
+
       <%= submit_tag "Sign up", size: 40 %>
     </h3>  
   </div> 
 </div>
 </div>
-
+<% end %>

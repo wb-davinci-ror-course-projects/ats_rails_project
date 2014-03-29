@@ -1,10 +1,11 @@
+<%= form_tag "/edit_old" do %>
 <%= render "layouts/admin_edit" %>
 <% if @error != nil %>
   <h2 style="color: rgb(156, 18, 18)"><%= @error %></h2>
 <% end %>
 
 <div class="pad">
-<h1 style="color: rgb(255, 224, 0)"><%= label_tag "product_code", "Select the product to edit" %><br><h1>
+<h1 style="color: rgba(51, 51, 51, 0.67)"><%= label_tag "product_code", "Select the product to edit" %><br><h1>
   <%= select_tag "id", options_from_collection_for_select(
       Product.order(:id), :id, :product_code, @old_product.id), 
       prompt: "Choose product, then click edit" %>
@@ -15,7 +16,7 @@
       
 <div class="pad">
 <div class="row">
-  <div class="col-md-4" style="color: rgb(255, 224, 0)">
+  <div class="col-md-4" style="color: rgba(51, 51, 51, 0.67)">
     <h3>
       <%= label_tag "category", "Product Category" %><br>
       <%= select_tag "category", options_for_select([
@@ -30,7 +31,7 @@
       <%= text_field_tag "name", @old_product.name, size: 20 %><br></br>     
     </h3>
   </div>
-  <div class="col-md-4" style="color: rgb(255, 224, 0)">
+  <div class="col-md-4" style="color: rgba(51, 51, 51, 0.67)">
     <h3>
       <%= label_tag "quantity", "Quantity" %><br>
       <%= text_field_tag "quantity", @old_product.quantity, size: 20 %><br></br>
@@ -45,4 +46,4 @@
   </div> 
 </div>
 </div>
-
+<% end %>
