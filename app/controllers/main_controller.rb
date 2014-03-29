@@ -5,14 +5,27 @@ def home
 end
 
 def sign_in
-    render :login and return
+    render :sign_in and return
 end
 
 def sign_in_post
-  if params[:commit] = "Create account"
+  if params[:commit] == "Create account"
     render :new_user and return
+  end
+   
+  if params[:username] == ""
+    flash.now[:danger] = "Userame can't be blank."
+    render :sign_in and return
+  end
+    
+  user = User.find_by(username: params[:username])
+  if user.authenticate(params[:password]) != false
+    session[:user_name] = user.username
+    flash[:info] = "You are logged in."
+    render :index and return
   else
-    redirect_to "/" and return
+    flash.now[:danger] = "Please enter the correct password"
+    render :sign_in and return
   end
 end
 
