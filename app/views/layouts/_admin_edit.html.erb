@@ -7,6 +7,9 @@
   <body style="background-color: rgb(189, 14, 14)">
 
 
+<%# non-block form is needed to adapt Rails form helpers to Sinatra %>
+      <%# request.path_info means POST action should be same as the GET URL %>
+      <%= form_tag request.path_info %>
 
 <% yield %>
 

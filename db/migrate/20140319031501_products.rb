@@ -11,6 +11,7 @@ class Products < ActiveRecord::Migration
           t.float  :category_id
           t.float  :percent_off
           t.text :more_info
+          t.timestamp
       end
   end
 end

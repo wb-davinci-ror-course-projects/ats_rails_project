@@ -4,6 +4,7 @@ class CategorySales < ActiveRecord::Migration
         t.string :category_name
         t.float  :percent_off
         t.float :category_id
+        t.timestamp
     end
   end
 end

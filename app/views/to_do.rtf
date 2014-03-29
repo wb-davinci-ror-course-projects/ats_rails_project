@@ -1,5 +1,14 @@
 To Do
+- fix form tag issues with new layouts
+
+- add all but one the remaining products from the first round
+
+-fix back button problem with zoomed pictures
+
+- consider changing sales price calculation so not spegetti code
+
 -add to sign in "create account"
+
 -add validations to sign in
 -fix edit_old view to not use layout, currently if deleted it will not populate selected item
 - drop down pad select
@@ -11,20 +20,16 @@ To Do
 -create a profile page where user can change password
 
 - have links for sub-categories (RED) on left
---create new column in product table
+  --create new column in product table
 
 - To think about
   - sales flyer link
+  
 - make subcategories on the product table
+
 -work some more on error messages so that they display the fields that didn't get filled out
-
-index.html.erb 
-  -continue work on hardcoding index page
-  -make a table to link to for the Sales Flyer?
     
-MISC  
-
-  -add "LLC to header but in a smaller font than Co Name
+-add "LLC to header but in a smaller font than Co Name
   
 about_us.html.erb
   -request script from Jack
@@ -35,6 +40,19 @@ contact.html.erb
   -get design input from Jack
  
 - alter. method to zoom....
+
+
+--------------------------------------------------------------------------------
+REFERENCE
+
+--remove TURBOLINKS
+  How to remove Turbolinks: remove the gem 'turbolinks' line from Gemfile, 
+  run bundle, then remove the //= require turbolinks (//= require turbolinks)line from 
+  app/assets/javascripts/application.js (even though it appears to be commented out, it's not)
+
+
+ZOOM
+
 
 <!--Image zooming code to try out(layout won't show until notes deleted)........
 

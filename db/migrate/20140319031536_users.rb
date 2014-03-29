@@ -10,6 +10,7 @@ class Users < ActiveRecord::Migration
           t.string :shipping_state
           t.string :shipping_zip
           t.string :phone_number
+          t.timestamp
       end
   end
 end
