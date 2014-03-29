@@ -18,11 +18,11 @@
     <%= flash_alert "warning" %>
     <%= flash_alert "danger" %>
 
-      <%# non-block form is needed to adapt Rails form helpers to Sinatra %>
-      <%# request.path_info means POST action should be same as the GET URL %>
-      <%= form_tag request.path_info %>
+    <%# non-block form is needed to adapt Rails form helpers to Sinatra %>
+    <%# request.path_info means POST action should be same as the GET URL %>
+    <%= form_tag request.path_info %>
 
-      <%= yield %>
+    <%= yield %>
 
     <nav class="navbar navbar-default navbar-static-bottom" role="navigation">
       <p class="ats_footer">720-363-0163 &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp ats.biz@live.com  &nbsp &nbsp &nbsp &nbsp &nbsp 50 Rio Grande Blvd, Denver CO</p>
