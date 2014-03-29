@@ -5,6 +5,54 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create! username: "ts9753", 
+first_name: "Tracy", 
+last_name: "Smith", 
+phone_number: "303-921-6168", 
+email_address: "ts9753@yahoo.com",
+password: "*ts9753",
+password_confirmation: "*ts9753",
+shipping_first_name: "Tracy", 
+shipping_last_name: "Smith", 
+shipping_address1: "5712 Asbury Pl", 
+shipping_address2: "200", 
+shipping_city: "Lakewood", 
+shipping_state: "CO", 
+shipping_zip: "80227", 
+shipping_phone_number: "303-921-6168", 
+billing_first_name: "Tracy", 
+billing_last_name: "Smith", 
+billing_address1: "5712 Asbury Pl", 
+billing_address2: "200", 
+billing_city: "Lakewood", 
+billing_state: "CO", 
+billing_zip: "80227", 
+billing_phone_number: "303-921-6168"
+
+User.create! username: "kl9753", 
+first_name: "Karen", 
+last_name: "Love", 
+phone_number: "303-921-6169", 
+email_address: "kl9753@yahoo.com", 
+password: "*kl9753", 
+password_confirmation: "*kl9753",
+shipping_first_name: "Rich", 
+shipping_last_name: "Love", 
+shipping_address1: "5712 Asbury Pl", 
+shipping_city: "Romeoville", 
+shipping_state: "IL", 
+shipping_zip: "80228", 
+shipping_phone_number: "303-921-6169", 
+billing_first_name: "Katelyn", 
+billing_last_name: "Anders", 
+billing_address1: "5714 Asbury Pl", 
+billing_address2: "", 
+billing_city: "Altoona", 
+billing_state: "PA", 
+billing_zip: "16602", 
+billing_phone_number: "303-921-6170"
+
 Category.create! name: "Diamond Products"
 Category.create! name: "Safety Equipment"
 Category.create! name: "Sand Paper"
