@@ -7,26 +7,16 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  
   <body class:"body_b">
-      <nav class="navbar navbar-inverse" role="navigation">
-        <a class="pull-right pad" href="/log_out"><h3 style="text-shadow: 2px 2px 5px red">Log out</h3></a>
-        <a class="pull-right pad" href="/sign_in"><h3 style="text-shadow: 2px 2px 5px gray">Sign in</h3></a>
-        <p class="ats_header">Action Tool & Supply</p>
-          <form class="navbar-form navbar-right"> 
-          <form class="navbar-form navbar-left">
-            <%= render partial: "layouts/button" %>
-          </form>
-          </form> 
-      </nav>  
+    <%= render partial: "layouts/nav_header" %>
 </head> 
 
-<body class="back_gray"> 
-
-  <%= flash_alert "primary" %>
-  <%= flash_alert "success" %>
-  <%= flash_alert "info" %>
-  <%= flash_alert "warning" %>
-  <%= flash_alert "danger" %>
+    <%= flash_alert "primary" %>
+    <%= flash_alert "success" %>
+    <%= flash_alert "info" %>
+    <%= flash_alert "warning" %>
+    <%= flash_alert "danger" %>
 
       <%# non-block form is needed to adapt Rails form helpers to Sinatra %>
       <%# request.path_info means POST action should be same as the GET URL %>
@@ -34,8 +24,8 @@
 
       <%= yield %>
 
-      <nav class="navbar navbar-default navbar-static-bottom" role="navigation">
-        <p class="ats_footer">720-363-0163 &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp ats.biz@live.com  &nbsp &nbsp &nbsp &nbsp &nbsp 50 Rio Grande Blvd, Denver CO</p>
-      </nav>
-    </body>
+    <nav class="navbar navbar-default navbar-static-bottom" role="navigation">
+      <p class="ats_footer">720-363-0163 &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp ats.biz@live.com  &nbsp &nbsp &nbsp &nbsp &nbsp 50 Rio Grande Blvd, Denver CO</p>
+    </nav>
+  </body>
 </html>
