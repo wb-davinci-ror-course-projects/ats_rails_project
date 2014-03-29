@@ -19,12 +19,14 @@
           </form> 
       </nav>  
 </head> 
-  <body class="back_gray"> 
-      <% if flash[:error] != nil %>
-        <div class="alert alert-danger">
-          <%= flash[:error] %>
-        </div>
-      <% end %>
+
+<body class="back_gray"> 
+
+  <%= flash_alert "primary" %>
+  <%= flash_alert "success" %>
+  <%= flash_alert "info" %>
+  <%= flash_alert "warning" %>
+  <%= flash_alert "danger" %>
 
       <%# non-block form is needed to adapt Rails form helpers to Sinatra %>
       <%# request.path_info means POST action should be same as the GET URL %>

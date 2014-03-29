@@ -13,6 +13,8 @@ def sign_in_post
 end
 
 def log_out
+  flash[:info] = "You have been logged out. Please visit us again soon."
+  session.clear
   redirect_to "/" and return
 end
 
@@ -25,23 +27,23 @@ def new_user_post
   @user = User.new
   @user.username = params[:username]
   if @user.username == ""
-    flash[:error] = "Username can not be blank. Please try again."
+    flash[:danger] = "Username can not be blank. Please try again."
     render :new_user and return
   end
   @user.password = params[:password]
   @user.password_confirmation = params[:password_confirmation]
   if @user.password_confirmation != @user.password
-    flash[:error] = "There was a problem with the passwords, they must be entered and match.
+    flash[:danger] = "There was a problem with the passwords, they must be entered and match.
                       Please try again."
     render :new_user and return
   end
   @user.email_address = params[:email_address]
   if @user.email_address == ""
-    flash[:error] = "The e-mail address can not be blank. Please try again."
+    flash[:danger] = "The e-mail address can not be blank. Please try again."
     render :new_user and return
   end
   if @user.save == false
-    flash[:error] = "Your username and/or e-mail already exists, please try again."
+    flash[:danger] = "Your username and/or e-mail already exists, please try again."
     render :new_user and return
   else
     redirect_to "/" and return
@@ -125,7 +127,7 @@ def edit_old_post
       redirect_to "/"
     else
       @old_product = @edit_product
-      flash.now[:error] = "Please fill out all the fields"
+      flash.now[:danger] = "Please fill out all the fields"
       render :edit_old and return
     end
   else
@@ -160,7 +162,7 @@ def add_new_post
     end
   else
     @error = "Please fill out all the fields"
-    flash.now[:error] = "Something went wrong"
+    flash.now[:danger] = "Something went wrong"
     render :add_new and return
   end
 end

@@ -32,7 +32,7 @@ post "/edit_old" => "main#edit_old_post"
 
 get "/add_new" => "main#add_new"
 
-post "/add_new" => "main#_add_new_post"
+post "/add_new" => "main#add_new_post"
   
 get "/:product_category" => "main#product_category"
 

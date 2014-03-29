@@ -1,9 +1,16 @@
+QUESTIONS
+
+--
+ <%= javascript_include_tag "application", "data-turbolinks-track" => true %> 
+ should I remove data_turolinks here too?
+----
+ 
 To Do
 - fix form tag issues with new layouts
 
 - add all but one the remaining products from the first round
 
--fix back button problem with zoomed pictures
+- downsize zoomed pictures
 
 - consider changing sales price calculation so not spegetti code
 
@@ -44,6 +51,12 @@ contact.html.erb
 
 --------------------------------------------------------------------------------
 REFERENCE
+--
+<p class="bg-primary">...</p> Blue
+<p class="bg-success">...</p> Green
+<p class="bg-info">...</p>    Light Blue
+<p class="bg-warning">...</p> Yellow
+<p class="bg-danger">...</p>  Red
 
 --remove TURBOLINKS
   How to remove Turbolinks: remove the gem 'turbolinks' line from Gemfile, 
