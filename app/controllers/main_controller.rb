@@ -15,7 +15,7 @@ def sign_in_post
    
   if User.find_by(username: params[:username])== nil
       flash.now[:danger] = "Username was entered incorrectly or doesn't exist. 
-                          You can create an account below. "
+                          <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
     render :sign_in and return
   else
       user = User.find_by(username: params[:username]) 
@@ -30,12 +30,6 @@ def sign_in_post
   end
 end
 
-def log_out
-  flash[:info] = "You have been logged out. Please visit us again soon."
-  session.clear
-  redirect_to "/" and return
-end
-
 def new_user
   @user = User.new
   render :new_user and return
@@ -47,6 +41,10 @@ def new_user_post
   if @user.username == ""
     flash.now[:danger] = "Username can not be blank. Please try again."
     render :new_user and return
+    elsif
+      User.find_by(username: @user.username) != nil
+      flash.now[:danger] = "Username already exists. Please try again." 
+      render :new_user and return
   end
   @user.password = params[:password]
   @user.password_confirmation = params[:password_confirmation]
@@ -57,7 +55,7 @@ def new_user_post
   end
   @user.email_address = params[:email_address]
   if @user.email_address == ""
-    flash.now[:danger] = "Please enter a valid e-mail address."
+    flash.now[:danger] = "Please enter an e-mail address."
     render :new_user and return
   end
   if @user.save == true
@@ -65,8 +63,13 @@ def new_user_post
      flash.now[:info] = "You are logged in as: <b>#{@user.username}</b>".html_safe
      render :index and return
   else
-    flash.now[:danger] = "Your username and/or e-mail already exists, please try again."
+    if User.find_by(email_address: @user.email_address) != nil
+      flash.now[:danger] = "The e-mail address entered already exists. Please try again." 
+      render :new_user and return
+      else
+    flash.now[:danger] = "The e-mail entered is invalid, please try again."
     render :new_user and return
+    end
   end
 end
 
@@ -192,6 +195,12 @@ def product_category
   @header = "#{product_category}"
   @products = Product.where(category: product_category)
   render :show and return
+end
+
+def log_out
+  flash[:info] = "You have been logged out. Visit our showroom located at <b>50 Rio Grande Blvd, Denver CO</b>.".html_safe
+  session.clear
+  redirect_to "/" and return
 end
 
 end
