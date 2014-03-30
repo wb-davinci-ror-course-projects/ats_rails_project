@@ -13,19 +13,20 @@ def sign_in_post
     render :new_user and return
   end
    
-  if params[:username] == ""
-    flash.now[:danger] = "Userame can't be blank."
+  if User.find_by(username: params[:username])== nil
+      flash.now[:danger] = "Username was entered incorrectly or doesn't exist. 
+                          You can create an account below. "
     render :sign_in and return
-  end
-    
-  user = User.find_by(username: params[:username])
-  if user.authenticate(params[:password]) != false
-    session[:user_name] = user.username
-    flash[:info] = "You are logged in."
-    render :index and return
   else
-    flash.now[:danger] = "Please enter the correct password"
-    render :sign_in and return
+      user = User.find_by(username: params[:username]) 
+    if user.authenticate(params[:password]) != false 
+      session[:user_name] = user.username
+      flash.now[:info] = "You are logged in as: <b>#{user.username}</b>".html_safe
+      render :index and return
+    else
+      flash.now[:danger] = "Please enter the correct password"
+      render :sign_in and return
+    end
   end
 end
 
@@ -44,26 +45,28 @@ def new_user_post
   @user = User.new
   @user.username = params[:username]
   if @user.username == ""
-    flash[:danger] = "Username can not be blank. Please try again."
+    flash.now[:danger] = "Username can not be blank. Please try again."
     render :new_user and return
   end
   @user.password = params[:password]
   @user.password_confirmation = params[:password_confirmation]
   if @user.password_confirmation != @user.password
-    flash[:danger] = "There was a problem with the passwords, they must be entered and match.
+    flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
                       Please try again."
     render :new_user and return
   end
   @user.email_address = params[:email_address]
   if @user.email_address == ""
-    flash[:danger] = "The e-mail address can not be blank. Please try again."
+    flash.now[:danger] = "Please enter a valid e-mail address."
     render :new_user and return
   end
-  if @user.save == false
-    flash[:danger] = "Your username and/or e-mail already exists, please try again."
-    render :new_user and return
+  if @user.save == true
+     session[:user_name] = @user.username 
+     flash.now[:info] = "You are logged in as: <b>#{@user.username}</b>".html_safe
+     render :index and return
   else
-    redirect_to "/" and return
+    flash.now[:danger] = "Your username and/or e-mail already exists, please try again."
+    render :new_user and return
   end
 end
 
