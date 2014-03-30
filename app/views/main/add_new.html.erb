@@ -17,8 +17,11 @@
           "Diamond Products", "Safety Equipment", "Sand Paper", "Glues & Sealer",
           "Wet & Dry Pads", "Other Products"]), prompt: "Choose product category..." %><br></br>
   
-          <%= label_tag "product_code", "Product Code" %><br>
+          <%= label_tag "product_code", "Product Code" %> <i style="color: white">
+          (Testing: use "abc-12<b style="color: rgba(159, 118, 341, 200)">3</b>"
+          <b style="color: rgba(159, 118, 341, 200)"> ...4,5,6</b>)</i><br>
           <%= text_field_tag "product_code", "", size: 20 %><br></br>
+         
 
           <%= label_tag "name", "Name" %><br>
           <%= text_field_tag "name", "", size: 20 %><br></br> 
@@ -35,7 +38,7 @@
           <%= label_tag "description", "Description" %><br>
           <%= text_area_tag "description", "", size: 100 %><br></br>
       
-          <%= label_tag "price", "Price" %><br><h6><i>enter price with 2 decimal places</i></h6>
+          <%= label_tag "price", "Price" %><br>
           <%= text_field_tag "price", "", size: 20 %><br></br>
           <%= submit_tag "Submit", size: 100 %>
         </h3> 

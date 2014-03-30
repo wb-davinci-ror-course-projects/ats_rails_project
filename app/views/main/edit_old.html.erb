@@ -1,5 +1,6 @@
 <%= form_tag "/edit_old" do %>
 <%= render "layouts/admin_edit" %>
+
 <% if @error != nil %>
   <h2 style="color: rgb(156, 18, 18)"><%= @error %></h2>
 <% end %>
@@ -12,8 +13,7 @@
         <%= submit_tag "Select", size: 20 %><br>
 </div>
 
-<hr style="color: white">
-      
+<hr style="color: white">   
 <div class="pad">
 <div class="row">
   <div class="col-md-4" style="color: rgba(51, 51, 51, 0.67)">

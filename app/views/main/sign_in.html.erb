@@ -2,9 +2,9 @@
 <%= form_tag "/sign_in" do %>
 
 <div class="pad">
-  <h2> Login </h2>
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-6">
+  <h4> Enter username and password </h4>
     <h3>
       <%= label_tag "username", "" %><br>
       <%= text_field_tag "username", "", size: 20 %><br>
@@ -21,6 +21,6 @@
 </div>
 </div>
 
-<h4>(Testing: username: ts9753 password: ts9753, username: kl9753 password: *kl9753)</h4>
+<h4>(Testing: username: wendy password: 1234, username: andy password: *1234)</h4>
 
 <% end %>

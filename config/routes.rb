@@ -30,6 +30,10 @@ get "/edit_old" => "main#edit_old"
 
 post "/edit_old" => "main#edit_old_post"
 
+get "/edit_user" => "main#edit_user"
+
+post "/edit_user" => "main#edit_user_post"
+
 get "/add_new" => "main#add_new"
 
 post "/add_new" => "main#add_new_post"

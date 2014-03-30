@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create! username: "ts9753", 
+User.create! username: "wendy", 
 first_name: "Tracy", 
 last_name: "Smith", 
 phone_number: "303-921-6168", 
-email_address: "ts9753@yahoo.com",
-password: "ts9753",
-password_confirmation: "ts9753",
+email_address: "1234@yahoo.com",
+password: "1234",
+password_confirmation: "1234",
 shipping_first_name: "Tracy", 
 shipping_last_name: "Smith", 
 shipping_address1: "5712 Asbury Pl", 
@@ -30,13 +30,13 @@ billing_state: "CO",
 billing_zip: "80227", 
 billing_phone_number: "303-921-6168"
 
-User.create! username: "kl9753", 
+User.create! username: "andy", 
 first_name: "Karen", 
 last_name: "Love", 
 phone_number: "303-921-6169", 
-email_address: "kl9753@yahoo.com", 
-password: "*kl9753", 
-password_confirmation: "*kl9753",
+email_address: "12345@yahoo.com", 
+password: "*1234", 
+password_confirmation: "*1234",
 shipping_first_name: "Rich", 
 shipping_last_name: "Love", 
 shipping_address1: "5712 Asbury Pl", 
@@ -143,6 +143,17 @@ prior to and during mixture, application, and curing of adhesive. SURFACE PREPAR
 must be absolutely clean and can not be saturated with water.",
 percent_off: 0
 
+Product.create! product_code: "sp-sil-xb150",
+category: "Glues & Sealer",
+name: "Silicone Sealant 10.1 oz",
+quantity: 1,
+description: "XtraBond 150 silicone sealant, 10 ounces",
+price: "12.00",
+image: "sp-sil-xb150",
+category_id: 4,
+more_info: "Mildew resistant",
+percent_off: 0
+
 Product.create! product_code: "pp4-acp-0050",
 category: "Wet & Dry Pads",
 name: "ACP Polishing Pads",
@@ -151,6 +162,28 @@ description: "50 grit",
 price: "12.00",
 image: "pp4-acp-0050",
 category_id: 5,
+more_info: "",
+percent_off: 0
+
+Product.create! product_code: "4bp-fl",
+category: "Wet & Dry Pads",
+name: "Backer Pad",
+quantity: 1,
+description: '4" flexible rubber backer pad',
+price: "12.00",
+image: "4bp-fl",
+category_id: 5,
+more_info: "Flexible, semi-rigid rubber with velco back",
+percent_off: 0
+
+Product.create! product_code: "tb-06-acpro",
+category: "Diamond Products",
+name: '6" Acpro Turbo Blade',
+quantity: 1,
+description: "Professional Turbo Blade",
+price: "39.00",
+image: "tb-06-acpro",
+category_id: 1,
 more_info: "",
 percent_off: 0
 

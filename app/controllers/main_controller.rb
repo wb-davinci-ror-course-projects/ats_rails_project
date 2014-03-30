@@ -73,6 +73,29 @@ def new_user_post
   end
 end
 
+def edit_user
+  @old_user = User.find_by(username: session[:user_name])
+  render :edit_user, layout: false and return
+end
+
+def edit_user_post
+  @old_user = User.find_by(username: session[:user_name])
+  edit_user = User.find_by(username: params[:username])
+  edit_user.username = params[:username]
+  edit_user.password = params[:password]
+  edit_user.password_confirmation =  params[:password_confirmation]
+  if edit_user.password_confirmation != edit_user.password
+    flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
+                      Please try again."
+    render :edit_user and return
+  else
+    if edit_user.save != false
+      flash[:warning] = "Your password has been updated"
+      render :index and return
+    end
+  end
+end
+
 def about
   render :about and return
 end
@@ -126,9 +149,11 @@ def product_sale_edit_post
  end
 end
 
+
+
 def edit_old
   @old_product = Product.last
-  render :edit_old and return
+  render :edit_old, layout: false and return
 end
 
 def edit_old_post
@@ -143,7 +168,7 @@ def edit_old_post
     @edit_product.price          = params["price"]
     @edit_product.image          = params["product_code"]
     @edit_product.more_info      = params["more_info"]
-    @edit_product.percent_off      = params["percent_off"]
+    @edit_product.percent_off      = 0
     category_id = Category.find_by(name: @edit_product.category)
     @edit_product.category_id    = category_id.id
     if @edit_product.save == true
@@ -178,6 +203,7 @@ def add_new_post
   @new_product.price          = params["price"]
   @new_product.image          = params["product_code"]
   @new_product.more_info      = params["more_info"]
+  @new_product.percent_off      = 0
   category_id = Category.find_by(name: @new_product.category)
   @new_product.category_id    = category_id.id
     if @new_product.save == true
@@ -198,7 +224,7 @@ def product_category
 end
 
 def log_out
-  flash[:info] = "You have been logged out. Visit our showroom located at <b>50 Rio Grande Blvd, Denver CO</b>.".html_safe
+  flash[:warning] = "You have been logged out. Come visit our showroom located at <b>50 Rio Grande Blvd, Denver CO</b>.".html_safe
   session.clear
   redirect_to "/" and return
 end
