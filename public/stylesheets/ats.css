@@ -40,11 +40,11 @@ height: 240;
   font-size: 30pt;
   margin: -20px auto 50px auto;
   text-align: center;
-  color: blue;
-  background-color: silver;
+  color: white;
+  background-color: rgba(6, 72, 133, 0.85);
   height: 60px;
   padding: 0px 0px 0px 0px;
-  text-shadow: 3px 3px 4px #927017;
+  text-shadow: 3px 3px 4px black;
 }
 .ats_footer {
   font-size: 15pt;
