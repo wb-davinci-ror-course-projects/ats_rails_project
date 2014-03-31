@@ -79,6 +79,13 @@ def edit_user
 end
 
 def edit_user_post
+  if params[:commit] == "Update Username"
+    edit_user = User.find_by(username: session[:user_name])
+    edit_user.username = params[:username]
+    session[:user_name] = edit_user.username
+    edit_user.save!
+    render :index and return
+  else
   @old_user = User.find_by(username: session[:user_name])
   edit_user = User.find_by(username: params[:username])
   edit_user.username = params[:username]
@@ -93,6 +100,7 @@ def edit_user_post
       flash[:warning] = "Your password has been updated"
       render :index and return
     end
+  end
   end
 end
 

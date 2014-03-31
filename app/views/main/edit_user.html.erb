@@ -13,6 +13,7 @@
     
       <%= label_tag "username", "Edit username (optional)" %><br>
       <%= text_field_tag "username", @old_user.username, size: 20 %></i><br></br>
+      <%= submit_tag "Update Username" %>
     
     </h3>
   </div>
@@ -24,7 +25,7 @@
       <%= label_tag "password_confirmation", "Enter new password again"%><br>
       <%= password_field_tag "password_confirmation", "", size: 20 %><br></br>     
     </h3>  
-      <%= submit_tag "Update" %>
+      <%= submit_tag "Update Password" %>
   </div> 
 </div>
 </div>
