@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html>  
+
+
 <head>
   <title>App</title>
   <link rel="stylesheet" type="text/css" href="/stylesheets/ats.css">
@@ -7,10 +9,10 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  
-  <body class:"body_b">
-    <%= render partial: "layouts/nav_header" %>
 </head> 
+
+    <%= render partial: "layouts/nav_header" %>
+
 
     <%= flash_alert "primary" %>
     <%= flash_alert "success" %>

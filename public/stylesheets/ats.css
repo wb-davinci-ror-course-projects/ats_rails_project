@@ -9,6 +9,16 @@
   text-shadow: 5px 5px 10px red;
 }
 
+.body_b {
+  width: 1100px;
+  margin: 5px auto;
+  background-color: rgba(231, 196, 10, 0.14);
+  border: 10px black solid;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 16pt;
+}
+
 .shadow {
   font-size: 20pt;
   text-align: center;
@@ -40,11 +50,10 @@ height: 240;
   font-size: 30pt;
   margin: -20px auto 50px auto;
   text-align: center;
-  color: white;
+  color: rgb(226, 216, 216);
   background-color: rgba(6, 72, 133, 0.85);
   height: 60px;
   padding: 0px 0px 0px 0px;
-  text-shadow: 3px 3px 4px black;
 }
 .ats_footer {
   font-size: 15pt;
@@ -91,15 +100,6 @@ height: 240;
 
 html {
   background-color: #eee;
-}
-.body_b {
-  width: 700px;
-  margin: 5px auto;
-  background-color: gray;
-  border: 3px #ccc solid;
-  padding: 5px;
-  font-family: sans-serif;
-  font-size: 16pt;
 }
 
 .back_gray {
