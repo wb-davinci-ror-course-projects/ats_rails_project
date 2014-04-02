@@ -57,7 +57,7 @@ Category.create! name: "Diamond Products"
 Category.create! name: "Safety Equipment"
 Category.create! name: "Sand Paper"
 Category.create! name: "Glues & Sealer"
-Category.create! name: "Wet & Dry Pads"
+Category.create! name: "Pads"
 Category.create! name: "Other Products"
 
 CategorySale.create! category_name: "Diamond Products",
@@ -76,7 +76,7 @@ CategorySale.create! category_name: "Glues & Sealer",
 percent_off: 0,
 category_id: 4
 
-CategorySale.create! category_name: "Wet & Dry Pads",
+CategorySale.create! category_name: "Pads",
 percent_off: 0,
 category_id: 5
 
@@ -155,7 +155,7 @@ more_info: "Mildew resistant",
 percent_off: 0
 
 Product.create! product_code: "pp4-acp-0050",
-category: "Wet & Dry Pads",
+category: "Pads",
 name: "ACP Polishing Pads",
 quantity: 1,
 description: "50 grit",
@@ -166,7 +166,7 @@ more_info: "",
 percent_off: 0
 
 Product.create! product_code: "4bp-fl",
-category: "Wet & Dry Pads",
+category: "Pads",
 name: "Backer Pad",
 quantity: 1,
 description: '4" flexible rubber backer pad',
@@ -238,7 +238,7 @@ advice on use.",
 percent_off: 0
 
 Product.create! product_code: "abc-125",
-category: "Wet & Dry Pads",
+category: "Pads",
 name: "name of product 5",
 quantity: 1,
 description: "sample product pads",
