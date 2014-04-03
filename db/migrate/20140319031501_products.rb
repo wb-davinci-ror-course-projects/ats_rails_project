@@ -6,7 +6,7 @@ class Products < ActiveRecord::Migration
           t.string :name
           t.float  :quantity
           t.string :description
-          t.string :price
+          t.float :price
           t.string :image
           t.float  :category_id
           t.float  :percent_off
