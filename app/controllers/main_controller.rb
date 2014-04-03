@@ -75,7 +75,7 @@ end
 
 def edit_user
   @old_user = User.find_by(username: session[:user_name])
-  render :edit_user, layout: false and return
+  render :edit_user
 end
 
 def edit_user_post

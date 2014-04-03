@@ -9,36 +9,6 @@
   <th><a style="color: white" href="/">Articles</a></th><br>
 </div>--!>
 
-<div pull-right>
-<div class="pad_col row">
-<% @products.each do |p| %>
-<div class="col-md-5">
-  <table> 
-    <th>
-      <a class="a:hover" href='/images/<%= p.image %>.jpg/'>
-        <img src="/images/<%= p.image %>.jpg/" width="150" height="150"></img>
-      </a>
-    </th>
-      <td><b><h3 class="pad" style="color: #550808"><%= p.name.upcase %></h3></b>
-        <b><center><p style="color=black"><i>price  </i>$<%= p.price %></p></center></b>
-          <% CategorySale.where(category_id: p.category_id).each do |s| %>
-            <% if s.percent_off > 1 %>
-              <% price = (p.price.to_f) * ((100-s.percent_off)/100) %>
-                <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4></center>
-              <% else %>
-                <% if p.percent_off > 1 %>
-                  <% price = (p.price.to_f) * ((100-p.percent_off)/100) %>
-                    <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4></center>
-                  <% else %>
-                <% end %>
-            <% end %>
-        <h4 style="color: #927017"><p><center><%= p.description %></p></h4></center>
-        <h5><a href="/more_info/<%= p.id %>">More details and applications...</a></h5>
-      </td>
-          <% end %>   
-  </table>             
-</div> 
-<% end %>
-</div>
-</div>
+<%= render partial: "/layouts/show_product" %>
+
 <% end %>
