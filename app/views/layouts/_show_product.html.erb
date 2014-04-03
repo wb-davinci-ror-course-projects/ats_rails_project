@@ -1,7 +1,6 @@
 <div pull-right>
 <div class="pad_col row">
 <% @products.each do |p| %>
-  <% if p.quantity != 0 %>
   <div class="col-md-5">
     <table> 
       <th>
@@ -19,15 +18,16 @@
                   <% if p.percent_off > 1 %>
                     <% price = (p.price.to_f) * ((100-p.percent_off)/100) %>
                       <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4></center>
-                    <% else %>
-                  <% end %>
               <% end %>
           <h4 style="color: #927017"><p><center><%= p.description %></p></h4></center>
           <h5><a href="/more_info/<%= p.id %>">More details and applications...</a></h5>
+            <% if p.quantity == 0 %>
+              <i> This item is currently out of stock. </i>
+            <% end %>
         </td>
             <% end %>   
-    </table>  
-  <% end %>           
+    </table> 
+  <% end %>    
 </div> 
 <% end %>
 </div>

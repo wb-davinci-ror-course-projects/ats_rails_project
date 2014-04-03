@@ -1,6 +1,6 @@
 class MainController < ApplicationController
 
-def home
+def index
   render :index and return
 end
 
