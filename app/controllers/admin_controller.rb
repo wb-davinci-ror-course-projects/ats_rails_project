@@ -68,7 +68,14 @@ def update
     if params[:commit] == "Select"
       id = params[:product_id]
       @old_product = Product.find(id)
-      render :edit, layout: false and return
+      render :edit, layout: false and return  
+    end
+    
+    if params[:commit] == "Delete"
+    id = params[:product_id]
+      @old_product = Product.find(id)
+      @old_product.destroy
+      render :links, layout: false and return  
     end
   end
 end
