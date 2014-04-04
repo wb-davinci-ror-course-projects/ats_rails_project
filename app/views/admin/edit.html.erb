@@ -1,4 +1,4 @@
-<%= form_tag "/edit_old" do %>
+<%= form_tag "/admin/:id", method: "PUT" do %>
 <%= render "layouts/admin_edit" %>
 
 <% if @error != nil %>
@@ -7,7 +7,7 @@
 
 <div class="pad">
 <h1 style="color: rgba(51, 51, 51, 0.67)"><%= label_tag "product_code", "Select the product to edit" %><br><h1>
-  <%= select_tag "id", options_from_collection_for_select(
+  <%= select_tag :product_id, options_from_collection_for_select(
       Product.order(:id), :id, :product_code, @old_product.id), 
       prompt: "Choose product, then click edit" %>
         <%= submit_tag "Select", size: 20 %><br>

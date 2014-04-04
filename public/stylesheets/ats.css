@@ -19,6 +19,17 @@
   font-size: 16pt;
 }
 
+.admin {
+  width: 1100px;
+  margin: 5px auto;
+  background-color: rgba(159, 218, 241, 0.49);
+  border: 20px black solid;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 14pt;
+  color: black;
+}
+
 .shadow {
   font-size: 20pt;
   text-align: center;

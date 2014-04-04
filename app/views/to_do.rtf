@@ -1,44 +1,17 @@
 QUESTIONS
+
+-what is login post in REST update or create
 -user controller, changed routes from main to user, put view in user folder
-I'm seeing the following error after trying move my index (sign in page) to the new "user" controller
-I created. It seems that it is not recognizing the files I moved to the view's user folder.
-Params is still showing "main" directory and is using the show's layout.
-
-ERROR  Missing template user/index, application/index with {:locale=>[:en], :formats=>[:html], 
-:handlers=>[:erb, :builder, :raw, :ruby, :jbuilder, :coffee]}. Searched in: * "/Users/wb9753/ats_rails_project/app/views".
-
-In routes:
-
-  get "/user"    => "user#index",                 as: "sign_in"
-
-In view:
-
-  <a class="pull-right pad" href="/user"><h4 style="color: white">Sign in</h4></a>
-
-User controller:
-
-  class UserController < ApplicationController
-
-  def index
-      render :index and return
-  end
-  end
-
-View Directory:
-
-  views
-    -main
-    -user
-      -index
-
 
 ----------------------------------------------------------------------------------------
 TO DO
--table relation?
+-table associations
 - validation method
 - set up mobile sizing
     --mobile optimized?
 - REST routes
+- destroy a product
+-admin sign in
 ------------------------------------------------------------------------------------------
 FUTURE TASKS
 -forgot password send e-mail
