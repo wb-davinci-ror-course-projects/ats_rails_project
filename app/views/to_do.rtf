@@ -1,8 +1,37 @@
 QUESTIONS
--new_user controller, changed routes from main to new_user, put view in new_user folder
--I tried to add an if statement to the show view that if the quantity = 0 don't display which works,
- but it is deleting the row from the products table completely even though I'm not using delete or destroy
- anywhere. If use != 0 it doesn't delete it.
+-user controller, changed routes from main to user, put view in user folder
+I'm seeing the following error after trying move my index (sign in page) to the new "user" controller
+I created. It seems that it is not recognizing the files I moved to the view's user folder.
+Params is still showing "main" directory and is using the show's layout.
+
+ERROR  Missing template user/index, application/index with {:locale=>[:en], :formats=>[:html], 
+:handlers=>[:erb, :builder, :raw, :ruby, :jbuilder, :coffee]}. Searched in: * "/Users/wb9753/ats_rails_project/app/views".
+
+In routes:
+
+  get "/user"    => "user#index",                 as: "sign_in"
+
+In view:
+
+  <a class="pull-right pad" href="/user"><h4 style="color: white">Sign in</h4></a>
+
+User controller:
+
+  class UserController < ApplicationController
+
+  def index
+      render :index and return
+  end
+  end
+
+View Directory:
+
+  views
+    -main
+    -user
+      -index
+
+
 ----------------------------------------------------------------------------------------
 TO DO
 -table relation?

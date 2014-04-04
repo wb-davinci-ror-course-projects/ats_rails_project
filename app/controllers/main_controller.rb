@@ -4,105 +4,62 @@ def index
   render :index and return
 end
 
-def sign_in
-    render :sign_in and return
-end
-
-def sign_in_post
-  if params[:commit] == "Create account"
-    render :new_user and return
-  end
-   
-  if User.find_by(username: params[:username])== nil
-      flash.now[:danger] = "Username was entered incorrectly or doesn't exist. 
-                          <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
-    render :sign_in and return
-  else
-      user = User.find_by(username: params[:username]) 
-    if user.authenticate(params[:password]) != false 
-      session[:user_name] = user.username
-      flash.now[:info] = "You are logged in as: <b>#{user.username}</b>".html_safe
-      render :index and return
-    else
-      flash.now[:danger] = "Please enter the correct password"
-      render :sign_in and return
-    end
-  end
-end
-
-def new_user
-  @user = User.new
-  render :new_user and return
-end
-
-def new_user_post
-  @user = User.new
-  @user.username = params[:username]
-  if @user.username == ""
-    flash.now[:danger] = "Username can not be blank. Please try again."
-    render :new_user and return
-    elsif
-      User.find_by(username: @user.username) != nil
-      flash.now[:danger] = "Username already exists. Please try again." 
-      render :new_user and return
-  end
-  @user.password = params[:password]
-  @user.password_confirmation = params[:password_confirmation]
-  if @user.password_confirmation != @user.password
-    flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
-                      Please try again."
-    render :new_user and return
-  end
-  @user.email_address = params[:email_address]
-  if @user.email_address == ""
-    flash.now[:danger] = "Please enter an e-mail address."
-    render :new_user and return
-  end
-  if @user.save == true
-     session[:user_name] = @user.username 
-     flash.now[:info] = "You are logged in as: <b>#{@user.username}</b>".html_safe
-     render :index and return
-  else
-    if User.find_by(email_address: @user.email_address) != nil
-      flash.now[:danger] = "The e-mail address entered already exists. Please try again." 
-      render :new_user and return
-      else
-    flash.now[:danger] = "The e-mail entered is invalid, please try again."
-    render :new_user and return
-    end
-  end
-end
-
-def edit_user
-  @old_user = User.find_by(username: session[:user_name])
-  render :edit_user
-end
-
-def edit_user_post
-  if params[:commit] == "Update Username"
-    edit_user = User.find_by(username: session[:user_name])
-    edit_user.username = params[:username]
-    session[:user_name] = edit_user.username
-    edit_user.save!
-    render :index and return
-  else
-  @old_user = User.find_by(username: session[:user_name])
-  edit_user = User.find_by(username: params[:username])
-  edit_user.username = params[:username]
-  edit_user.password = params[:password]
-  edit_user.password_confirmation =  params[:password_confirmation]
-  if edit_user.password_confirmation != edit_user.password
-    flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
-                      Please try again."
-    render :edit_user and return
-  else
-    if edit_user.save != false
-      flash[:warning] = "Your password has been updated"
-      render :index and return
-    end
-  end
-  end
-end
+# def sign_in
+#     render :sign_in and return
+# end
+# 
+# def sign_in_post
+#   if params[:commit] == "Create account"
+#     render :new_user and return
+#   end
+#    
+#   if User.find_by(username: params[:username])== nil
+#       flash.now[:danger] = "Username was entered incorrectly or doesn't exist. 
+#                           <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
+#     render :sign_in and return
+#   else
+#       user = User.find_by(username: params[:username]) 
+#     if user.authenticate(params[:password]) != false 
+#       session[:user_name] = user.username
+#       flash.now[:info] = "You are logged in as: <b>#{user.username}</b>".html_safe
+#       render :index and return
+#     else
+#       flash.now[:danger] = "Please enter the correct password"
+#       render :sign_in and return
+#     end
+#   end
+# end
+# 
+# def edit_user
+#   @old_user = User.find_by(username: session[:user_name])
+#   render :edit_user
+# end
+# 
+# def edit_user_post
+#   if params[:commit] == "Update Username"
+#     edit_user = User.find_by(username: session[:user_name])
+#     edit_user.username = params[:username]
+#     session[:user_name] = edit_user.username
+#     edit_user.save!
+#     render :index and return
+#   else
+#   @old_user = User.find_by(username: session[:user_name])
+#   edit_user = User.find_by(username: params[:username])
+#   edit_user.username = params[:username]
+#   edit_user.password = params[:password]
+#   edit_user.password_confirmation =  params[:password_confirmation]
+#   if edit_user.password_confirmation != edit_user.password
+#     flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
+#                       Please try again."
+#     render :edit_user and return
+#   else
+#     if edit_user.save != false
+#       flash[:warning] = "Your password has been updated"
+#       render :index and return
+#     end
+#   end
+#   end
+# end
 
 def about
   render :about and return
@@ -229,12 +186,6 @@ def product_category
   @header = "#{product_category}"
   @products = Product.where(category: product_category)
   render :show and return
-end
-
-def log_out
-  flash[:warning] = "You have been logged out. Come visit our showroom located at <b>50 Rio Grande Blvd, Denver CO</b>.".html_safe
-  session.clear
-  redirect_to "/" and return
 end
 
 end
