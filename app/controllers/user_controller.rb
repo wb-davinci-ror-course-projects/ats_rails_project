@@ -16,7 +16,7 @@ def sign_in
   else
       user = User.find_by(username: params[:username]) 
     if user.authenticate(params[:password]) != false 
-      session[:user_name] = user.username
+      session[:username] = user.username
       flash[:info] = "You are logged in as: <b>#{user.username}</b>".html_safe
       redirect_to "/" and return
     else
@@ -27,19 +27,19 @@ def sign_in
 end
 
 def edit
-  @old_user = User.find_by(username: session[:user_name])
+  @old_user = User.find_by(username: session[:username])
   render :edit and return
 end
 
 def update
   if params[:commit] == "Update Username"
-    edit_user = User.find_by(username: session[:user_name])
+    edit_user = User.find_by(username: session[:username])
     edit_user.username = params[:username]
-    session[:user_name] = edit_user.username
+    session[:username] = edit_user.username
     edit_user.save!
     redirect_to "/" and return
   else
-  @old_user = User.find_by(username: session[:user_name])
+  @old_user = User.find_by(username: session[:username])
   edit_user = User.find_by(username: params[:username])
   edit_user.username = params[:username]
   edit_user.password = params[:password]
@@ -85,7 +85,7 @@ def create
     render :new and return
   end
   if @user.save == true
-     session[:user_name] = @user.username 
+     session[:username] = @user.username 
      flash[:info] = "You are logged in as: <b>#{@user.username}</b>".html_safe
      redirect_to "/" and return
   else
