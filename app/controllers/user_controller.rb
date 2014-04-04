@@ -4,7 +4,7 @@ def index
     render :index and return
 end
 
-def update
+def sign_in
   if params[:commit] == "Create account"
     render :new and return
   end
@@ -12,7 +12,7 @@ def update
   if User.find_by(username: params[:username])== nil
       flash[:danger] = "Username was entered incorrectly or doesn't exist. 
                           <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
-    redirect_to "/" and return
+    render :index and return
   else
       user = User.find_by(username: params[:username]) 
     if user.authenticate(params[:password]) != false 
@@ -21,7 +21,7 @@ def update
       redirect_to "/" and return
     else
       flash.now[:danger] = "Please enter the correct password"
-      redirect_to "/" and return
+      render :index and return
     end
   end
 end

@@ -13,7 +13,7 @@ post "/admin/category_sale/"  => "admin#category_sale_edit_post",   as: "/catego
 
 
 get "/user"           => "user#index",                 as: "sign_in"
-post "/user/:id"      => "user#update",                as: "logged_in"
+post "/user/sign_in"  => "user#sign_in",                as: "logged_in"
 get "/user/new"       => "user#new"
 post "/user"          => "user#create"
 get "/user/:id/edit"  => "user#edit"
