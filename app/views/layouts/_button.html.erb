@@ -3,11 +3,11 @@
 <div class="col-md-12">
 <div class="form-group">
   <% Category.order(:id).each do |c| %>
-    <a class="btn btn-primary" href='/<%= c.name %>'><%= c.name %></a>
+    <a class="btn btn-primary" href='/main/<%= c.name %>'><%= c.name %></a>
   <% end %>
     <a class="btn btn-danger" href='/'>Home</a>
-    <a class="btn btn-info" href='/about'>About</a>
-    <a class="btn btn-default" href='/contact'>Contact Us</a>
+    <a class="btn btn-info" href='/main/about'>About</a>
+    <a class="btn btn-default" href='/main/contact'>Contact Us</a>
 </div>  
 </div>
 </div>

@@ -1,8 +1,8 @@
 <div pull-right>
 <div class="pad_col row">
 <% @products.each do |p| %>
-  <div class="col-md-5">
-    <table> 
+  <div class="col-md-6">
+    <table>       
       <th>
         <a class="a:hover" href='/images/<%= p.image %>.jpg/'>
           <img src="/images/<%= p.image %>.jpg/" width="150" height="150"></img>
@@ -12,19 +12,19 @@
           <b><center><p style="color=black"><i>price  </i>$<%= "%.2f" % p.price %></p></center></b>
             <% CategorySale.where(category_id: p.category_id).each do |s| %>
               <% if s.percent_off > 1 %>
-                <% price = (p.price.to_f) * ((100-s.percent_off)/100) %>
+                <% price = (p.price) * ((100 - s.percent_off)/100) %>
                   <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4></center>
                 <% else %>
                   <% if p.percent_off > 1 %>
-                    <% price = (p.price.to_f) * ((100-p.percent_off)/100) %>
+                    <% price = (p.price) * ((100-p.percent_off)/100) %>
                       <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4></center>
-              <% end %>
+                  <% end %>
           <h4 style="color: #927017"><p><center><%= p.description %></p></h4></center>
-          <h5><a href="/more_info/<%= p.id %>">More details and applications...</a></h5>
-            <% if p.quantity == 0 %>
-              <i> This item is currently out of stock. </i>
+          <h5><a href="/main/more_info/<%= p.id %>">More details and applications...</a></h5>
+          <% if p.quantity == 0 %>
+            <i> This item is currently out of stock. </i>
             <% end %>
-        </td>
+         </td>
             <% end %>   
     </table> 
   <% end %>    
