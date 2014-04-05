@@ -6,8 +6,8 @@ get "/main/contact"                  => "main#contact"
 get "/main/:product_category"        => "main#product_category"
 get "/main/more_info/:id"            => "main#more_info_id"
 
-get "/user"           => "user#index",                  as: "sign_in"
-post "/user/sign_in"  => "user#sign_in",                as: "logged_in"
+get "/user"           => "user#index",                  as: "user_signin"
+post "/user/sign_in"  => "user#sign_in",                as: "user_signinin"
 get "/user/new"       => "user#new"
 post "/user"          => "user#create"
 get "/user/:id/edit"  => "user#edit"
@@ -15,6 +15,7 @@ put "/user/:id"       => "user#update"
 get "/user/logout"    => "user#logout"
 
 get "/admin"                  => "admin#index",                     as: "admin_signin"
+post "/admin/signin"          => "admin#signin",                    as: "admin_signedin"
 get "/admin/links"            => "admin#links",                     as: "links"
 get "/admin/new"              => "admin#new",                       as: "new_product"
 post "/admin"                 => "admin#create",                    as: "new_product1"
@@ -24,5 +25,6 @@ get "/admin/product_sale"     => "admin#product_sale",              as: "/produc
 post "/admin/product_sale/"   => "admin#product_sale_edit_post",    as: "/product_sale1" 
 get "/admin/category_sale/"   => "admin#category_sale_edit",        as: "/category_sale"
 post "/admin/category_sale/"  => "admin#category_sale_edit_post",   as: "/category_sale1"  
+get "/admin/logout"           => "admin#logout"
 
 end

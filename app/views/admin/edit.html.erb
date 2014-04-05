@@ -10,7 +10,7 @@
   <%= select_tag :product_id, options_from_collection_for_select(
       Product.order(:id), :id, :product_code, @old_product.id), 
       prompt: "Choose product, then click edit" %>
-        <%= submit_tag "Select", size: 20 %><br>
+    <%= submit_tag "Select", size: 20 %><br>
 </div>
 
 <hr style="color: white">   
@@ -41,8 +41,9 @@
 
       <%= label_tag "price", "Price" %><br>
       <%= text_field_tag "price", @old_product.price, size: 20 %><br></br>
-      <%= submit_tag "Update" %>
-      <%= submit_tag "Delete" %>
+      
+        <%= submit_tag "Update" %>
+        <%= submit_tag "Delete" %>
     </h3>  
   </div> 
 </div>

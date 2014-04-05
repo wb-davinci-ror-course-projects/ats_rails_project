@@ -1,7 +1,28 @@
 class AdminController < ApplicationController
 
+before_action :set_admin, only: [:links, :new, :create, :edit, :update, :category_sale_edit, 
+:category_sale_edit_post, :product_sale, :product_sale_edit_post]
+
 def index
   render :index, layout: false and return
+end
+
+def signin
+   
+  if Admin.find_by(username: params[:username])== nil
+      flash[:danger] = "Username was entered incorrectly or doesn't exist. 
+                          <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
+    render :index, layout: false and return
+  else
+      admin = Admin.find_by(username: params[:username]) 
+    if admin.authenticate(params[:password]) != false 
+      session[:admin_user] = admin.usernames
+      render :links, layout: false and return
+    else
+      flash.now[:danger] = "Please enter the correct password"
+      render :index, layout: false and return
+    end
+  end
 end
 
 def links
@@ -117,5 +138,20 @@ def product_sale_edit_post
       render :product_sale, layout: false and return
  end
 end
+
+def logout
+  flash[:warning] = "You have been logged out.</b>".html_safe
+  session.clear
+  render :index, layout: false and return
+end
+
+
+    
+    private
+      def set_admin
+        if Admin.find_by(username: session[:admin_user]) == nil
+          render :index, layout: false and return
+        end
+      end
 
 end
