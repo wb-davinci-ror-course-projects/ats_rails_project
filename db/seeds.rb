@@ -261,6 +261,6 @@ more_info: "This section will handle product details, applications and
 advice on use.",
 percent_off: 0
 
-Admin.create! username: "jdaus", 
-password: "Nuggets$5M", 
-password_confirmation: "Nuggets$5M"
+Admin.create! username: "marie", 
+password: "456", 
+password_confirmation: "456"
