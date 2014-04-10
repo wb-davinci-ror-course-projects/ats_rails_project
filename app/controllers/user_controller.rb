@@ -39,23 +39,24 @@ def update
     edit_user.save!
     redirect_to "/" and return
   else
-  @old_user = User.find_by(username: session[:username])
-  edit_user = User.find_by(username: params[:username])
-  edit_user.username = params[:username]
-  edit_user.password = params[:password]
-  edit_user.password_confirmation =  params[:password_confirmation]
-  if edit_user.password_confirmation != edit_user.password
-    flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
-                      Please try again."
-    render :edit and return
-  else
-    if edit_user.save != false
-      flash[:warning] = "Your password has been updated"
-      redirect_to "/" and return
+    @old_user = User.find_by(username: session[:username])
+    edit_user = User.find_by(username: session[:username])
+    edit_user.username = params[:username]
+    edit_user.password = params[:password]
+    edit_user.password_confirmation =  params[:password_confirmation]
+    if edit_user.password_confirmation != edit_user.password
+      flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
+                           Please try again."
+      render :edit and return
+    else
+      if edit_user.save != false
+        flash[:warning] = "Your password has been updated"
+        redirect_to "/" and return
+      end
     end
   end
-  end
 end
+
 def new
   @user = User.new
   render :new and return
@@ -72,14 +73,14 @@ def create
       flash.now[:danger] = "Username already exists. Please try again." 
       render :new and return
   end
-  @user.password = params[:password]
-  @user.password_confirmation = params[:password_confirmation]
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
   if @user.password_confirmation != @user.password
     flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
                       Please try again."
     render :new and return
   end
-  @user.email_address = params[:email_address]
+    @user.email_address = params[:email_address]
   if @user.email_address == ""
     flash.now[:danger] = "Please enter an e-mail address."
     render :new and return
@@ -101,6 +102,28 @@ end
 
 def ship_bill_info
   @user = User.find_by(username: session[:username])
+end
+
+def update
+  edit_user = User.find_by(username: session[:username])
+  edit_user.shipping_first_name   = params[:shipping_first_name]
+  edit_user.shipping_last_name    = params[:shipping_last_name]
+  edit_user.shipping_address1     = params[:shipping_address1]
+  edit_user.shipping_address2     = params[:shipping_address2]
+  edit_user.shipping_city         = params[:shipping_city]
+  edit_user.shipping_state        = params[:shipping_state]
+  edit_user.shipping_zip          = params[:shipping_zip]
+  edit_user.shipping_phone_number = params[:shipping_phone_number]
+  edit_user.billing_first_name    = params[:billing_first_name]
+  edit_user.billing_last_name     = params[:billing_last_name]
+  edit_user.billing_address1      = params[:billing_address1]
+  edit_user.billing_address2      = params[:billing_address2]
+  edit_user.billing_city          = params[:billing_city]
+  edit_user.billing_state         = params[:billing_state]
+  edit_user.billing_zip           = params[:billing_zip]
+  edit_user.billing_phone_number  = params[:billing_phone_number]
+  edit_user.save!
+  redirect_to "/" and return
 end
 
 def logout

@@ -1,5 +1,4 @@
-<%= form_tag "/user/:id", method: "PUT" do %>
-
+<%= form_tag "/user/ship_bill_info_put", method: "PUT" do %>
 
 <% if @error != nil %>
   <h2 style="color: rgb(156, 18, 18)"><%= @error %></h2>
@@ -8,62 +7,63 @@
 <div class="row">
   <div class="col-md-4 pull-left">
     <h4 style="color: rgba(3, 3, 100, 0.8)">
-    <i>Please enter shipping information...</i><br>
-      <%= label_tag "shipping_first_name", "First name" %><br>
-      <%= text_field_tag "shipping_first_name", @user.shipping_first_name, size: 20 %></i><br></br>
+      <i>Please enter shipping information...</i><br>
+        <%= label_tag "shipping_first_name", "First name" %><br>
+        <%= text_field_tag "shipping_first_name", @user.shipping_first_name, size: 20 %></i><br></br>
       
-      <%= label_tag "shipping_last_name", "Last name" %><br>
-      <%= text_field_tag "shipping_last_name", @user.shipping_last_name, size: 20 %></i><br></br>
+        <%= label_tag "shipping_last_name", "Last name" %><br>
+        <%= text_field_tag "shipping_last_name", @user.shipping_last_name, size: 20 %></i><br></br>
       
-      <%= label_tag "shipping_address1", "Street address" %><br>
-      <%= text_field_tag "shipping_address1", @user.shipping_address1, size: 20 %></i><br></br>
+        <%= label_tag "shipping_address1", "Street address" %><br>
+        <%= text_field_tag "shipping_address1", @user.shipping_address1, size: 20 %></i><br></br>
       
-      <%= label_tag "shipping_address2", "Street address (continued)" %><br>
-      <%= text_field_tag "shipping_address2", @user.shipping_address2, size: 20 %></i><br></br>
+        <%= label_tag "shipping_address2", "Street address (continued)" %><br>
+        <%= text_field_tag "shipping_address2", @user.shipping_address2, size: 20 %></i><br></br>
       
-      <%= label_tag "shipping_city", "City" %><br>
-      <%= text_field_tag "shipping_city", @user.shipping_city, size: 20 %></i><br></br>
-      TO DO - State drop down select <br><br>
+        <%= label_tag "shipping_city", "City" %><br>
+        <%= text_field_tag "shipping_city", @user.shipping_city, size: 20 %></i><br></br>
+        
+        TO DO - State drop down select <br><br>
       
-      <%= label_tag "shipping_zip", "Zip Code" %><br>
-      <%= text_field_tag "shipping_zip", @user.shipping_zip, size: 20 %></i><br></br>
+        <%= label_tag "shipping_zip", "Zip Code" %><br>
+        <%= text_field_tag "shipping_zip", @user.shipping_zip, size: 20 %></i><br></br>
       
-       <%= label_tag "shipping_phone_number", "Phone number" %><br>
-      <%= text_field_tag "shipping_phone_number", @user.shipping_phone_number, size: 20 %></i><br></br>
+        <%= label_tag "shipping_phone_number", "Phone number" %><br>
+        <%= text_field_tag "shipping_phone_number", @user.shipping_phone_number, size: 20 %></i><br></br>
     </h4> 
-    </div>
+  </div>
     
-    <div class="col-md-1">
-      <h6>TO DO: check box for... Is billing info the same as shipping info</h6><br>
-    </div>
+  <div class="col-md-1">
+    <h6>TO DO: check box for... Is billing info the same as shipping info</h6><br>
+  </div>
 
   <div class="col-md-7 pull-right">
     <h4 style="color: #550808">
-    <i>Please enter billing information...</i><br>
-      <%= label_tag "billing_first_name", "First name" %><br>
-      <%= text_field_tag "billingg_first_name", @user.billing_first_name, size: 20 %></i><br></br>
+      <i>Please enter billing information...</i><br>
+        <%= label_tag "billing_first_name", "First name" %><br>
+        <%= text_field_tag "billing_first_name", @user.billing_first_name, size: 20 %></i><br></br>
       
-      <%= label_tag "billing_last_name", "Last name" %><br>
-      <%= text_field_tag "billing_last_name", @user.billing_last_name, size: 20 %></i><br></br>
+        <%= label_tag "billing_last_name", "Last name" %><br>
+        <%= text_field_tag "billing_last_name", @user.billing_last_name, size: 20 %></i><br></br>
       
-      <%= label_tag "billing_address1", "Street address" %><br>
-      <%= text_field_tag "billing_address1", @user.billing_address1, size: 20 %></i><br></br>
+        <%= label_tag "billing_address1", "Street address" %><br>
+        <%= text_field_tag "billing_address1", @user.billing_address1, size: 20 %></i><br></br>
       
-      <%= label_tag "billing_address2", "Street address (continued)" %><br>
-      <%= text_field_tag "billing_address2", @user.billing_address2, size: 20 %></i><br></br>
+        <%= label_tag "billing_address2", "Street address (continued)" %><br>
+        <%= text_field_tag "billing_address2", @user.billing_address2, size: 20 %></i><br></br>
       
-      <%= label_tag "billing_city", "City" %><br>
-      <%= text_field_tag "billing_city", @user.billing_city, size: 20 %></i><br></br>
+        <%= label_tag "billing_city", "City" %><br>
+        <%= text_field_tag "billing_city", @user.billing_city, size: 20 %></i><br></br>
       
-      TO DO - State drop down select <br><br>
+        TO DO - State drop down select <br><br>
      
-      <%= label_tag "billing_zip", "Zip Code" %><br>
-      <%= text_field_tag "billing_zip", @user.billing_zip, size: 20 %></i><br></br>
+        <%= label_tag "billing_zip", "Zip Code" %><br>
+        <%= text_field_tag "billing_zip", @user.billing_zip, size: 20 %></i><br></br>
       
-      <%= label_tag "billing_phone_number", "Phone number" %><br>
-      <%= text_field_tag "billing_phone_number", @user.billing_phone_number, size: 20 %></i><br></br>
+        <%= label_tag "billing_phone_number", "Phone number" %><br>
+        <%= text_field_tag "billing_phone_number", @user.billing_phone_number, size: 20 %></i><br></br>
     
-      <%= submit_tag "Continue" %>
+        <%= submit_tag "Continue" %>
     </h4> 
   </div>
 </div>
