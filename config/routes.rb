@@ -12,6 +12,7 @@ get "/user/new"       => "user#new"
 post "/user"          => "user#create"
 get "/user/:id/edit"  => "user#edit"
 put "/user/:id"       => "user#update"
+get "/user/ship_bill_info" => "user#ship_bill_info"
 get "/user/logout"    => "user#logout"
 
 get "/admin"                  => "admin#index",                     as: "admin_signin"

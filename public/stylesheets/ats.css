@@ -58,13 +58,14 @@ height: 240;
   text-shadow: 1px 1px 1px rgb(0, 133, 255);
 }
 .ats_header_b {
-  font-size: 30pt;
+  font-size: 25pt;
   margin: -20px auto 50px auto;
   text-align: center;
-  color: rgb(226, 216, 216);
+  color: beige;
   background-color: rgba(6, 72, 133, 0.85);
-  height: 60px;
+  height: 45px;
   padding: 0px 0px 0px 0px;
+  text-shadow: 2px 2px 5px black;
 }
 .ats_footer {
   font-size: 15pt;

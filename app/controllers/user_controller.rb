@@ -99,6 +99,10 @@ def create
   end
 end
 
+def ship_bill_info
+  @user = User.find_by(username: session[:username])
+end
+
 def logout
   flash[:warning] = "You have been logged out. Come visit our showroom located at <b>50 Rio Grande Blvd, Denver CO</b>.".html_safe
   session.clear
