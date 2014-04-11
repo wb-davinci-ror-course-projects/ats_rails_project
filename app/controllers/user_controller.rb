@@ -105,25 +105,52 @@ def ship_bill_info
 end
 
 def update
-  edit_user = User.find_by(username: session[:username])
-  edit_user.shipping_first_name   = params[:shipping_first_name]
-  edit_user.shipping_last_name    = params[:shipping_last_name]
-  edit_user.shipping_address1     = params[:shipping_address1]
-  edit_user.shipping_address2     = params[:shipping_address2]
-  edit_user.shipping_city         = params[:shipping_city]
-  edit_user.shipping_state        = params[:shipping_state]
-  edit_user.shipping_zip          = params[:shipping_zip]
-  edit_user.shipping_phone_number = params[:shipping_phone_number]
-  edit_user.billing_first_name    = params[:billing_first_name]
-  edit_user.billing_last_name     = params[:billing_last_name]
-  edit_user.billing_address1      = params[:billing_address1]
-  edit_user.billing_address2      = params[:billing_address2]
-  edit_user.billing_city          = params[:billing_city]
-  edit_user.billing_state         = params[:billing_state]
-  edit_user.billing_zip           = params[:billing_zip]
-  edit_user.billing_phone_number  = params[:billing_phone_number]
+  if params[:commit] == "yes"
+    session[:bill_same] = params[:commit]
+    @user = User.find_by(username: session[:username])
+    flash.now[:warning] = "Please enter or update shipping information, if needed.
+                        <i>Then continue.</i>".html_safe
+    render :ship_bill_same and return
+  elsif params[:commit] == "no"
+    session[:bill_same] = params[:commit]
+    @user = User.find_by(username: session[:username])
+    flash.now[:warning] = "Please enter or update shipping and billing information, if needed.
+                    <i>Then continue.</i>".html_safe
+    render :ship_bill_info and return
+  end
+    edit_user = User.find_by(username: session[:username])
+    edit_user.shipping_first_name   = params[:shipping_first_name]
+    edit_user.shipping_last_name    = params[:shipping_last_name]
+    edit_user.shipping_address1     = params[:shipping_address1]
+    edit_user.shipping_address2     = params[:shipping_address2]
+    edit_user.shipping_city         = params[:shipping_city]
+    edit_user.shipping_state        = params[:shipping_state]
+    edit_user.shipping_zip          = params[:shipping_zip]
+    edit_user.shipping_phone_number = params[:shipping_phone_number]
+  if session[:bill_same] == "yes"
+    edit_user.billing_first_name    = params[:shipping_first_name]
+    edit_user.billing_last_name     = params[:shipping_last_name]
+    edit_user.billing_address1      = params[:shipping_address1]
+    edit_user.billing_address2      = params[:shipping_address2]
+    edit_user.billing_city          = params[:shipping_city]
+    edit_user.billing_state         = params[:shipping_state]
+    edit_user.billing_zip           = params[:shipping_zip]
+    edit_user.billing_phone_number  = params[:shipping_phone_number]
+  else
+    edit_user.billing_first_name    = params[:billing_first_name]
+    edit_user.billing_last_name     = params[:billing_last_name]
+    edit_user.billing_address1      = params[:billing_address1]
+    edit_user.billing_address2      = params[:billing_address2]
+    edit_user.billing_city          = params[:billing_city]
+    edit_user.billing_state         = params[:billing_state]
+    edit_user.billing_zip           = params[:billing_zip]
+    edit_user.billing_phone_number  = params[:billing_phone_number]
+  end
   edit_user.save!
-  redirect_to "/" and return
+  redirect_to "/user/cart" and return
+end
+
+def cart
 end
 
 def logout
