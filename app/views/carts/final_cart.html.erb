@@ -1,4 +1,5 @@
-<h1>Listing carts</h1>
+<%= form_tag place_order_path, method: "PUT" do %>
+<h1>Order</h1>
 
 <table>
   <thead>
@@ -21,16 +22,12 @@
         <td><%= p.name %></td>
         <td><%= cart.quantity %></td>
         <td><%= cart.ship_method %></td>
-        <td><%= link_to 'Show', cart %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'Continue Shopping', home_page_path %><br><br>
-<%= link_to 'Checkout', ship_info_path %><br><br>
 
+<%= submit_tag 'Place Order' %><br><br>
+<% end %>
 <!--<%= link_to 'New Cart', new_cart_path %>--!>

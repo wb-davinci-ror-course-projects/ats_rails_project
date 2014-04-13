@@ -188,7 +188,7 @@ def update_ship
     edit_user.billing_phone_number  = params[:billing_phone_number]
   end
   edit_user.save!
-  redirect_to home_page_path and return
+  redirect_to "/carts/ship_type" and return
 end
 
 def logout

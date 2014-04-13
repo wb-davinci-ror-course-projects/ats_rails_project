@@ -55,7 +55,20 @@ class CartsController < ApplicationController
       end
     end
   end
+  
+  def ship_type
+    render :ship_type and return
+  end
 
+  def final_cart
+    @carts = Cart.where(cart_id: session[:cart_id])
+    render :final_cart and return
+  end
+  
+  def place_order
+    flash[:info] = "Thank you. Your order has been placed"
+    redirect_to home_page_path and return 
+  end
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
