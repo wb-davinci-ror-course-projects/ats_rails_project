@@ -2,28 +2,26 @@ QUESTIONS
 
 ----------------------------------------------------------------------------------------
 TO DO
-***In Process -- "add to cart" button not complete
+
 -email verification
--table associations
+-table associations (cart_id and product_id)
 - validation method
 - set up mobile sizing
     --mobile optimized?
 - ship info needs validations and user controller - maybe before action private method
   --also build state select boxes and check box for "if bill same"
 - helper for ship_bill text_field_tags
-
-
 ------------------------------------------------------------------------------------------
 HEROKU TESTING ISSUES
   -test if forgot password auto email works
 ------------------------------------------------------------------------------------------
 FUTURE TASKS
--forgot password send e-mail
--Uploading pictures
+
 -Shopping Cart
   -add to cart button on Product Details page
   -select drop box for grits
-- REST routes
+-Uploading pictures
+- REST routes, fine tune
 -Remove footnotes
 
 -------------------------------------------------------------------------------------------
@@ -84,57 +82,6 @@ Dark Blue - rgba(3, 3, 100, 0.8)
   How to remove Turbolinks: remove the gem 'turbolinks' line from Gemfile, 
   run bundle, then remove the //= require turbolinks (//= require turbolinks)line from 
   app/assets/javascripts/application.js (even though it appears to be commented out, it's not)
-
-
-ZOOM
-
-
-<!--Image zooming code to try out(layout won't show until notes deleted)........
-
-<!--<a class="zoom" href='/images/sample02.jpg/'>
-      <!--<img src="/images/sample02.jpg/" width="120" height="120"></img></a>
-
-<!--<a:hover href='/images/sample02.jpg/'>
-        <!--<img src="/images/sample02.jpg/" width="120" height="120"></img></a>
-<!--html>
-    <!--<head>
-        <!--<h2>
-        <!--<style>
-        .black_overlay{
-            display: none;
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            z-index:1001;
-            -moz-opacity: 0.8;
-            opacity:.80;
-            filter: alpha(opacity=80);
-        }
-        .white_content {
-            display: none;
-            position: absolute;
-            top: 25%;
-            left: 25%;
-            width: 50%;
-            height: 50%;
-            padding: 16px;
-            border: 16px solid orange;
-            background-color: white;
-            z-index:1002;
-            overflow: auto;
-        }
-    </style>
-    </head>
-    <body>
-        <p>This is the main content. To display a lightbox click <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">here</a></p>
-        <div id="light" class="white_content">This is the lightbox content. <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a></div>
-        <div id="fade" class="black_overlay"></div>
-    </body>
-</html>  
-
 --------------------------------------------------------------------------------
 NOTES FOR JACK
 

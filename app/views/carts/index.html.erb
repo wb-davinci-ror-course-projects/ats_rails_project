@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Product</th>
+      <th>Name</th>
       <th>Quantity</th>
       <th>Ship method</th>
       <th></th>
@@ -14,8 +15,10 @@
 
   <tbody>
     <% @carts.each do |cart| %>
+    <% p = Product.find(cart.product_id) %>
       <tr>
         <td><%= cart.product_id %></td>
+        <td><%= p.name %></td>
         <td><%= cart.quantity %></td>
         <td><%= cart.ship_method %></td>
         <td><%= link_to 'Show', cart %></td>

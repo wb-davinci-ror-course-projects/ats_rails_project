@@ -24,7 +24,7 @@
           <% if p.quantity == 0 %>
             <i> This item is currently out of stock. </i>
           <% else %>
-    *****TODO****<%= submit_tag "Add to Cart" %>
+          <%= button_tag "Add to cart", name: "product_id", value: p.id %>
           <% end %>
          </td>
             <% end %>   

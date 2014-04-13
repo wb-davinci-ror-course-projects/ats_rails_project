@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    @carts = Cart.where(cart_id: session[:cart_id])
   end
 
   # GET /carts/1
@@ -24,7 +24,10 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
+    session[:cart_id] = params[:authenticity_token]
+    @cart = Cart.new#(cart_params)
+    @cart.cart_id = params[:authenticity_token]
+    @cart.product_id = params[:product_id]
 
     respond_to do |format|
       if @cart.save
@@ -64,11 +67,11 @@ class CartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
-      @cart = Cart.find(params[:id])
+      @cart = Cart.find(1)#(params[:cart_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def cart_params
-      params.require(:cart).permit(:product_id, :quantity, :ship_method)
-    end
+#     def cart_params
+#       params.require(:cart).permit(:product_id, :quantity, :ship_method)
+#     end
 end
