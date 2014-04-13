@@ -29,10 +29,13 @@ class CartsController < ApplicationController
     @cart.cart_id       = params[:authenticity_token]
     @cart.product_id    = params[:product_id]
     @cart.quantity      = params[:quantity]
+    @cart.price         = Product.find(params[:product_id]).price
 
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        flash[:info] = "Product was added to cart"
+        redirect_to home_page_path and return
+        #format.html { redirect_to @cart, notice: 'Product was added to your cart.' }
         format.json { render action: 'show', status: :created, location: @cart }
       else
         format.html { render action: 'new' }
@@ -44,9 +47,9 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-  
+    @cart = Cart.find_by(cart_id: session[:cart_id])
     respond_to do |format|
-      if @cart.update(cart_params)
+      if @cart.update#(cart_params)
         format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
         format.json { head :no_content }
       else

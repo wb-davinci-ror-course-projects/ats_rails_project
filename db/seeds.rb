@@ -265,5 +265,5 @@ Admin.create! username: "marie",
 password: "456", 
 password_confirmation: "456"
 
-Cart.create! product_id: 1, quantity: 2, ship_method: "first", cart_id: "1" 
+Cart.create! product_id: 1, quantity: 2, ship_method: "first", cart_id: "1", price: 4 
 

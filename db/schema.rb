@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140413154638) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cart_id"
+    t.float    "price"
   end
 
   create_table "categories", force: true do |t|

@@ -3,7 +3,7 @@ App::Application.routes.draw do
 get "/"                              => "main#index",              as: "home_page"
 get "/main/about"                    => "main#about"
 get "/main/contact"                  => "main#contact"
-get "/main/:product_category"        => "main#product_category"
+get "/main/:product_category"        => "main#product_category",   as: "category_path" 
 get "/main/more_info/:id"            => "main#more_info_id"
 
 get "/user"                     => "user#index",                  as: "user_signin"
