@@ -24,10 +24,11 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    session[:cart_id] = params[:authenticity_token]
-    @cart = Cart.new#(cart_params)
-    @cart.cart_id = params[:authenticity_token]
-    @cart.product_id = params[:product_id]
+    session[:cart_id]   = params[:authenticity_token]
+    @cart               = Cart.new#(cart_params)
+    @cart.cart_id       = params[:authenticity_token]
+    @cart.product_id    = params[:product_id]
+    @cart.quantity      = params[:quantity]
 
     respond_to do |format|
       if @cart.save
