@@ -26,18 +26,48 @@ def sign_in
   end
 end
 
+def email
+  render :email and return
+end
+
+def send_email
+  session[:email] = params[:email]
+  #"TODO: send email link reset_password"
+  flash.now[:info] = "An e-mail has been sent, please use the link provided to reset
+                      your password."
+  render :email and return
+end
+
+def reset
+  render :reset and return
+end
+
+def reset_password
+  user = User.find_by(email_address: "1234@yahoo.com")#session[:email])
+  user.password               = params[:password]
+  user.password_confirmation  = params[:password_confirmation] 
+  if user.password == user.password_confirmation
+    user.save!
+    flash[:info] = "Your password has been updated"
+    redirect_to "/" and return
+  else
+    flash.now[:danger] = "Both passwords must match."
+    render :reset and return
+  end
+end
+
 def edit
   @old_user = User.find_by(username: session[:username])
   render :edit and return
 end
 
-def update
+def update_user
   if params[:commit] == "Update Username"
     edit_user = User.find_by(username: session[:username])
     edit_user.username = params[:username]
     session[:username] = edit_user.username
     edit_user.save!
-    redirect_to "/" and return
+    redirect_to home_page_path and return
   else
     @old_user = User.find_by(username: session[:username])
     edit_user = User.find_by(username: session[:username])
@@ -51,7 +81,7 @@ def update
     else
       if edit_user.save != false
         flash[:warning] = "Your password has been updated"
-        redirect_to "/" and return
+        redirect_to home_page_path and return
       end
     end
   end
@@ -104,7 +134,7 @@ def ship_bill_info
   @user = User.find_by(username: session[:username])
 end
 
-def update
+def update_ship
   if params[:commit] == "yes"
     session[:bill_same] = params[:commit]
     @user = User.find_by(username: session[:username])
@@ -151,6 +181,7 @@ def update
 end
 
 def cart
+  render :cart and return
 end
 
 def logout

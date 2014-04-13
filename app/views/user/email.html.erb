@@ -1,0 +1,21 @@
+
+<%= form_tag send_email_path, method: "PUT" do %>
+
+<div class="pad">
+<div class="row">
+  <div class="col-md-6">
+  <h4><i>Enter your e-mail address</i></h4>
+    <h3>
+      <%= label_tag :email, "e-mail address" %><br>
+      <%= text_field_tag :email, "", size: 20 %><br>
+    </h3>
+  </div>
+    </div> 
+      </h3>  
+      <%= submit_tag "Submit", size: 40 %>
+</div>
+</div>
+
+<h4>(Testing: email: 1234@yahoo.com)</h4>
+
+<% end %>
