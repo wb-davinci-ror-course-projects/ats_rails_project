@@ -50,3 +50,4 @@ gem 'rails-footnotes', github: 'rrooding/rails-footnotes', ref: '0b6bc7'
 gem 'rails_12factor' # serve production assets
 gem 'pry-rails', group: :development
 gem 'awesome_print', group: :development
+gem 'pony'

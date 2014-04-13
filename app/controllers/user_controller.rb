@@ -32,7 +32,14 @@ end
 
 def send_email
   session[:email] = params[:email]
-  #"TODO: send email link reset_password"
+  user = User.find_by(email_address: session[:email])
+  link = reset_password_url(user.id, user.email_verification_token)
+    Pony.mail(
+      to:        session[:email],
+      subject:   "Reset Password Link",
+      body:      "If the link below doesn't work you can copy and paste this url: #{link}.",
+      html_body: "Please click this link  <b>#{link}</b> to reset your password."
+    )
   flash.now[:info] = "An e-mail has been sent, please use the link provided to reset
                       your password."
   render :email and return
