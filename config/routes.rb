@@ -1,7 +1,5 @@
 App::Application.routes.draw do
 
-  resources :carts
-
 get "/"                              => "main#index",              as: "home_page"
 get "/main/about"                    => "main#about"
 get "/main/contact"                  => "main#contact"
@@ -16,11 +14,10 @@ get "/user/email"               => "user#email",                  as: "email"
 put "/user/send_email"          => "user#send_email",             as: "send_email"
 get "/user/reset"               => "user#reset"
 put "/user/reset"               => "user#reset_password",         as: "reset_password"
+get "/user/ship_bill_info"      => "user#ship_bill_info",         as: "ship_info"  
+put "/user/ship_bill_info_put"  => "user#update_ship",            as: "ship_update" 
 get "/user/:id/edit"            => "user#edit"
 put "/user/:id"                 => "user#update_user",            as: "user_update"
-get "/user/ship_bill_info"      => "user#ship_bill_info"
-put "/user/ship_bill_info_put"  => "user#update_ship" 
-#get "/user/cart"                => "user#cart",                   as: "cart"
 get "/user/logout"              => "user#logout"
 
 get "/admin"                  => "admin#index",                     as: "admin_signin"
@@ -35,5 +32,7 @@ post "/admin/product_sale/"   => "admin#product_sale_edit_post",    as: "/produc
 get "/admin/category_sale/"   => "admin#category_sale_edit",        as: "/category_sale"
 post "/admin/category_sale/"  => "admin#category_sale_edit_post",   as: "/category_sale1"  
 get "/admin/logout"           => "admin#logout"
+
+resources :carts
 
 end

@@ -264,3 +264,6 @@ percent_off: 0
 Admin.create! username: "marie", 
 password: "456", 
 password_confirmation: "456"
+
+Cart.create! product_id: 1, quantity: 2, ship_method: "first" 
+

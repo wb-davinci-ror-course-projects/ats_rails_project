@@ -1,8 +1,8 @@
-<%= form_tag "/user/ship_bill_info_put", method: "PUT" do %>
+<%= form_tag ship_update_path, method: "PUT" do %>
 
   <h4> Is your billing information then same as shipping?
   <%= submit_tag "yes" %>
-      <%= submit_tag "no" %></h4>
+  <%= submit_tag "no" %></h4>
 
   
 <% if @error != nil %>
