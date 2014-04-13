@@ -1,5 +1,7 @@
 App::Application.routes.draw do
 
+  resources :carts
+
 get "/"                              => "main#index",              as: "home_page"
 get "/main/about"                    => "main#about"
 get "/main/contact"                  => "main#contact"
@@ -7,7 +9,7 @@ get "/main/:product_category"        => "main#product_category"
 get "/main/more_info/:id"            => "main#more_info_id"
 
 get "/user"                     => "user#index",                  as: "user_signin"
-post "/user/sign_in"            => "user#sign_in",                as: "user_signinin"
+post "/user/sign_in"            => "user#sign_in",                as: "user_signin1"
 get "/user/new"                 => "user#new"
 post "/user"                    => "user#create"
 get "/user/email"               => "user#email",                  as: "email"
@@ -18,7 +20,7 @@ get "/user/:id/edit"            => "user#edit"
 put "/user/:id"                 => "user#update_user",            as: "user_update"
 get "/user/ship_bill_info"      => "user#ship_bill_info"
 put "/user/ship_bill_info_put"  => "user#update_ship" 
-get "/user/cart"                => "user#cart"
+#get "/user/cart"                => "user#cart",                   as: "cart"
 get "/user/logout"              => "user#logout"
 
 get "/admin"                  => "admin#index",                     as: "admin_signin"

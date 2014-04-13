@@ -23,6 +23,10 @@
           <h5><a href="/main/more_info/<%= p.id %>">More details and applications...</a></h5>
           <% if p.quantity == 0 %>
             <i> This item is currently out of stock. </i>
+          <% else %>
+            <%= form_tag  do %>
+            <!-- <%= submit_tag "Add to Cart" %> --!>
+            <% end %>
             <% end %>
          </td>
             <% end %>   

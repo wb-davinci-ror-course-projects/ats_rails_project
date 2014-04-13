@@ -184,12 +184,12 @@ def update_ship
     edit_user.billing_phone_number  = params[:billing_phone_number]
   end
   edit_user.save!
-  redirect_to "/user/cart" and return
+  #redirect_to "/user/cart" and return
 end
 
-def cart
-  render :cart and return
-end
+#def cart
+  #render :cart and return
+#end
 
 def logout
   flash[:warning] = "You have been logged out. Come visit our showroom located at <b>50 Rio Grande Blvd, Denver CO</b>.".html_safe
