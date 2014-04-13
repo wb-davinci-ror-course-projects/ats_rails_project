@@ -25,6 +25,8 @@
             <i> This item is currently out of stock. </i>
           <% else %>
           <%= button_tag "Add to cart", name: "product_id", value: p.id %>
+          <%= label_tag :quantity %><br>
+          <%= text_field_tag :quantity, 1, size: 1 %>
           <% end %>
          </td>
             <% end %>   

@@ -2,6 +2,7 @@
 <nav class="navbar navbar-inverse" role="navigation">
   <a class="pull-right pad" href="/user/logout"><h4 style="color: white">Log out</h4></a>
   <a class="pull-right pad" href="/user"><h4 style="color: white">Sign in</h4></a>
+  <a class="pull-right pad" href="/carts"><h4 style="color: #E8F6FA">View Cart</h4></a>
     <% if session[:username] != nil %>
     <a class="pull-right pad" href="/user/:id/edit"><u style="color: beige">
     <%= session[:username]%></u></a>
