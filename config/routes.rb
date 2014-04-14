@@ -33,7 +33,7 @@ get "/admin/category_sale/"   => "admin#category_sale_edit",        as: "/catego
 post "/admin/category_sale/"  => "admin#category_sale_edit_post",   as: "/category_sale1"  
 get "/admin/logout"           => "admin#logout"
 
-get "/carts/ship_type"        => "carts#ship_type",                 as: "ship_type"
+
 get "/carts/final_cart"       => "carts#final_cart",                as: "final_cart"
 put "/carts/place_order"      => "carts#place_order",               as: "place_order"
 resources :carts

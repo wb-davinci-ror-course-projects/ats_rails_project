@@ -89,3 +89,44 @@ Red <hr> - <hr style="color:#c00;background-color:#c00;height:1px;border:none;" 
 NOTES FOR JACK
 
 - Couldn't find the info for sp-sil-xb150, needs to be updated
+
+________________________________________________________________________________
+Active Merchant
+A Ruby library for dealing with credit cards and payment processors.
+Active Merchant is an extraction from the e-commerce software solution Shopify. Shopify's requirements for a simple and unified API to access dozens of different payment gateways with very different internal APIs was the chief principle in designing the library.
+
+Active Merchant has been in production use since June 2006 and is now used in most modern Ruby applications which deal with financial transactions. It is maintained by the Shopify and Spreedly teams, with much help from an ever-growing set of contributors.
+
+It was developed to for usage in Ruby on Rails web applications and integrates seamlessly as a plugin but it also works excellently as a stand alone library.
+
+What does it look like?
+# Send requests to the gateway's test servers
+ActiveMerchant::Billing::Base.mode = :test
+
+# Create a new credit card object
+credit_card = ActiveMerchant::Billing::CreditCard.new(
+  :number     => '4111111111111111',
+  :month      => '8',
+  :year       => '2009',
+  :first_name => 'Tobias',
+  :last_name  => 'Luetke',
+  :verification_value  => '123'
+)
+
+if credit_card.valid?
+  # Create a gateway object to the TrustCommerce service
+  gateway = ActiveMerchant::Billing::TrustCommerceGateway.new(
+    :login    => 'TestMerchant',
+    :password => 'password'
+  )
+
+  # Authorize for $10 dollars (1000 cents)
+  response = gateway.authorize(1000, credit_card)
+
+  if response.success?
+    # Capture the money
+    gateway.capture(1000, response.authorization)
+  else
+    raise StandardError, response.message
+  end
+end

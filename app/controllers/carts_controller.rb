@@ -58,10 +58,6 @@ class CartsController < ApplicationController
       end
     end
   end
-  
-  def ship_type
-    render :ship_type and return
-  end
 
   def final_cart
     @carts = Cart.where(cart_id: session[:cart_id])
@@ -69,7 +65,15 @@ class CartsController < ApplicationController
   end
   
   def place_order
-    flash[:info] = "Thank you. Your order has been placed"
+    # user = User.find_by(username: session[:username])
+#     link = view order
+#     Pony.mail(
+#       to:        user.email_address,
+#       subject:   "Action Tool & Supply order receipt",
+#       body:      "If the link below doesn't work you can copy and paste this url: #{link}.",
+#       html_body: "To view your order click this link:  <b>#{link}</b>"
+#     )
+    flash[:info] = "Thank you. Your order has been placed. A receipt has been e-mailed."
     redirect_to home_page_path and return 
   end
   # DELETE /carts/1

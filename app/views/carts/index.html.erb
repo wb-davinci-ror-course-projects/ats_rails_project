@@ -22,23 +22,24 @@
     <% end %>
   </tbody>
 </table>
-
+<!--
 ******TODO: unhardcode*******
 find CO tax rate
+--!>
 <hr style="color:#c00;background-color:black;height:1px;border:none;" />
 
 <table class="table">
-<% products_total = Cart.where(cart_id: session[:cart_id]).sum(:price) %>
-<tr><td><%= "Products total: $#{"%.2f" % products_total}" %></td></tr>
-<% ship_cost = 5 %>
-<tr><td><%= "Shipping cost: $#{"%.2f" % ship_cost}" %> </td></tr>
-<% tax = products_total * 0.05 %>
-<tr><td><%= "Taxes: $#{"%.2f" %  tax}" %></td></tr>
-<tr><td> <b><%= "Order total: $#{"%.2f" % (ship_cost + tax + products_total)}" %></b></td></tr>
+  <% products_total = Cart.where(cart_id: session[:cart_id]).sum(:price) %>
+    <tr><td><%= "Products total: $#{"%.2f" % products_total}" %></td></tr>
+  <% ship_cost = 5 %>
+    <tr><td><%= "Shipping cost: $#{"%.2f" % ship_cost}" %> </td></tr>
+  <% tax = products_total * 0.05 %>
+    <tr><td><%= "Taxes: $#{"%.2f" %  tax}" %></td></tr>
+    <tr><td><b><%= "Order total: $#{"%.2f" % (ship_cost + tax + products_total)}" %></b></td></tr>
 </table>
 <br>
 
 <%= link_to 'Continue Shopping', home_page_path %><br><br>
-<%= link_to 'Checkout', ship_info_path %><br><br>
+<%= link_to 'Checkout', final_cart_path %><br><br>
 
 <!--<%= link_to 'New Cart', new_cart_path %>--!>
