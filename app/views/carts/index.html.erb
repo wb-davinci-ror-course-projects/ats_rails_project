@@ -11,8 +11,8 @@
         <th style="text-align: right">Quantity</th>
       </tr>
     </thead>
-
     <tbody>
+      <% session[:total] = 0 %>
       <% @carts.each do |cart| %>
       <% p = Product.find(cart.product_id) %>
         <tr>
@@ -21,30 +21,30 @@
           <td style="text-align: right"><%= text_field_tag :quantity, cart.quantity, size: 1 %>
             <h5><%= submit_tag "update"%></h5>
           </td> 
-  <!--        
-          <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-          <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  --!>
+            <% if @carts != false %>
+            <% session[:total] += cart.price * cart.quantity %>
+            <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<!--
-******TODO: unhardcode*******
-find CO tax rate
---!>
+
 <div class="col-md-4">
   <table class="table-condensed">
-    <% products_total = Cart.where(cart_id: session[:cart_id]).sum(:price) %>
+    <% products_total = session[:total] %>
       <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
         <%= "Products total:    $#{"%.2f" % products_total}" %>
       </h4></td></tr>
-    <% ship_cost = 5 %>
+    <% if @empty == "yes" %>  
+      <% ship_cost = 0 %>
+    <% else %>
+      <% ship_cost = 5 %>
+    <% end %>
       <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
         <%= "Shipping cost:    $#{"%.2f" % ship_cost}" %>
       </h4></td></tr>
-    <% tax = products_total * 0.05 %>
+    <% tax = products_total * 0.029 %>
       <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
         <%= "Taxes:    $#{"%.2f" %  tax}" %></td></tr>
       <tr><td><h4 style="color: rgba(3, 3, 100, 0.8); text-align: right;"><b>
@@ -52,12 +52,9 @@ find CO tax rate
       </b></h4></td></tr></h4>
   </table><br>
         <%= link_to 'Continue Shopping', home_page_path %><br><br>
-        <%= link_to 'Checkout', final_cart_path %><br><br>
+        <%= link_to 'Checkout', ship_info_path %><br><br>
 </div>
   <div class="col-md-3 pull-right">  
   </div>
 </div>
-<!--
-<%= link_to 'New Cart', new_cart_path %>
---!>
 <% end %>

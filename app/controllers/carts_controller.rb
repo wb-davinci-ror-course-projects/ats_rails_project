@@ -5,6 +5,9 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     @carts = Cart.where(cart_id: session[:cart_id])
+    if @carts.first == nil
+      @empty = "yes"
+    end
   end
 
   # GET /carts/1
@@ -28,7 +31,11 @@ class CartsController < ApplicationController
     @cart               = Cart.new#(cart_params)
     @cart.cart_id       = params[:authenticity_token]
     @cart.product_id    = params[:product_id]
-    @cart.quantity      = params[:quantity]
+      if params[:quantity] != nil
+        @cart.quantity      = params[:quantity]
+      else
+        @cart.quantity      = 1
+      end
     @product            = Product.find(params[:product_id])
     @cart.price         = @product.price
 
@@ -62,8 +69,8 @@ class CartsController < ApplicationController
   end
 
   def final_cart
-    @carts = Cart.where(cart_id: session[:cart_id])
-    render :final_cart and return
+      @carts = Cart.where(cart_id: session[:cart_id])
+      render :final_cart and return
   end
   
   def place_order
@@ -76,6 +83,7 @@ class CartsController < ApplicationController
 #       html_body: "To view your order click this link:  <b>#{link}</b>"
 #     )
     flash[:info] = "Thank you. Your order has been placed. A receipt has been e-mailed."
+    session[:cart_id].clear
     redirect_to home_page_path and return 
   end
   # DELETE /carts/1
