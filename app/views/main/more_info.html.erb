@@ -23,12 +23,11 @@
                     <% end %>
                   <% end %>
                 <% end %>
-              <h4 class="pad"><%= @product.description %></h4>
-              <%= button_tag "Add to cart", name: "product_id", value: @product.id %>
+                      <h4 class="pad"><%= @product.description %></h4>
+                      <%= out_of_stock(@product.quantity, @product.id) %>
           </td>
       </table>             
     </div>         
   </div>
 </div>
-
 <% end %>

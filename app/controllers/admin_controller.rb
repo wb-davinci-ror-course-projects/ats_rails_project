@@ -16,7 +16,7 @@ def signin
   else
       admin = Admin.find_by(username: params[:username]) 
     if admin.authenticate(params[:password]) != false 
-      session[:admin_user] = admin.usernames
+      session[:admin_user] = admin.username
       render :links, layout: false and return
     else
       flash.now[:danger] = "Please enter the correct password"
