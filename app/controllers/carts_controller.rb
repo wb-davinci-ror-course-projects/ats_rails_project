@@ -29,12 +29,14 @@ class CartsController < ApplicationController
     @cart.cart_id       = params[:authenticity_token]
     @cart.product_id    = params[:product_id]
     @cart.quantity      = params[:quantity]
-    @cart.price         = Product.find(params[:product_id]).price
+    @product            = Product.find(params[:product_id])
+    @cart.price         = @product.price
 
     respond_to do |format|
       if @cart.save
-        flash[:info] = "Product was added to cart"
-        redirect_to home_page_path and return
+        flash[:info] = "#{@product.name} was added to cart"
+        c_id = Category.find_by(name: @product.category).id
+        redirect_to "/main/#{c_id}" and return
         #format.html { redirect_to @cart, notice: 'Product was added to your cart.' }
         format.json { render action: 'show', status: :created, location: @cart }
       else

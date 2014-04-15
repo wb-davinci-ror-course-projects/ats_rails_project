@@ -5,7 +5,7 @@ class MainController < ApplicationController
   end
 
   def product_category
-    product_category = params[:product_category]
+    product_category = Category.find(params[:id]).name
     @header = "#{product_category}"
     @products = Product.where(category: product_category)
     render :show and return
