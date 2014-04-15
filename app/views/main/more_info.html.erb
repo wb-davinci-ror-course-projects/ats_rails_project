@@ -24,7 +24,13 @@
                   <% end %>
                 <% end %>
                       <h4 class="pad"><%= @product.description %></h4>
-                      <%= out_of_stock(@product.quantity, @product.id) %>
+                      <% if @product.quantity > 0 %>
+                          <h5 class='pad'>
+                              <%= button_tag "Add to cart", name: 'product_id', value: @product.id %>
+                          </h5>
+                      <% else %> 
+                        "This item is currently out of stock."
+                      <%end %>
           </td>
       </table>             
     </div>         

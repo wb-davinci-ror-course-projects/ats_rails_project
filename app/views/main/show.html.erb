@@ -27,8 +27,6 @@
                     More details and applications...</a></h5>
                       <% if p.quantity > 0 %>
                           <h5 class='pad'>
-                              <%= label_tag :quantity %>
-                              <%= text_field_tag :quantity, 1, size: 1 %>
                               <%= button_tag "Add to cart", name: 'product_id', value: p.id %>
                           </h5>
                       <% else %> 
@@ -44,23 +42,17 @@
                     More details and applications...</a></h5>
                       <% if p.quantity > 0 %>
                         <h5 class='pad'>
-                              <%= label_tag :quantity %>
-                              <%= text_field_tag :quantity, 1, size: 1 %>
-                              <%= button_tag "Add to cart", name: 'product_id', value: p.id %>
+                          <%= button_tag "Add to cart", name: 'product_id', value: p.id %>
                         </h5>
                       <% else %> 
                         "This item is currently out of stock."
                       <%end %>
-        </td>
               <% end %>   
-    </table> 
-<% end %>    
+               </td>
+    </table>  
+<% end %> 
 </div> 
 <% end %>
 </div>
-</div>
-                    <%= label_tag :test %>
-                    <%= text_field_tag :test %>
-       
-                         
+</div>                         
 <% end %>
