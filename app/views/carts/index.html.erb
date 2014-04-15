@@ -1,45 +1,65 @@
+<!-- setup controller for form_tag
+<%= form_tag "/carts/:id", method: "PUT" do %>
+--!>
 <h1>Cart</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Product Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @carts.each do |cart| %>
-    <% p = Product.find(cart.product_id) %>
+<div class="row pad">
+<div class="col-md-4 pull-left">
+  <table class="table-condensed table-striped table-border">
+    <thead>
       <tr>
-        <td><%= p.name %></td>
-        <td><%= cart.quantity %></td>
-        <td>$<%= "%.2f" % cart.price %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th style="text-align: right">Quantity</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @carts.each do |cart| %>
+      <% p = Product.find(cart.product_id) %>
+        <tr>
+          <td><%= p.name %></td>
+          <td style="text-align: right">$<%= "%.2f" % cart.price %></td>
+          <td style="text-align: right"><%= text_field_tag :quantity, cart.quantity, size: 1 %>
+              <%= submit_tag "update"%></td>
+       
+  <!--        
+          <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
+          <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  --!>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <!--
 ******TODO: unhardcode*******
 find CO tax rate
 --!>
-<hr style="color:#c00;background-color:black;height:1px;border:none;" />
+<div class="col-md-4">
+  <table class="table-condensed">
+    <% products_total = Cart.where(cart_id: session[:cart_id]).sum(:price) %>
+      <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
+        <%= "Products total:    $#{"%.2f" % products_total}" %>
+      </h4></td></tr>
+    <% ship_cost = 5 %>
+      <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
+        <%= "Shipping cost:    $#{"%.2f" % ship_cost}" %>
+      </h4></td></tr>
+    <% tax = products_total * 0.05 %>
+      <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
+        <%= "Taxes:    $#{"%.2f" %  tax}" %></td></tr>
+      <tr><td><h4 style="color: rgba(3, 3, 100, 0.8); text-align: right;"><b>
+        <%= "Order total:    $#{"%.2f" % (ship_cost + tax + products_total)}" %>
+      </b></h4></td></tr></h4>
+  </table><br>
+    <%= link_to 'Continue Shopping', home_page_path %><br><br>
+    <%= link_to 'Checkout', final_cart_path %><br><br>
+</div>
+  <div class="col-md-4 pull-right">  
+  </div>
+</div>
 
-<table class="table">
-  <% products_total = Cart.where(cart_id: session[:cart_id]).sum(:price) %>
-    <tr><td><%= "Products total: $#{"%.2f" % products_total}" %></td></tr>
-  <% ship_cost = 5 %>
-    <tr><td><%= "Shipping cost: $#{"%.2f" % ship_cost}" %> </td></tr>
-  <% tax = products_total * 0.05 %>
-    <tr><td><%= "Taxes: $#{"%.2f" %  tax}" %></td></tr>
-    <tr><td><b><%= "Order total: $#{"%.2f" % (ship_cost + tax + products_total)}" %></b></td></tr>
-</table>
-<br>
-
-<%= link_to 'Continue Shopping', home_page_path %><br><br>
-<%= link_to 'Checkout', final_cart_path %><br><br>
-
-<!--<%= link_to 'New Cart', new_cart_path %>--!>
+<!--
+<%= link_to 'New Cart', new_cart_path %>
+--!>
+<% end %>
