@@ -1,14 +1,66 @@
-<%= form_tag carts_path do %>
+<%= form_tag carts_path, method: "POST" do %>
 
 <div class="ats_header_b">
   <%= @header %>
 </div>
 
-<!--<div class="link-banner pull-left">
-  <th><a style="color: white" href="/">Sales Flyer</a></th><br>
-  <th><a style="color: white" href="/">Articles</a></th><br>
-</div>--!>
-
-<%= render partial: "/layouts/show_product" %>
-
+<div pull-right>
+<div class="pad_col row">
+<% @products.each do |p| %>
+  <div class="col-md-6">
+    <table>       
+      <th>
+        <a class="a:hover" href='/images/<%= p.image %>.jpg/'>
+          <img src="/images/<%= p.image %>.jpg/" width="150" height="150"></img>
+        </a>
+      </th>
+        <td><b><h3 class="pad" style="color: #550808"><%= p.name.titlecase %></h3></b>
+          <b><center><p style="color=black"><i>price  </i>$<%= "%.2f" % p.price %></p></center></b>
+            <% CategorySale.where(category_id: p.category_id).each do |sale| %>
+              <% if sale.percent_off > 1 %>
+                <% price = (p.price) * ((100 - sale.percent_off)/100) %>
+                  <center><h4 class="pad" style="color: red">
+                    <%= "Sales Price! $ #{"%.2f" % price}" %></h4></center>
+                  <h4 style="color: #927017"><p><center>
+                    <%= p.description.capitalize %></p></h4></center>
+                  <h5><a href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
+                    More details and applications...</a></h5>
+                      <% if p.quantity > 0 %>
+                          <h5 class='pad'>
+                              <%= label_tag :quantity %>
+                              <%= text_field_tag :quantity, 1, size: 1 %>
+                              <%= button_tag "Add to cart", name: 'product_id', value: p.id %>
+                          </h5>
+                      <% else %> 
+                        "This item is currently out of stock."
+                      <%end %>
+              <% else %>
+                <% if p.percent_off > 1 %>
+                  <% price = (p.price) * ((100-p.percent_off)/100) %>
+                  <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4></center>
+                <% end %>
+                  <h4 style="color: #927017"><p><center><%= p.description.capitalize %></p></h4></center>
+                  <h5><a href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
+                    More details and applications...</a></h5>
+                      <% if p.quantity > 0 %>
+                        <h5 class='pad'>
+                              <%= label_tag :quantity %>
+                              <%= text_field_tag :quantity, 1, size: 1 %>
+                              <%= button_tag "Add to cart", name: 'product_id', value: p.id %>
+                        </h5>
+                      <% else %> 
+                        "This item is currently out of stock."
+                      <%end %>
+        </td>
+              <% end %>   
+    </table> 
+<% end %>    
+</div> 
+<% end %>
+</div>
+</div>
+                    <%= label_tag :test %>
+                    <%= text_field_tag :test %>
+       
+                         
 <% end %>

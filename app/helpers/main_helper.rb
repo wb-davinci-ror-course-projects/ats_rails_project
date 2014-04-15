@@ -8,7 +8,7 @@ def flash_alert (x)
   end
 end
 
-def out_of_stock(q, i)
+def out_of_stock(q, p)
   if q > 0 
     add_to_cart(i)
   else 

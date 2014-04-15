@@ -3,7 +3,20 @@ QUESTIONS
 ----------------------------------------------------------------------------------------
 TO DO
 
--email verification
+- product * qty in cart needs to be added to calc total
+
+- setup routes and save for Update button in view cart - index view
+    and CO tax rate
+
+- fix quantity coming through to cart on some but not others
+
+- use table association to clean this up in cart controller...
+
+  c_id = Category.find_by(name: Product.find(params[:product_id]).category).id
+  
+-Use for stay on page after add product to cart...
+  <%= hidden_field_tag "original_route", "/items/14" %>
+
 -table associations (cart_id and product_id) change product total to relation
 - validation method
 - set up mobile sizing
@@ -23,6 +36,13 @@ FUTURE TASKS
 -Uploading pictures
 - REST routes, fine tune
 -Remove footnotes
+
+-On show view
+<!--<div class="link-banner pull-left">
+  <th><a style="color: white" href="/">Sales Flyer</a></th><br>
+  <th><a style="color: white" href="/">Articles</a></th><br>
+</div>--!>
+
 
 -------------------------------------------------------------------------------------------
 TO THINK ABOUT
