@@ -34,7 +34,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
-        flash[:info] = "#{@product.name} was added to cart"
+        flash[:info] = "#{@product.name.titlecase} has been added to the cart"
         c_id = Category.find_by(name: @product.category).id
         redirect_to "/main/#{c_id}" and return
         #format.html { redirect_to @cart, notice: 'Product was added to your cart.' }

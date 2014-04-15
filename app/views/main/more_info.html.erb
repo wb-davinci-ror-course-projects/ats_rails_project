@@ -1,4 +1,4 @@
-<%= form_tag "/main/more_info" do %>
+<%= form_tag carts_path do %>
 <center><h2 style="color: black"><%= @header %></h2></center>
 <div class="pad_col">
   <div class="row">
@@ -24,6 +24,7 @@
                   <% end %>
                 <% end %>
               <h4 class="pad"><%= @product.description %></h4>
+              <%= button_tag "Add to cart", name: "product_id", value: @product.id %>
           </td>
       </table>             
     </div>         
