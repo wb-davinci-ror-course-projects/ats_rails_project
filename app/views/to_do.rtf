@@ -3,13 +3,11 @@ QUESTIONS
 ----------------------------------------------------------------------------------------
 TO DO
 
-
 - add validations for ship address
 
-- setup routes and save for Update button in view cart 
-
-- fix quantity coming through to cart on some but not others
-
+- work on sending a receipt through email that has an amount and order #
+  -save order in database
+  
 - use table association to clean this up in cart controller...
 
   c_id = Category.find_by(name: Product.find(params[:product_id]).category).id

@@ -14,9 +14,11 @@
     <% @carts.each do |cart| %>
     <% p = Product.find(cart.product_id) %>
       <tr>
+      <% if cart.quantity != 0 %>
         <td><%= p.name %></td>
         <td><%= cart.quantity %></td>
         <td>$<%= "%.2f" % cart.price %></td>
+      <% end %>
       </tr>
     <% end %>
   </tbody>

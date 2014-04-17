@@ -1,70 +1,69 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  #before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
-  # GET /carts
-  # GET /carts.json
   def index
     @carts = Cart.where(cart_id: session[:cart_id])
     if @carts.first == nil
       @empty = "yes"
     end
   end
-
-  # GET /carts/1
-  # GET /carts/1.json
+  
   def show
   end
 
-  # GET /carts/new
   def new
     @cart = Cart.new
   end
 
-  # GET /carts/1/edit
   def edit
   end
 
-  # POST /carts
-  # POST /carts.json
   def create
-    session[:cart_id]   = params[:authenticity_token]
-    @cart               = Cart.new#(cart_params)
-    @cart.cart_id       = params[:authenticity_token]
-    @cart.product_id    = params[:product_id]
+    if Cart.find_by(product_id: params[:product_id], cart_id: session[:cart_id]) != nil
+      @product = Product.find(params[:product_id])
+      c_id = Category.find_by(name: @product.category).id
+      flash[:info] = "#{@product.name.titlecase} has already been added to the cart."
+      redirect_to "/main/#{c_id}" and return
+    else
+      session[:cart_id]   = params[:authenticity_token]
+      @cart               = Cart.new#(cart_params)
+      @cart.cart_id       = params[:authenticity_token]
+      @cart.product_id    = params[:product_id]
       if params[:quantity] != nil
         @cart.quantity      = params[:quantity]
       else
         @cart.quantity      = 1
       end
-    @product            = Product.find(params[:product_id])
-    @cart.price         = @product.price
-
-    respond_to do |format|
-      if @cart.save
-        flash[:info] = "#{@product.name.titlecase} has been added to the cart"
-        c_id = Category.find_by(name: @product.category).id
-        redirect_to "/main/#{c_id}" and return
-        #format.html { redirect_to @cart, notice: 'Product was added to your cart.' }
-        format.json { render action: 'show', status: :created, location: @cart }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
-    end
+      @product            = Product.find(params[:product_id])
+      @cart.price         = @product.price
+      respond_to do |format|
+          if @cart.save
+            flash[:info] = "#{@product.name.titlecase} has been added to the cart"
+            c_id = Category.find_by(name: @product.category).id
+            redirect_to "/main/#{c_id}" and return
+            format.json { render action: 'show', status: :created, location: @cart }
+            #format.html { render action: 'new' }
+            #format.json { render json: @cart.errors, status: :unprocessable_entity }
+          end
+      end      
   end
-
+end
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-    @cart = Cart.find_by(cart_id: session[:cart_id])
-    respond_to do |format|
-      if @cart.update#(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
-        format.json { head :no_content }
+    @cart = Cart.find_by(product_id: params[:product_id])
+    @product = Product.find(params[:product_id])
+    @cart.quantity = params["quantity_#{@product.id}"]
+      if @cart.save == true  #(cart_params)
+        @carts = Cart.where(cart_id: session[:cart_id])
+        render :index and return
+        #format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        #format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
+        flash[:error] = "There was an error"
+        redirect_to home_page_path and return
+        #format.html { render action: 'edit' }
+        #format.json { render json: @cart.errors, status: :unprocessable_entity }
     end
   end
 
@@ -98,9 +97,13 @@ class CartsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(1)#(params[:cart_id])
-    end
+#     def set_cart
+#       if Cart.find(1) != nil
+#         @cart = Cart.find(1)#(params[:cart_id])
+#       else
+#         @cart = Cart.find_by(cart_id: session[:cart_id])
+#       end
+#     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
 #     def cart_params

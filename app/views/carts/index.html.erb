@@ -1,5 +1,4 @@
-<%= form_tag "/carts" do %>
-
+<%= form_tag "/carts/1", method: "PATCH" do %>
 <h2 style="color: rgba(3, 3, 100, 0.8)">Product List</h2>
 <div class="row pad">
 <div class="col-md-5 pull-left">
@@ -16,11 +15,13 @@
       <% @carts.each do |cart| %>
       <% p = Product.find(cart.product_id) %>
         <tr>
-          <td><%= p.name.titleize %></td>
-          <td style="text-align: right">$<%= "%.2f" % cart.price %></td>
-          <td style="text-align: right"><%= text_field_tag :quantity, cart.quantity, size: 1 %>
-            <h5><%= submit_tag "update"%></h5>
-          </td> 
+          <% if cart.quantity != 0 %>
+            <td><%= p.name.titleize %></td>
+            <td style="text-align: right">$<%= "%.2f" % cart.price %></td>
+            <td style="text-align: right"><%= text_field_tag "quantity_#{p.id}", cart.quantity, size: 1 %>
+            <%= button_tag "update", name: "product_id", value: p.id %>
+            </td> 
+          <% end %>
             <% if @carts != false %>
             <% session[:total] += cart.price * cart.quantity %>
             <% end %>
@@ -39,7 +40,7 @@
     <% if @empty == "yes" %>  
       <% ship_cost = 0 %>
     <% else %>
-      <% ship_cost = 5 %>
+      <% ship_cost = 7 %>
     <% end %>
       <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
         <%= "Shipping cost:    $#{"%.2f" % ship_cost}" %>

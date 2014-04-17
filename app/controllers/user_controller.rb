@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 
 def index
+    @product = Product.find(params[:page])
     render :index and return
 end
 
