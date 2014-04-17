@@ -8,12 +8,13 @@ TO DO
 - work on sending a receipt through email that has an amount and order #
   -save order in database
   
+- unhardcode shipping  
+
 - use table association to clean this up in cart controller...
 
+- remove high res images and unused images
+
   c_id = Category.find_by(name: Product.find(params[:product_id]).category).id
-  
--Use for stay on page after add product to cart...
-  <%= hidden_field_tag "original_route", "/items/14" %>
 
 -table associations (cart_id and product_id) change product total to relation
 - validation method

@@ -82,7 +82,9 @@ end
 #       html_body: "To view your order click this link:  <b>#{link}</b>"
 #     )
     flash[:info] = "Thank you. Your order has been placed. A receipt has been e-mailed."
-    session[:cart_id].clear
+    Cart.where(cart_id: session[:cart_id]).each do |c|
+      c.delete
+      end
     redirect_to home_page_path and return 
   end
   # DELETE /carts/1
