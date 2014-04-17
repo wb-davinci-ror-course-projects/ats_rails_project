@@ -55,7 +55,7 @@ billing_phone_number: "303-921-6170"
 
 Category.create! name: "Diamond Products"
 Category.create! name: "Safety Equipment"
-Category.create! name: "Sand Paper"
+Category.create! name: "Abrasives"
 Category.create! name: "Glues & Sealer"
 Category.create! name: "Pads"
 Category.create! name: "Other Products"
@@ -68,7 +68,7 @@ CategorySale.create! category_name: "Safety Equipment",
 percent_off: 0,
 category_id: 2
 
-CategorySale.create! category_name: "Sand Paper",
+CategorySale.create! category_name: "Abrasives",
 percent_off: 0,
 category_id: 3
 
@@ -97,7 +97,7 @@ more_info: "100 gloves to a box",
 percent_off: 0
 
 Product.create! product_code: "sp5-80-hermes",
-category: "Sand Paper",
+category: "Abrasives",
 name: "Hermes sand paper",
 quantity: 20,
 description: "Hermes velcro sand paper",
@@ -187,78 +187,26 @@ category_id: 1,
 more_info: "",
 percent_off: 0
 
-Product.create! product_code: "abc-121",
+Product.create! product_code: "tb05-dpf-phsd",
 category: "Diamond Products",
-name: "name of product 1",
+name: '5" Phoenix turbo blade',
 quantity: 20,
-description: "sample product diamond",
-price: "9.99",
-image: "abc-123",
+description: '5" Phoenix turbo blade with side diamonds',
+price: "35.00",
+image: "tb05-dpf-phsd",
 category_id: 1,
-more_info: "There will be product information here like specs, application and advice.
-There will be product information here like specs, application and advice.
-There will be product information here like specs, application and advice.",
+more_info: '5" Phoenix turbo blade with side diamonds',
 percent_off: 0
 
-Product.create! product_code: "abc-122",
-category: "Safety Equipment",
-name: "name of product 2",
+Product.create! product_code: "antbr4024-acp-sl5811",
+category: "Abrasives",
+name: "Antique brush",
 quantity: 20,
-description: "sample product safety",
-price: "8.99",
-image: "abc-123",
-category_id: 2,
-more_info: "This section will handle product details, applications and
-advice on use.",
-percent_off: 0
-
-Product.create! product_code: "abc-123",
-category: "Sand Paper",
-name: "name of product 3",
-quantity: 20,
-description: "sample product sand",
-price: "7.99",
-image: "abc-123",
-category_id: 3,
-more_info: "This section will handle product details, applications and
-advice on use.",
-percent_off: 0
-
-
-Product.create! product_code: "abc-124",
-category: "Glues & Sealer",
-name: "name of product 4",
-quantity: 20,
-description: "sample product glue",
-price: "6.99",
-image: "abc-123",
-category_id: 4,
-more_info: "This section will handle product details, applications and
-advice on use.",
-percent_off: 0
-
-Product.create! product_code: "abc-125",
-category: "Pads",
-name: "name of product 5",
-quantity: 20,
-description: "sample product pads",
-price: "5.99",
-image: "abc-123",
-category_id: 5,
-more_info: "This section will handle product details, applications and
-advice on use.",
-percent_off: 0
-
-Product.create! product_code: "abc-126",
-category: "Other Products",
-name: "name of product 6",
-quantity: 20,
-description: "sample product other",
-price: "4.99",
-image: "abc-123",
+description: "Antique brush size 24",
+price: "33.00",
+image: "antbr4024-acp-sl5811",
 category_id: 6,
-more_info: "This section will handle product details, applications and
-advice on use.",
+more_info: "Antique brush size 24, snail lock with 5811 threads.",
 percent_off: 0
 
 Admin.create! username: "marie", 

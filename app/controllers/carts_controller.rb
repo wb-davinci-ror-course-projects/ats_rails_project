@@ -22,7 +22,8 @@ class CartsController < ApplicationController
     if Cart.find_by(product_id: params[:product_id], cart_id: session[:cart_id]) != nil
       @product = Product.find(params[:product_id])
       c_id = Category.find_by(name: @product.category).id
-      flash[:info] = "#{@product.name.titlecase} has already been added to the cart."
+      flash[:info] = "#{@product.name.titlecase} has already been added to the cart.
+                      The product's quantity can be adjusted in the cart."
       redirect_to "/main/#{c_id}" and return
     else
       session[:cart_id]   = params[:authenticity_token]
@@ -38,16 +39,16 @@ class CartsController < ApplicationController
       @cart.price         = @product.price
       respond_to do |format|
           if @cart.save
-            flash[:info] = "#{@product.name.titlecase} has been added to the cart"
+            flash[:success] = "#{@product.name.titlecase} has been added to the cart"
             c_id = Category.find_by(name: @product.category).id
             redirect_to "/main/#{c_id}" and return
             format.json { render action: 'show', status: :created, location: @cart }
             #format.html { render action: 'new' }
             #format.json { render json: @cart.errors, status: :unprocessable_entity }
-          end
-      end      
+          end 
+          end   
+    end
   end
-end
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
@@ -87,6 +88,7 @@ end
       end
     redirect_to home_page_path and return 
   end
+  
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy

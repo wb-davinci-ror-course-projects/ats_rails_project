@@ -1,7 +1,7 @@
 <%= form_tag "/carts/1", method: "PATCH" do %>
 <h2 style="color: rgba(3, 3, 100, 0.8)">Product List</h2>
 <div class="row pad">
-<div class="col-md-5 pull-left">
+<div class="col-md-6 pull-left">
   <table class="table-condensed table-striped table-border">
     <thead>
       <tr>
@@ -18,9 +18,8 @@
           <% if cart.quantity != 0 %>
             <td><%= p.name.titleize %></td>
             <td style="text-align: right">$<%= "%.2f" % cart.price %></td>
-            <td style="text-align: right"><%= text_field_tag "quantity_#{p.id}", cart.quantity, size: 1 %>
-            <%= button_tag "update", name: "product_id", value: p.id %>
-            </td> 
+            <td style="text-align: right"><h4><%= text_field_tag "quantity_#{p.id}", cart.quantity, size: 1 %></h4></td>
+            <td><%= button_tag "update", name: "product_id", value: p.id %></h5></td> 
           <% end %>
             <% if @carts != false %>
             <% session[:total] += cart.price * cart.quantity %>
@@ -55,7 +54,7 @@
         <%= link_to 'Continue Shopping', home_page_path %><br><br>
         <%= link_to 'Checkout', ship_info_path %><br><br>
 </div>
-  <div class="col-md-3 pull-right">  
+  <div class="col-md-2 pull-right">  
   </div>
 </div>
 <% end %>
