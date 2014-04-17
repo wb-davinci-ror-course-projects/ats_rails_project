@@ -8,10 +8,9 @@ def index
 end
 
 def signin
-   
   if Admin.find_by(username: params[:username])== nil
-      flash[:danger] = "Username was entered incorrectly or doesn't exist. 
-                          <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
+    flash[:danger] = "Username was entered incorrectly or doesn't exist. 
+                       <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
     render :index, layout: false and return
   else
       admin = Admin.find_by(username: params[:username]) 
@@ -36,18 +35,18 @@ end
 
 def create
   if params[:category] != ""
-  @new_product                = Product.new
-  @new_product.category       = params["category"]
-  @new_product.product_code   = params["product_code"]
-  @new_product.name           = params["name"]
-  @new_product.quantity       = params["quantity"]
-  @new_product.description    = params["description"]
-  @new_product.price          = params["price"]
-  @new_product.image          = params["product_code"]
-  @new_product.more_info      = params["more_info"]
-  @new_product.percent_off      = 0
-  category_id = Category.find_by(name: @new_product.category)
-  @new_product.category_id    = category_id.id
+    @new_product                = Product.new
+    @new_product.category       = params["category"]
+    @new_product.product_code   = params["product_code"]
+    @new_product.name           = params["name"]
+    @new_product.quantity       = params["quantity"]
+    @new_product.description    = params["description"]
+    @new_product.price          = params["price"]
+    @new_product.image          = params["product_code"]
+    @new_product.more_info      = params["more_info"]
+    @new_product.percent_off      = 0
+    category_id = Category.find_by(name: @new_product.category)
+    @new_product.category_id    = category_id.id
     if @new_product.save == true
       render :links, layout: false and return
     end
@@ -107,16 +106,16 @@ end
 
 def category_sale_edit_post
   if params[:category_name] != ""
-  category_name = params[:category_name]
-  @category_on_sale = CategorySale.where(category_name: category_name).first
-  @category_on_sale.category_name = params[:category_name]
-  @category_on_sale.percent_off   = params[:percent_off]
+    category_name = params[:category_name]
+    @category_on_sale = CategorySale.where(category_name: category_name).first
+    @category_on_sale.category_name = params[:category_name]
+    @category_on_sale.percent_off   = params[:percent_off]
     if @category_on_sale.save == true
       render :links, layout: false and return
     end
   else 
     @error = "Please be sure to enter a category and percentage."
-      render :category_sale, layout: false and return
+    render :category_sale, layout: false and return
   end
 end
 
@@ -126,10 +125,10 @@ end
 
 def product_sale_edit_post
  if params[:product_code] != ""
-  product_code = params[:product_code]
-  @product_on_sale = Product.where(product_code: product_code).first
-  @product_on_sale.product_code = params[:product_code]
-  @product_on_sale.percent_off   = params[:percent_off]
+    product_code = params[:product_code]
+    @product_on_sale = Product.where(product_code: product_code).first
+    @product_on_sale.product_code = params[:product_code]
+    @product_on_sale.percent_off   = params[:percent_off]
     if @product_on_sale.save == true
       render :links, layout: false and return
     end
@@ -144,14 +143,13 @@ def logout
   session.clear
   redirect_to home_page_path and return
 end
-
-
     
-    private
-      def set_admin
-        if Admin.find_by(username: session[:admin_user]) == nil
-          render :index, layout: false and return
-        end
-      end
+private
+
+def set_admin
+  if Admin.find_by(username: session[:admin_user]) == nil
+    render :index, layout: false and return
+  end
+end
 
 end
