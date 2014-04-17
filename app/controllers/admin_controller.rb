@@ -79,7 +79,7 @@ def update
     category_id = Category.find_by(name: @edit_product.category)
     @edit_product.category_id    = category_id.id
     if @edit_product.save == true
-      render :index, layout: false and return
+      render :links, layout: false and return
     else
       @old_product = @edit_product
       flash.now[:danger] = "Please fill out all the fields"
@@ -142,7 +142,7 @@ end
 def logout
   flash[:warning] = "You have been logged out.</b>".html_safe
   session.clear
-  render :index, layout: false and return
+  redirect_to home_page_path and return
 end
 
 
