@@ -1,0 +1,33 @@
+<%= render "layouts/admin_edit" %>
+
+<table border='1'>
+  <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Uploaded at</th>
+  </tr>
+  <% Image.order(:id).each do |image| %>
+    <tr>
+      <td><%= image.id %></td>
+      <td><img height="50"
+        src="<%= image_data_path(image.id, image.extension) %>"></td>
+      <td><%= image.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= form_tag upload_path, multipart: true, class: "dropzone",
+      id: "image-upload", style: "min-height:inherit; height:200px" do %>
+  <div class="fallback">
+    <%= file_field_tag :file, multiple: true %>
+    <%= submit_tag "Upload" %>
+  </div>
+<% end %>
+
+<script>
+  Dropzone.options.imageUpload = {
+    //forceFallback: true, // uncomment to test uploading without Dropzone
+    dictFallbackMessage: "Choose an image to upload...",
+    success: function() { window.location.reload(); }
+  };
+</script>

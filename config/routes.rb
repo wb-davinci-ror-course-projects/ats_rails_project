@@ -6,6 +6,7 @@ get "/main/contact"                  => "main#contact"
 get "/main/:id"                      => "main#product_category",   as: "category_path" 
 get "/main/more_info/:id"            => "main#more_info_id"
 
+
 get "/user"                     => "user#index",                  as: "user_signin"
 post "/user/sign_in"            => "user#sign_in",                as: "user_signin1"
 get "/user/new"                 => "user#new"
@@ -32,6 +33,9 @@ post "/admin/product_sale/"   => "admin#product_sale_edit_post",    as: "/produc
 get "/admin/category_sale/"   => "admin#category_sale_edit",        as: "/category_sale"
 post "/admin/category_sale/"  => "admin#category_sale_edit_post",   as: "/category_sale1"  
 get "/admin/logout"           => "admin#logout"
+get "/admin/form"             => "admin#form",                      as: "form"
+post "/admin/upload"          => "admin#upload_image",              as: "upload"
+get  "/admin/images/:id.:ext" => "admin#image_data",                as: "image_data"
 
 
 get "/carts/final_cart"       => "carts#final_cart",                as: "final_cart"

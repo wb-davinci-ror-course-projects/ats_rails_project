@@ -138,6 +138,32 @@ def product_sale_edit_post
  end
 end
 
+def form
+  render :form, layout: false and return
+end
+
+def upload_image
+  upload = params[:file]
+  if upload != nil
+    image = Image.new
+    image.data         = upload.read
+    image.content_type = upload.content_type
+    image.extension    =
+      upload.original_filename.downcase.split(".").last
+    image.save!
+  end
+  respond_to do |format|
+    format.html { redirect_to form_path and return }
+    format.json { render :json => image.id and return }
+  end
+end
+
+def image_data
+  image = Image.find(params[:id])
+  send_data image.data, type: image.content_type,
+    disposition: "inline"
+end
+
 def logout
   flash[:warning] = "You have been logged out.</b>".html_safe
   session.clear
