@@ -4,6 +4,7 @@ class CreateImages < ActiveRecord::Migration
       t.binary   :data,         null: false
       t.string   :extension,    null: false
       t.string   :content_type, null: false
+      t.string   :name,         null: false  
       t.timestamps
     end
   end

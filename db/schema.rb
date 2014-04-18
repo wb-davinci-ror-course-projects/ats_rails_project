@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140417231721) do
     t.binary   "data",         null: false
     t.string   "extension",    null: false
     t.string   "content_type", null: false
+    t.string   "name",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -139,7 +139,7 @@ def product_sale_edit_post
 end
 
 def form
-  render :form, layout: false and return
+  render :form and return
 end
 
 def upload_image
@@ -150,10 +150,11 @@ def upload_image
     image.content_type = upload.content_type
     image.extension    =
       upload.original_filename.downcase.split(".").last
+    image.name         =  upload.original_filename.downcase.split(".").first
     image.save!
   end
   respond_to do |format|
-    format.html { redirect_to form_path and return }
+    format.html { redirect_to form_path, layout: false and return }
     format.json { render :json => image.id and return }
   end
 end

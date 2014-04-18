@@ -10,9 +10,14 @@
   <div class="col-md-6">
     <table>       
       <th>
+      <% if Image.find_by(name: p.product_code) == nil %>
         <a class="a:hover" href='/images/<%= p.image %>.jpg/'>
           <img src="/images/<%= p.image %>.jpg/" width="150" height="150"></img>
         </a>
+      <% else %>
+        <% image = Image.find_by(name: p.product_code) %>
+        <img src="<%= image_data_path(image.id, image.extension) %>" width="150" height="150">
+      <% end %>
       </th>
         <td><b><h3 class="pad" style="color: #550808"><%= p.name.titlecase %></h3></b>
           <b><center><p style="color=black"><i>price  </i>$<%= "%.2f" % p.price %></p></center></b>

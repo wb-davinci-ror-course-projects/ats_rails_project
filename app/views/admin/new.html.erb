@@ -12,10 +12,10 @@
     <div class="row">
       <div class="col-md-4" style="color: blue">
         <h3>
-          <%= label_tag "category", "Product Category" %><br>
+          <%= label_tag :category, "Product Category" %><br>
           <%= select_tag "category", options_for_select([
-          "Diamond Products", "Safety Equipment", "Sand Paper", "Glues & Sealer",
-          "Wet & Dry Pads", "Other Products"]), prompt: "Choose product category..." %><br></br>
+          "Diamond Products", "Safety Equipment", "Abrasives", "Glues & Sealer",
+          "Pads", "Other Products"]), prompt: "Choose product category..." %><br></br>
   
           <%= label_tag "product_code", "Product Code" %> <i style="color: white">
           (Testing: use "abc-12<b style="color: rgba(159, 118, 341, 200)">3</b>"

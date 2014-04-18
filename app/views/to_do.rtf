@@ -3,6 +3,9 @@ QUESTIONS
 ----------------------------------------------------------------------------------------
 TO DO
 
+- get image upload working
+  - add a delete button and image name column
+
 - add validations for ship address
 
 - work on sending a receipt through email that has an amount and order #
@@ -108,6 +111,10 @@ Red <hr> - <hr style="color:#c00;background-color:#c00;height:1px;border:none;" 
 NOTES FOR JACK
 
 - Couldn't find the info for sp-sil-xb150, needs to be updated
+________________________________________________________________________________
+ <%= select_tag "category", options_fromfor_select([
+          "Diamond Products", "Safety Equipment", "Sand Paper", "Glues & Sealer",
+          "Wet & Dry Pads", "Other Products"]), prompt: "Choose product category..." %><br></br>
 
 ________________________________________________________________________________
 Active Merchant
