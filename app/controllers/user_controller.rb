@@ -1,8 +1,10 @@
 class UserController < ApplicationController
 
 def index
+  if params[:page] != nil
     @product = Product.find(params[:page])
-    render :index and return
+  end
+  render :index and return
 end
 
 def sign_in
@@ -12,7 +14,7 @@ def sign_in
    
   if User.find_by(username: params[:username])== nil
       flash[:danger] = "Username was entered incorrectly or doesn't exist. 
-                          <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
+                        <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
     render :index and return
   else
       user = User.find_by(username: params[:username]) 
