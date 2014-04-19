@@ -11,8 +11,8 @@
     <table>       
       <th>
       <% if Image.find_by(name: p.product_code) == nil %>
-        <a class="zoom" href='/images/<%= p.image %>.jpg/'>
-          <img src="/images/<%= p.image %>.jpg/" width="150" height="150"></img>
+        <a class="a:hover" href='/images/<%= p.image %>.jpg/'>
+          <img src="/images/<%= p.image %>.jpg/" width="150" height="112"></img>
         </a>
       <% else %>
         <% image = Image.find_by(name: p.product_code) %>
