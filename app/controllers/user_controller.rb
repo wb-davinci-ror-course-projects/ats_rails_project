@@ -142,7 +142,7 @@ end
 
 def ship_bill_info
   if session[:username] == nil
-    flash[:info] = "Please sign and return to view cart."
+    flash.now[:info] = "Please sign and return to view cart."
     render :index and return
   else
     @user = User.find_by(username: session[:username])

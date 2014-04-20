@@ -7,7 +7,7 @@
 <div pull-right>
 <div class="pad_col row">
 <% @products.each do |p| %>
-  <div class="col-md-6">
+  <div class="col-md-6 height='135'" >
     <table>       
       <th>
       <% if Image.find_by(name: p.product_code) == nil %>
@@ -16,7 +16,9 @@
         </a>
       <% else %>
         <% image = Image.find_by(name: p.product_code) %>
-        <img src="<%= image_data_path(image.id, image.extension) %>" width="150" height="150">
+        <a class="a:hover" href='/images/<%= p.image %>.jpg/'>
+          <img src="<%= image_data_path(image.id, image.extension) %>" width="150" height="150">
+        </a>
       <% end %>
       </th>
         <td><b><h3 class="pad" style="color: #550808"><%= p.name.titlecase %></h3></b>
