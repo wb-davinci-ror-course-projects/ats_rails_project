@@ -30,6 +30,15 @@
   color: black;
 }
 
+.product_display {
+  width: col-md-6;
+  margin: 5px auto;
+  background-color: gray;
+  border: 10px black solid;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 4pt;
+}
 .shadow {
   font-size: 20pt;
   text-align: center;
