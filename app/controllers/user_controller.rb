@@ -191,8 +191,19 @@ def update_ship
     edit_user.billing_zip           = params[:billing_zip]
     edit_user.billing_phone_number  = params[:billing_phone_number]
   end
-  edit_user.save!
-  redirect_to final_cart_path and return
+
+  if params[:shipping_address1] == "" || params[:shipping_zip]  == "" 
+       flash.now[:danger] = "Street address, city, state and zip code information is required."
+       @user = User.find_by(username: session[:username])
+       render :ship_bill_info and return
+    elsif params[:shipping_city] == "" || params[:shipping_state]  == "" 
+      flash.now[:danger] = "Street address, city, state and zip code information is required."
+      @user = User.find_by(username: session[:username])
+      render :ship_bill_info and return
+  else  
+    edit_user.save!
+    redirect_to final_cart_path and return
+  end
 end
 
 def logout

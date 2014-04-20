@@ -29,7 +29,8 @@
         <%= text_field_tag "shipping_city", @user.shipping_city, size: 20 %><br></br>
         
         <%= label_tag "shipping_state", "State" %><br>
-        <%= select_tag :shipping_state, options_for_select(us_states, @user.billing_state) %><br></br>
+        <%= select_tag :shipping_state, options_for_select(us_states, @user.billing_state), 
+            prompt: "" %><br></br>
       
         <%= label_tag "shipping_zip", "Zip Code" %><br>
         <%= text_field_tag "shipping_zip", @user.shipping_zip, size: 20 %><br></br>
@@ -58,7 +59,8 @@
         <%= text_field_tag "billing_city", @user.billing_city, size: 20 %><br></br>
       
         <%= label_tag "billing_state", "State" %><br>
-        <%= select_tag :billing_state, options_for_select(us_states, @user.billing_state) %><br></br>
+        <%= select_tag :billing_state, options_for_select(us_states, @user.billing_state),
+            prompt: "" %><br></br>
        
         <%= label_tag "billing_zip", "Zip Code" %><br>
         <%= text_field_tag "billing_zip", @user.billing_zip, size: 20 %><br></br>
