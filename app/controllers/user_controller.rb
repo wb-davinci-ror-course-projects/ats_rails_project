@@ -191,7 +191,7 @@ def update_ship
     edit_user.billing_zip           = params[:billing_zip]
     edit_user.billing_phone_number  = params[:billing_phone_number]
   end
-edit_user.save!
+    edit_user.save!
   if params[:shipping_address1] == "" || params[:shipping_zip]  == "" 
        flash.now[:danger] = "Street address, city, state and zip code information is required."
        @user = User.find_by(username: session[:username])
