@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>App</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/ats.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  
+</head>
+<body class="admin">
+  
+  <a class="pull-left pad" href="/admin/logout"><h4 style="color: #1E5A53">Log out</h4></a>
+  <a class="pull-left pad" href="/admin/links"><h4 style="color: #927017">Admin Links</h4></a>
+  <br></br>
+  <br></br>
+  <hr style="color: white">
+<%= yield %>
+
+</body>
+</html>

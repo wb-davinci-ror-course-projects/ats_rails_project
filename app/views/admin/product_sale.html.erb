@@ -1,4 +1,4 @@
-<%= render partial: "layouts/admin" %>
+<%= render "layouts/admin" %>
 <%= form_tag "/admin/product_sale" do %>
 <% if @error != nil %>
   <h2 style="color: blue"><%= @error %></h2>

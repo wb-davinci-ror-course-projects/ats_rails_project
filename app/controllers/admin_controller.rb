@@ -30,7 +30,7 @@ end
 
 def new
   @old_product = Product.new
-  render :new, layout: false and return
+  render :new_product, layout: false and return
 end
 
 def create
@@ -53,13 +53,13 @@ def create
   else
     @error = "Please fill out all the fields"
     flash.now[:danger] = "Something went wrong"
-    render :new, layout: false and return
+    render :new_product, layout: false and return
   end
 end
 
 def edit
   @old_product = Product.last
-  render :edit, layout: false and return
+  render :edit_product, layout: false and return
 end 
 
 def update
@@ -82,13 +82,13 @@ def update
     else
       @old_product = @edit_product
       flash.now[:danger] = "Please fill out all the fields"
-      render :edit, layout: false and return
+      render :edit_product, layout: false and return
     end
   else
     if params[:commit] == "Select"
       id = params[:product_id]
       @old_product = Product.find(id)
-      render :edit, layout: false and return  
+      render :edit_product, layout: false and return  
     end
     
     if params[:commit] == "Delete"
@@ -139,7 +139,7 @@ def product_sale_edit_post
 end
 
 def form
-  render :form and return
+  render :form, layout: false and return
 end
 
 def upload_image

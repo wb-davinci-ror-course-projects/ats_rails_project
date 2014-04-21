@@ -1,13 +1,13 @@
-<%= render partial: "layouts/admin" %>
+<%= render "layouts/admin" %>
 <%= form_tag "/admin/category_sale" do %>
 <% if @error != nil %>
   <h2 style="color: blue"><%= @error %></h2>
 <% end %>
 
 <div class="pad">
-  <h2> Edit Category of Product on Sale </h2>
+  <h3 style="color: white"> Edit Category of Product on Sale </h3>
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-6">
     <h3>
       <%= label_tag "category_name", "Product category on sale" %><br>
       <%= select_tag "category_name", options_from_collection_for_select(CategorySale.order(:id),
