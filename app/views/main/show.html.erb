@@ -7,37 +7,36 @@
 <div pull-right>
 <div class="pad_col row">
 <% @products.each do |p| %>
-  <div class="col-md-6 height='135'" >
+  <div class="col-md-12" >
     <table>       
-      <th>
-        <%= image_display (p) %>
-      </th>
-        <td><b><h3 class="pad" style="color: #550808"><%= p.name.titlecase %></h3></b>
-          <b><center><p style="color=black"><i>price  </i>$<%= "%.2f" % p.price %></p></center></b>
-            <% CategorySale.where(category_id: p.category_id).each do |sale| %>
-              <% if sale.percent_off > 1 %>
-                <% price = (p.price) * ((100 - sale.percent_off)/100) %>
-                  <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>>
-                  <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
-                  <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
-                    More details and applications...</a></h5>
-                  <%= add_to_cart (p) %>
-              <% else %>
-                <% if p.percent_off > 1 %>
-                  <% price = (p.price) * ((100-p.percent_off)/100) %>
-                  <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>
-                  <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
-                  <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
-                    More details and applications...</a></h5>
-                  <%= add_to_cart (p) %>
-                <% else %> 
-                  <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
-                  <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
-                    More details and applications...</a></h5>
-                  <%= add_to_cart (p) %>
-                <% end %>
-              <% end %>   
-               </td>
+      <td><p class="pad"><%= image_display (p) %></pad></td>
+      <td><b><h3 class="pad" style="color: #550808"><%= p.name.titlecase %></h3></b>
+        <b><center><p style="color=black"><i>price  </i>$<%= "%.2f" % p.price %></p></center></b>
+        
+          <% CategorySale.where(category_id: p.category_id).each do |sale| %>
+            <% if sale.percent_off > 1 %>
+              <% price = (p.price) * ((100 - sale.percent_off)/100) %>
+                <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>
+                <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
+                <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
+                  More details and applications...</a></h5>
+                <%= add_to_cart (p) %>
+            <% else %>
+              <% if p.percent_off > 1 %>
+                <% price = (p.price) * ((100-p.percent_off)/100) %>
+                <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>
+                <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
+                <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
+                  More details and applications...</a></h5>
+                <%= add_to_cart (p) %>
+              <% else %> 
+                <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
+                <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
+                  More details and applications...</a></h5>
+                <%= add_to_cart (p) %>
+              <% end %>
+            <% end %>   
+             </td>
     </table>  
             <% end %> 
 </div> 

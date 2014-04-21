@@ -47,7 +47,7 @@
 }
 
 .sale_price {
-  font-size: 16pt;
+  font-size: 20pt;
   text-align: center;
   color: blue;
   text-shadow: 2px 2px 5px gray;
@@ -79,7 +79,7 @@ height: 52;
 }
 .ats_header_b {
   font-size: 25pt;
-  margin: -20px auto 50px auto;
+  margin: -20px auto 0px auto;
   text-align: center;
   color: beige;
   background-color: rgba(6, 72, 133, 0.85);
