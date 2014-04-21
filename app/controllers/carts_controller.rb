@@ -31,7 +31,7 @@ class CartsController < ApplicationController
       @cart.cart_id       = params[:authenticity_token]
       @cart.product_id    = params[:product_id]
       if params[:quantity] != nil
-        @cart.quantity      = params[:quantity]
+        @cart.quantity      = params["quantity#{@cart.product_id}"]
       else
         @cart.quantity      = 1
       end

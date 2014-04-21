@@ -26,12 +26,18 @@
               <% else %>
                 <% if p.percent_off > 1 %>
                   <% price = (p.price) * ((100-p.percent_off)/100) %>
-                  <center><h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4></center>
-                <% end %>
+                  <h4 style="color: red">
+                    <%= "Sales Price! $ #{"%.2f" % price}" %></h4>
                   <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
                   <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
                     More details and applications...</a></h5>
                   <%= add_to_cart (p) %>
+                <% else %> 
+                  <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
+                  <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
+                    More details and applications...</a></h5>
+                  <%= add_to_cart (p) %>
+                <% end %>
               <% end %>   
                </td>
     </table>  

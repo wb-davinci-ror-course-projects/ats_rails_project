@@ -18,6 +18,7 @@
               <a href="/main/more_info/<%= p.id %>">More details and applications...</a> 
               <% if p.quantity > 0 %>
                 <h5 class='pad'>
+         
                   <%= button_tag "Add to cart", name: "product_id", value: p.id %>
                 </h5>
               <% else %> 
@@ -45,6 +46,7 @@
                     <a href="/main/more_info/<%= p.id %>">More details and applications...</a>
                     <% if p.quantity > 0 %>
                       <h5 class='pad'>
+
                         <%= button_tag "Add to cart", name: "product_id", value: p.id %>
                       </h5>
                     <% else %> 
