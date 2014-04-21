@@ -30,11 +30,8 @@ class CartsController < ApplicationController
       @cart               = Cart.new#(cart_params)
       @cart.cart_id       = params[:authenticity_token]
       @cart.product_id    = params[:product_id]
-      if params[:quantity] != nil
-        @cart.quantity      = params["quantity#{@cart.product_id}"]
-      else
-        @cart.quantity      = 1
-      end
+      @product            = Product.find(@cart.product_id)
+      @cart.quantity      = params["quantity_#{@product.id}"]
       @product            = Product.find(params[:product_id])
       @cart.price         = @product.price
       respond_to do |format|

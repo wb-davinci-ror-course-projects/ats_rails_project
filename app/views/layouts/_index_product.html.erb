@@ -16,14 +16,7 @@
               <p style="color: gray"><i>regular price $<%= "%.2f" % p.price %></i></p>
               <h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4>
               <a href="/main/more_info/<%= p.id %>">More details and applications...</a> 
-              <% if p.quantity > 0 %>
-                <h5 class='pad'>
-         
-                  <%= button_tag "Add to cart", name: "product_id", value: p.id %>
-                </h5>
-              <% else %> 
-                "This item is currently out of stock."
-              <%end %>
+              <%= add_to_cart (p) %>
             </td>
           </table>
         </div> 
@@ -44,14 +37,7 @@
                     <p style="color: gray"><i>regular price $<%= "%.2f" % p.price %></i></p>
                     <h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4>
                     <a href="/main/more_info/<%= p.id %>">More details and applications...</a>
-                    <% if p.quantity > 0 %>
-                      <h5 class='pad'>
-
-                        <%= button_tag "Add to cart", name: "product_id", value: p.id %>
-                      </h5>
-                    <% else %> 
-                      "This item is currently out of stock."
-                    <%end %>
+                    <%= add_to_cart (p) %>
                 </table>
               </div> 
           <% else %>
