@@ -1,5 +1,5 @@
 <%= form_tag "/admin/:id", method: "PUT" do %>
-<%= render "layouts/admin_edit" %>
+<%= render "layouts/admin" %>
 
 <% if @error != nil %>
   <h2 style="color: rgb(156, 18, 18)"><%= @error %></h2>
