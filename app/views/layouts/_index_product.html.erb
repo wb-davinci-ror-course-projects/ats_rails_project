@@ -4,14 +4,13 @@
       <% price = (p.price.to_f) * ((100-s.percent_off)/100) %>
         <div class="col-md-4">
           <table class="table">
-            <td class="pad_left"><h3 style="color: black"><%= p.name %></h3>
+           <td> <center><h3 style="color: #550808"><%= p.name %></h3>
               <%= image_display (p) %><br></br>
-              <h5><a class="pad" href="/main/more_info/<%= p.id %>">More details...</a></h5>
-              <h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %>
-                <p class="pad" style="color: gray; font-size: 8pt;"><i>regular price $
-                  <%= "%.2f" % p.price %></i></p>
-              
-              <%= add_to_cart (p) %></h4>
+              <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>
+              <p style="color: gray; font-size: 8pt;"><i>regular price $
+                <%= "%.2f" % p.price %></i></p>
+              <h4><a href="/main/more_info/<%= p.id %>">More details...</a></h4>
+              <%= add_to_cart (p) %></h4></center></td>
           </table>
         </div> 
       <% else %>
@@ -19,12 +18,13 @@
           <% price = (p.price.to_f) * ((100-p.percent_off)/100) %>
               <div class="col-md-4">
                 <table class="table">
-                  <td class="pad_left"><h3 style="color: black"><%= p.name %></h3>
+                  <td> <center><h3 style="color: #550808"><%= p.name %></h3>
                     <%= image_display (p) %><br></br>
-                    <h5><a class="pad" href="/main/more_info/<%= p.id %>">More details...</a></h5>
-                    <h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4>
-                    <h5 class="pad" style="color: gray"><i>regular price $<%= "%.2f" % p.price %></i></h5>
-                    <%= add_to_cart (p) %>
+                    <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>
+                    <p style="color: gray; font-size: 8pt;"><i>regular price $
+                      <%= "%.2f" % p.price %></i></p>
+                    <h4><a href="/main/more_info/<%= p.id %>">More details...</a></h4>
+                    <%= add_to_cart (p) %></h4></center></td>
                 </table>
               </div> 
           <% else %>

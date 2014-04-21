@@ -46,6 +46,12 @@
   text-shadow: 1px 1px 1px rgb(0, 133, 255);
 }
 
+.sale_price {
+  font-size: 16pt;
+  text-align: center;
+  color: blue;
+  text-shadow: 2px 2px 5px gray;
+}
 cart_table {
   border-collapse: collapse;
   border-spacing: 0;

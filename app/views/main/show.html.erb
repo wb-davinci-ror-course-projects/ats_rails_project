@@ -17,8 +17,7 @@
             <% CategorySale.where(category_id: p.category_id).each do |sale| %>
               <% if sale.percent_off > 1 %>
                 <% price = (p.price) * ((100 - sale.percent_off)/100) %>
-                  <h4 style="color: red">
-                    <%= "Sales Price! $ #{"%.2f" % price}" %></h4>
+                  <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>>
                   <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
                   <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
                     More details and applications...</a></h5>
@@ -26,8 +25,7 @@
               <% else %>
                 <% if p.percent_off > 1 %>
                   <% price = (p.price) * ((100-p.percent_off)/100) %>
-                  <h4 style="color: red">
-                    <%= "Sales Price! $ #{"%.2f" % price}" %></h4>
+                  <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>
                   <h4 class="pad" style="color: #927017"><%= p.description.capitalize %></h4>
                   <h5><a class="pad" href="/main/more_info/<%= p.id %>" style="color: rgba(6, 72, 133, 0.85)">
                     More details and applications...</a></h5>

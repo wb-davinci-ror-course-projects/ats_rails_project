@@ -10,11 +10,12 @@ end
 
 def add_to_cart (p)
   if p.quantity > 0
-    "<h5 class='pad'>#{label_tag :quantity}
+    "<h5 color: black;'>#{label_tag :quantity}
     #{text_field_tag "quantity_#{p.id}", 1, size: 1}
     #{button_tag 'Add to cart', name: 'product_id', value: p.id}</h5>".html_safe
   else
-    "<h4 class='pad'>'This item is currently out of stock.'</h4>".html_safe
+    "<p class='pad' style='font-size: 14pt; color: black;'>
+      <i>This item is currently out of stock.</i></p>".html_safe
   end
 end
 
