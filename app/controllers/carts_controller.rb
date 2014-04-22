@@ -104,15 +104,17 @@ class CartsController < ApplicationController
     product = Product.find(params[:product_id])
     if params["quantity_#{product.id}"].to_i > product.quantity && params[:button] == "update"
       @carts = Cart.where(cart_id: session[:cart_id])
-      flash.now[:danger] = "Only <b style='color: rgba(3, 3, 100, 0.8)'>#{product.quantity.to_i}</b>
+      flash.now[:info] = "We apologize, only <b style='color: rgba(3, 3, 100, 0.8)'>#{product.quantity.to_i}</b>
       or less of product <b>#{product.name}</b>, can be ordered at this time".html_safe
       render :index and return
       elsif
         params["quantity_#{product.id}"].to_i > product.quantity
-        flash[:danger] = "Only <b style='color: rgba(3, 3, 100, 0.8)'>#{product.quantity.to_i}</b>
+        flash[:info] = "We apologize, only <b style='color: rgba(3, 3, 100, 0.8)'>#{product.quantity.to_i}</b>
           or less of product <b>#{product.name}</b>, can be ordered at this time".html_safe
         c_id = Category.find_by(name: product.category).id
         redirect_to "/main/#{c_id}" and return
+    else
+      @cart = Cart.find_by(cart_id: session[:cart_id])
     end
   end
     # Use callbacks to share common setup or constraints between actions.
