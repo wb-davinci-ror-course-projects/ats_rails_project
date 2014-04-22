@@ -1,14 +1,14 @@
-<div pull-left>
-<div class="row">
+<div class="row pull-left">
 <div class="col-md-12">
-<div class="form-group">
+<div class="form-group pull-left">
   <% Category.order(:id).each do |c| %>
     <a class="btn btn-primary" href='/main/<%= c.id %>'><%= c.name %></a>
   <% end %>
     <a class="btn btn-danger" href='/'>Home</a>
-    <a class="btn btn-info" href='/main/about'>About</a>
     <a class="btn btn-default" href='/main/contact'>Contact Us</a>
 </div>  
 </div>
 </div>
-</div>
+<!--
+<a class="btn btn-info" href='/main/about'>About</a>
+--!>

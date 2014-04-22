@@ -4,13 +4,13 @@
   <a class="pull-right pad" href="<%= user_signin_path %>"><h4 style="color: white">Sign in</h4></a>
   <a class="pull-right pad" href="/carts"><h4 style="color: #E8F6FA">View Cart</h4></a>
     <% if session[:username] != nil %>
-    <a class="pull-right pad" href="/user/:id/edit"><u style="color: beige">
-    <%= session[:username]%></u></a>
+      <a class="pull-right pad" href="/user/:id/edit"><u style="color: beige">
+      <%= session[:username]%></u></a>
     <% end %>
   <p class="ats_header">Action Tool & Supply</p>
     <form class="navbar-form navbar-right"> 
     <form class="navbar-form navbar-left">
-      <%= render partial: "layouts/button" %>
+      <%= render "layouts/button" %>
     </form>
     </form> 
 </nav>  

@@ -1,16 +1,16 @@
 .ats_header {
-  font-size: 40pt;
+  font-size: 35pt;
   margin: 0px auto -2px auto;
   text-align: left;
   color: white;
   background-color: black;
-  height: 80px;
+  height: 70px;
   padding: 2px 0px 5px 10px;
   text-shadow: 5px 5px 10px red;
 }
 
 .body_b {
-  width: 1100px;
+  width: 900px;
   margin: 5px auto;
   background-color: rgba(231, 196, 10, 0.14);
   border: 10px black solid;
@@ -79,13 +79,12 @@ height: 52;
 }
 .ats_header_b {
   font-size: 25pt;
-  margin: -20px auto 0px auto;
-  text-align: center;
-  color: beige;
-  background-color: rgba(6, 72, 133, 0.85);
+  margin: -20px auto 20px auto;
+  text-align: left;
+  color: #927017;
   height: 45px;
-  padding: 0px 0px 0px 0px;
-  text-shadow: 2px 2px 5px black;
+  padding: 0px 0px 0px 300px;
+  text-shadow: 2px 2px 5px white;
 }
 .ats_footer {
   font-size: 15pt;
