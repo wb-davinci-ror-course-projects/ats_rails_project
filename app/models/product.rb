@@ -5,5 +5,6 @@ class Product < ActiveRecord::Base
   validates :description, presence: true
   validates :price, presence: true
   belongs_to :cart
+
 end
 
