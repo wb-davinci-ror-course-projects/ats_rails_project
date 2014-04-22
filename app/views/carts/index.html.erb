@@ -19,7 +19,8 @@
             <td><%= p.name.titleize %></td>
             <td style="text-align: right">$<%= "%.2f" % cart.price %></td>
             <td style="text-align: right"><h4><%= text_field_tag "quantity_#{p.id}", cart.quantity, size: 1 %></h4></td>
-            <td><%= button_tag "update", name: "product_id", value: p.id %></h5></td> 
+            <td><%= button_tag "update", name: "product_id", value: p.id %></h5></td>
+            <%= hidden_field_tag "button", "update" %>
           <% end %>
             <% if @carts != false %>
             <% session[:total] += cart.price * cart.quantity %>

@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   #before_action :set_cart, only: [:show, :edit, :update, :destroy]
-
+  before_action  :check_quantity, only: [:create, :update] 
+  
   def index
     @carts = Cart.where(cart_id: session[:cart_id])
     if @carts.first == nil
@@ -32,6 +33,7 @@ class CartsController < ApplicationController
       @cart.product_id    = params[:product_id]
       @product            = Product.find(@cart.product_id)
       @cart.quantity      = params["quantity_#{@product.id}"]
+      
       @product            = Product.find(params[:product_id])
       @cart.price         = @product.price
       respond_to do |format|
@@ -97,6 +99,22 @@ class CartsController < ApplicationController
   end
 
   private
+  
+  def check_quantity
+    product = Product.find(params[:product_id])
+    if params["quantity_#{product.id}"].to_i > product.quantity && params[:button] == "update"
+      @carts = Cart.where(cart_id: session[:cart_id])
+      flash.now[:danger] = "Only <b style='color: rgba(3, 3, 100, 0.8)'>#{product.quantity.to_i}</b>
+      or less of product <b>#{product.name}</b>, can be ordered at this time".html_safe
+      render :index and return
+      elsif
+        params["quantity_#{product.id}"].to_i > product.quantity
+        flash[:danger] = "Only <b style='color: rgba(3, 3, 100, 0.8)'>#{product.quantity.to_i}</b>
+          or less of product <b>#{product.name}</b>, can be ordered at this time".html_safe
+        c_id = Category.find_by(name: product.category).id
+        redirect_to "/main/#{c_id}" and return
+    end
+  end
     # Use callbacks to share common setup or constraints between actions.
 #     def set_cart
 #       if Cart.find(1) != nil
