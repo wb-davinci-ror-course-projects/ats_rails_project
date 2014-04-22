@@ -34,18 +34,19 @@ class CartsController < ApplicationController
       @product            = Product.find(@cart.product_id)
       @cart.quantity      = params["quantity_#{@product.id}"]
       
-      @product            = Product.find(params[:product_id])
       @cart.price         = @product.price
       respond_to do |format|
           if @cart.save
             flash[:success] = "#{@product.name.titlecase} has been added to the cart"
             c_id = Category.find_by(name: @product.category).id
+            @product.quantity = @product.quantity - @cart.quantity
+            @product.save!
             redirect_to "/main/#{c_id}" and return
             format.json { render action: 'show', status: :created, location: @cart }
             #format.html { render action: 'new' }
             #format.json { render json: @cart.errors, status: :unprocessable_entity }
-          end 
-          end   
+          end
+      end   
     end
   end
   # PATCH/PUT /carts/1
