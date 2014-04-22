@@ -51,3 +51,4 @@ gem 'rails_12factor' # serve production assets
 gem 'pry-rails', group: :development
 gem 'awesome_print', group: :development
 gem 'pony'
+gem 'whenever'
