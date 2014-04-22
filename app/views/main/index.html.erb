@@ -1,21 +1,20 @@
 <%= form_tag carts_path, method: "POST" do %>
+
 <div class="row">
-  <center>
-    <div class="col-md-12">
-      <h1><p class="shadow_big">On Sale This Month</p1></h1>
-  </center>
-    </div>
+  <div class="col-md-12">
+    <h1><p class="ats_header_c">On Sale This Month...</p1></h1>
+  </div>
 </div>
 
 <div class="row">
-<%= render "layouts/index_product" %>
+  <%= render partial: "layouts/index_product" %>
 </div>
 
 <center>
   <h3 class="shadow">Come visit our showroom to view our selection of sinks,<br>
      stone tools and supplies at:</h3>
   <h3 style="color: #550808">50 Rio Grande Blvd, Denver CO</h3>
-  <h4>Or call Jack at 720-363-0163</h4>
+  <h4>Or call 720-363-0163 to place an order</h4>
 </center>
 <a href="/admin">____</a>
 <% end %>

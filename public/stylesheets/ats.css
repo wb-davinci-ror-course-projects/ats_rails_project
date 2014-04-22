@@ -72,7 +72,7 @@ height: 52;
   zoom: 100%;
 }
 .shadow_big {
-  font-size: 40pt;
+  font-size: 30pt;
   text-align: center;
   color: rgb(8, 8, 102);
   text-shadow: 1px 1px 1px rgb(0, 133, 255);
@@ -95,14 +95,13 @@ height: 52;
   text-shadow: 2px 2px 5px black;
 }
 .ats_header_c {
-  font-size: 30pt;
-  margin: -20px auto 50px auto;
-  text-align: center;
-  color: black;
-  background-color: white;
-  height: 60px;
-  padding: 0px 0px 0px 0px;
-  text-shadow: 1px 1px 1px red;
+  font-size: 25pt;
+  margin: -20px auto 20px auto;
+  text-align: left;
+  color: rgba(3, 3, 100, 0.8);
+  height: 20px;
+  padding: 0px 0px 0px 300px;
+  text-shadow: 2px 2px 0px white;
 }
 .container_mine {
   padding-right: 0px;
@@ -126,7 +125,7 @@ height: 52;
   padding: 0px 50px 10px 50px;
 }
 .pad {
-  padding: 10px 10px 10px 30px;
+  padding: 0px 10px 10px 30px;
 }
 
 html {
