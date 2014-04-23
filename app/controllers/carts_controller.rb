@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   #before_action :set_cart, only: [:show, :edit, :update, :destroy]
-  before_action  :check_quantity, only: [:create, :update] 
+   before_action  :check_quantity, only: [:create, :update] 
   
   def index
     @carts = Cart.where(cart_id: session[:cart_id])
@@ -33,38 +33,44 @@ class CartsController < ApplicationController
       @cart.product_id    = params[:product_id]
       @product            = Product.find(@cart.product_id)
       @cart.quantity      = params["quantity_#{@product.id}"]
-      
       @cart.price         = @product.price
       respond_to do |format|
-          if @cart.save
-            flash[:success] = "#{@product.name.titlecase} has been added to the cart"
-            c_id = Category.find_by(name: @product.category).id
-            @product.quantity = @product.quantity - @cart.quantity
-            @product.save!
-            redirect_to "/main/#{c_id}" and return
-            format.json { render action: 'show', status: :created, location: @cart }
-            #format.html { render action: 'new' }
-            #format.json { render json: @cart.errors, status: :unprocessable_entity }
-          end
-      end   
-    end
+      if @cart.save
+        flash[:success] = "#{@product.name.titlecase} has been added to the cart"
+        c_id = Category.find_by(name: @product.category).id
+        @product.quantity = @product.quantity - @cart.quantity
+        @product.save!
+        redirect_to "/main/#{c_id}" and return
+        format.json { render action: 'show', status: :created, location: @cart }
+        #format.html { render action: 'new' }
+        #format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end   
+  end
   end
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-    @cart = Cart.find_by(product_id: params[:product_id])
+    old_cart = Cart.find_by(product_id: params[:product_id], cart_id: session[:cart_id])
     @product = Product.find(params[:product_id])
+    @cart = Cart.find_by(product_id: params[:product_id], cart_id: session[:cart_id])
     @cart.quantity = params["quantity_#{@product.id}"]
-      if @cart.save == true  #(cart_params)
-        @carts = Cart.where(cart_id: session[:cart_id])
-        render :index and return
-        #format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
-        #format.json { head :no_content }
-      else
-        flash[:error] = "There was an error"
-        redirect_to home_page_path and return
-        #format.html { render action: 'edit' }
-        #format.json { render json: @cart.errors, status: :unprocessable_entity }
+    if @cart.quantity.to_i >= old_cart.quantity.to_i
+      @product.quantity = @product.quantity.to_i - (@cart.quantity.to_i - old_cart.quantity.to_i)
+    else
+      @product.quantity = @product.quantity.to_i + (old_cart.quantity.to_i - @cart.quantity.to_i)
+    end
+    @product.save!
+     if @cart.save == true  #(cart_params)
+      @carts = Cart.where(cart_id: session[:cart_id])
+      render :index and return
+      #format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+      #format.json { head :no_content }
+    else
+      flash[:danger] = "There was an error"
+      redirect_to home_page_path and return
+      #format.html { render action: 'edit' }
+      #format.json { render json: @cart.errors, status: :unprocessable_entity }
     end
   end
 
