@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   #before_action :set_cart, only: [:show, :edit, :update, :destroy]
-   before_action  :check_quantity, only: [:create, :update] 
+   before_action  :check_quantity, only: [:create, :update]
+   before_action  :product_quantity_update, only: [:create] 
   
   def index
     @carts = Cart.where(cart_id: session[:cart_id])
@@ -122,6 +123,17 @@ class CartsController < ApplicationController
         redirect_to "/main/#{c_id}" and return
     else
       @cart = Cart.find_by(cart_id: session[:cart_id])
+    end
+  end
+  
+  def product_quantity_update
+    Cart.all.each do |cart|
+      product = Product.find(cart.product_id)
+      if Time.now > cart.updated_at + (30 * 60)
+        product.quantity = product.quantity + cart.quantity
+        product.save!
+        cart.delete
+      end
     end
   end
     # Use callbacks to share common setup or constraints between actions.
