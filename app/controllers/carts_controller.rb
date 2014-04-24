@@ -81,6 +81,14 @@ class CartsController < ApplicationController
   end
   
   def place_order
+    order_number = Order.last.id + 777
+    Cart.all.each do |cart|
+      Order.create! order_number: order_number, user_id: User.find_by(username: session[:username]).id, 
+      product_id: cart.product_id, quantity: cart.quantity
+      cart.delete
+  end
+    Order.create! order_number: order_number, user_id: User.find_by(username: session[:username]).id,
+     tax: params[:tax], ship_cost: params[:ship_cost], order_total: params[:order_total]
     # user = User.find_by(username: session[:username])
 #     link = view order
 #     Pony.mail(

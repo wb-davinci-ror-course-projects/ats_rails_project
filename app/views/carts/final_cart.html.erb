@@ -1,4 +1,63 @@
 <%= form_tag place_order_path, method: "PUT" do %>
+<h2 style="color: rgba(3, 3, 100, 0.8)">Product List</h2>
+<div class="row pad">
+<div class="col-md-6 pull-left">
+  <table class="table-condensed table-striped table-border">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th style="text-align: right">Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% session[:total] = 0 %>
+      <% @carts.each do |cart| %>
+      <% p = Product.find(cart.product_id) %>
+        <tr>
+          <% if cart.quantity != 0 %>
+            <td><%= p.name.titleize %></td>
+            <td style="text-align: right">$<%= "%.2f" % cart.price %></td>
+            <td style="text-align: right"><h4><%= cart.quantity %></h4></td>
+          <% end %>
+            <% if @carts != false %>
+            <% session[:total] += cart.price * cart.quantity %>
+            <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-4">
+  <table class="table-condensed">
+    <% products_total = session[:total] %>
+      <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
+        <%= "Products total:    $#{"%.2f" % products_total}" %>
+      </h4></td></tr>
+    <% if @empty == "yes" %>  
+      <% ship_cost = 0 %>
+    <% else %>
+      <% ship_cost = 7 %>
+      <%= hidden_field_tag "ship_cost", ship_cost %>
+    <% end %>
+      <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
+        <%= "Shipping cost:    $#{"%.2f" % ship_cost}" %>
+      </h4></td></tr>
+    <% tax = products_total * 0.029 %>
+    <%= hidden_field_tag "tax", tax %>
+      <tr><td><h4 style="color: rgba(6, 72, 133, 0.85); text-align: right;">
+        <%= "Taxes:    $#{"%.2f" %  tax}" %></td></tr>
+      <tr><td><h4 style="color: rgba(3, 3, 100, 0.8); text-align: right;"><b>
+        <% order_total = ship_cost + tax + products_total %>
+        <%= "Order total:    $#{"%.2f" % (order_total)}" %>
+        <%= hidden_field_tag "order_total", order_total %>
+      </b></h4></td></tr></h4>
+  </table><br>
+</div>
+</div>
+
+<!--
 <h1>Order</h1>
 
 <table class="table">
@@ -25,6 +84,7 @@
 </table>
 
 <br>
+--!>
 ****TODO: Select payment method  ******
 <%= button_tag 'Place Order' %><br><br>
 <% end %>

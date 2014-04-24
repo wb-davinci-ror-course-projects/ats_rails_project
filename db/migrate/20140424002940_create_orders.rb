@@ -7,6 +7,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :quantity
       t.float :tax
       t.float :ship_cost
+      t.float :order_total
 
       t.timestamps
     end
