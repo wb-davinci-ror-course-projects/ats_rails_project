@@ -26,6 +26,14 @@
     </h3>  
       <%= submit_tag "Update Password" %>
   </div> 
+  <div class="col-md-4">
+    <h3 style="color: rgba(3, 3, 100, 0.8)">    
+      
+      <%= label_tag "email_address", "Enter new e-mail address"%><br>
+      <%= text_field_tag "email_address", "", size: 20 %><br></br>     
+    </h3>  
+      <%= submit_tag "Update E-mail" %>
+  </div> 
 </div>
 </div>
 <% end %>

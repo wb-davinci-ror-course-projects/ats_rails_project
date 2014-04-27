@@ -76,8 +76,23 @@ def update_user
     edit_user = User.find_by(username: session[:username])
     edit_user.username = params[:username]
     session[:username] = edit_user.username
-    edit_user.save!
-    redirect_to home_page_path and return
+    if edit_user.save == true
+      redirect_to home_page_path and return
+    else
+      flash.now[:danger] = "Username is already taken, please try another"
+      @old_user = User.find_by(username: session[:username])
+      render :edit and return
+    end
+   elsif params[:commit] == "Update E-mail"
+      edit_user = User.find_by(username: session[:username])
+      edit_user.email_address = params[:email_address]
+     if edit_user.save == true
+      redirect_to home_page_path and return
+    else
+      flash.now[:danger] = "An account with that e-mail already exists"
+      @old_user = User.find_by(username: session[:username])
+      render :edit and return
+    end
   else
     @old_user = User.find_by(username: session[:username])
     edit_user = User.find_by(username: session[:username])
