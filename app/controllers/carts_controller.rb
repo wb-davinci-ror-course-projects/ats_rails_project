@@ -100,26 +100,26 @@ class CartsController < ApplicationController
        end
      end
      product_names.pop
-
-    Pony.mail(
-     to:        user.email_address,
-     subject:   "Action Tool & Supply LLC order receipt",
-     body:      "",
-     html_body: test = "<b>Action Tool & Supply LLC</b>
-                    <br></br>50 Rio Grande Blvd, Denver CO
-                    <br></br>720-363-0163
-                    <hr>
-                    <br></br>Shipped to:
-                    <br></br>           #{user.shipping_address1} #{user.shipping_address2}
-                    <br></br>           #{user.shipping_city}, #{user.shipping_state} #{user.shipping_zip}
-                    <br></br>Date: #{order.created_at.strftime('%-m/%-d/%y')} Time: #{order.updated_at.getlocal.strftime('%I:%M %p %Z')}
-                    <hr>
-                    <br></br>Products: <br></br>#{product_names.to_yaml}
-                    <br></br>Shipping: $#{"%.2f" % params[:ship_cost]}
-                    <br></br>Taxes: $#{"%.2f" % params[:tax]}
-                    <br></br><h4>Order Total: $#{"%.2f" % total_amount}</h4>
-                    <h3>Thank you for your order.</h3>".html_safe 
-     )
+     
+#     Pony.mail(
+#      to:        user.email_address,
+#      subject:   "Action Tool & Supply LLC order receipt",
+#      body:      "",
+#      html_body: test = "<b>Action Tool & Supply LLC</b>
+#                     <br></br>50 Rio Grande Blvd, Denver CO
+#                     <br></br>720-363-0163
+#                     <hr>
+#                     <br></br>Shipped to:
+#                     <br></br>           #{user.shipping_address1} #{user.shipping_address2}
+#                     <br></br>           #{user.shipping_city}, #{user.shipping_state} #{user.shipping_zip}
+#                     <br></br>Date: #{order.created_at.strftime('%-m/%-d/%y')} Time: #{order.updated_at.getlocal.strftime('%I:%M %p %Z')}
+#                     <hr>
+#                     <br></br>Products: <br></br>#{product_names.to_yaml}
+#                     <br></br>Shipping: $#{"%.2f" % params[:ship_cost]}
+#                     <br></br>Taxes: $#{"%.2f" % params[:tax]}
+#                     <br></br><h4>Order Total: $#{"%.2f" % total_amount}</h4>
+#                     <h3>Thank you for your order.</h3>".html_safe 
+#      )
     flash[:info] = "Thank you. Your order has been placed. A receipt has been e-mailed."
     Cart.where(cart_id: session[:cart_id]).each do |c|
       c.delete
