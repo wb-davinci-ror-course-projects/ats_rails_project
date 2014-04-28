@@ -186,10 +186,6 @@ category_id: 6,
 more_info: "Antique brush size 24, snail lock with 5811 threads.",
 percent_off: 0
 
-Admin.create! username: "marie", 
-password: "456", 
-password_confirmation: "456"
-
 Cart.create! product_id: 1, quantity: 2, ship_method: "first", cart_id: "1", price: 4 
 
 Order.create! 

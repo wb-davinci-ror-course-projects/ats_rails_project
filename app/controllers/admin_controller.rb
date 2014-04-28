@@ -8,19 +8,18 @@ def index
 end
 
 def signin
-  if Admin.find_by(username: params[:username])== nil
-    flash[:danger] = "Username was entered incorrectly or doesn't exist. 
-                       <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
-    render :index, layout: false and return
+  if params[:username] == "wendy"
+    user = User.find_by(username: params[:username])
+  else 
+    redirect_to home_page_path
+  end
+  
+  if user.authenticate(params[:password]) != false
+    render :links, layout: false and return
   else
-      admin = Admin.find_by(username: params[:username]) 
-    if admin.authenticate(params[:password]) != false 
-      session[:admin_user] = admin.username
-      render :links, layout: false and return
-    else
-      flash.now[:danger] = "Please enter the correct password"
-      render :index, layout: false and return
-    end
+      flash[:danger] = "Username or password was entered incorrectly or isn't authorized. 
+                       <i style='color: gray'>If you haven't done so already, please create an account below.</i>".html_safe
+      redirect_to home_page_path
   end
 end
 

@@ -16,5 +16,16 @@
   <h3 style="color: #550808">50 Rio Grande Blvd, Denver CO</h3>
   <h4>Or call 720-363-0163 to place an order</h4>
 </center>
-<a href="/admin">____</a>
+
+  <% if session[:username] != "" %>
+    <% user = User.find_by(username: session[:username])%>
+      <% if user == nil %>
+        <% user = User.find_by(username: "new") %>
+      <% end %>
+      <% if user.username == "wendy" %>
+        <a href="/admin">Admin Links</a>
+      <% end %>
+  <% end %>
+  
+        
 <% end %>
