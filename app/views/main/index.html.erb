@@ -20,9 +20,8 @@
   <% if session[:username] != "" %>
     <% user = User.find_by(username: session[:username])%>
       <% if user == nil %>
-        <% user = User.find_by(username: "new") %>
+        <% user.username = User.find_by(username: "new") %>
       <% end %>
-    <% user = User.find_by(username: session[:username])%>
       <% if user.username == "wendy" %>
         <a href="/admin">Admin Links</a>
       <% end %>
