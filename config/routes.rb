@@ -18,6 +18,8 @@ get "/user/ship_bill_info"      => "user#ship_bill_info",         as: "ship_info
 put "/user/ship_bill_info_put"  => "user#update_ship",            as: "ship_update" 
 get "/user/:id/edit"            => "user#edit"
 put "/user/:id"                 => "user#update_user",            as: "user_update"
+get "/user/orders"              => "user#user_orders",            as: "last_order"
+post "/user/orders"             => "user#past_order",              as: "find_order"       
 get "/user/logout"              => "user#logout"
 
 get "/admin"                  => "admin#index",                     as: "admin_signin"

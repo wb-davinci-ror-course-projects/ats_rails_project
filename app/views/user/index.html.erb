@@ -4,8 +4,8 @@
 <div class="pad">
 <div class="row">
   <div class="col-md-6">
-  <h4><i>Enter username and password</i></h4>
-    <h3>
+  <h4 style="color: rgba(6, 72, 133, 0.85)"><i>Enter username and password</i></h4>
+    <h3 style="color: rgba(6, 72, 133, 0.85)">
       <%= label_tag :username %><br>
       <%= text_field_tag :username, "", size: 20 %><br>
 
@@ -14,14 +14,13 @@
     </h3>
   </div>
     </div> 
-      </h3>  
-      
-      <%= submit_tag "Sign in", size: 40 %>
-      <%= submit_tag "Create account", size: 40 %>
+      </h3> 
+      <input class="btn btn-primary" name="commit" type="submit" value="Sign in">
+      <input class="btn btn-primary" name="commit" type="submit" value="Create account">
       <a href="/user/email">Forgot Password</a>
 </div>
 </div>
 
-<h4>(Testing: username: wendy password: 1234, username: andy password: *1234)</h4>
+<h4>(Testing: username: wendy password: 1234)</h4>
 
 <% end %>

@@ -219,6 +219,15 @@ def update_ship
     redirect_to final_cart_path and return
 end
 
+def user_orders
+  render :orders and return
+end
+
+def past_order
+  @past_order = Order.find_by(order_number: params[:order_number])
+  render :orders and return
+end
+
 def logout
   flash[:warning] = "You have been logged out. Come visit our showroom located at <b>50 Rio Grande Blvd, Denver CO</b>.".html_safe
     Cart.where(cart_id: session[:cart_id]).each do |c|

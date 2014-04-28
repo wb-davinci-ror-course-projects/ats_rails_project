@@ -99,11 +99,11 @@ class CartsController < ApplicationController
        end
      end
      product_names.pop
-     
+#      link = last_order_url
     Pony.mail(
      to:        user.email_address,
      subject:   "Action Tool & Supply LLC order receipt",
-     body:      "",
+     body:      "Click this link to view order ",
      html_body: test = "<b>Action Tool & Supply LLC</b>
                     <br></br>50 Rio Grande Blvd, Denver CO
                     <br></br>720-363-0163

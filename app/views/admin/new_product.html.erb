@@ -6,7 +6,7 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-4" style="color: blue">
+  <div class="col-md-4" style="color: rgba(3, 3, 100, 0.8)">
     <h2 style="color: white"> Add New Product </h2>
     <h3>
       <%= label_tag :category, "Product Category" %><br>
@@ -27,7 +27,7 @@
       <%= text_area_tag "more_info", "", size: 20 %><br></br>   
     </h3>
   </div>
-  <div class="col-md-3" style="color: blue">
+  <div class="col-md-3" style="color: rgba(3, 3, 100, 0.8)">
     <h3>
       <%= label_tag "quantity", "Quantity" %><br>
       <%= text_field_tag "quantity", "", size: 20 %><br></br>
@@ -37,7 +37,7 @@
   
       <%= label_tag "price", "Price" %><br>
       <%= text_field_tag "price", "", size: 20 %><br></br>
-      <%= submit_tag "Submit", size: 100 %>
+      <%= submit_tag "Submit" %>
     </h3> 
   </div>
 </div>

@@ -8,32 +8,33 @@
 <div class="pad">
 <div class="row">
   <div class="col-md-4">
-    <h3 style="color: rgba(3, 3, 100, 0.8)">
+    <h3 style="color: rgba(6, 72, 133, 0.85)">
     
-      <%= label_tag "username", "Edit username (optional)" %><br>
-      <%= text_field_tag "username", @old_user.username, size: 20 %></i><br></br>
-      <%= submit_tag "Update Username" %>
-    
+      <%= label_tag "username", "Edit username" %><br>
+      <%= text_field_tag "username", @old_user.username, size: 15 %></i><br></br>
+      <input class="btn btn-primary" name="commit" type="submit" value="Update Username">
     </h3>
   </div>
   <div class="col-md-4">
-    <h3 style="color: rgba(3, 3, 100, 0.8)">
+    <h3 style="color: #927017">
       <%= label_tag "password", "New password" %><br>
-      <%= password_field_tag "password", "", size: 20 %><br></br>     
+      <%= password_field_tag "password", "", size: 15 %><br></br> 
       
       <%= label_tag "password_confirmation", "Enter new password again"%><br>
-      <%= password_field_tag "password_confirmation", "", size: 20 %><br></br>     
+      <%= password_field_tag "password_confirmation", "", size: 15 %><br></br>     
     </h3>  
-      <%= submit_tag "Update Password" %>
+      <input class="btn btn-warning" name="commit" type="submit" value="Update Password">
   </div> 
   <div class="col-md-4">
-    <h3 style="color: rgba(3, 3, 100, 0.8)">    
+    <h3 style="color: rgba(6, 72, 133, 0.85)">    
       
       <%= label_tag "email_address", "Enter new e-mail address"%><br>
       <%= text_field_tag "email_address", "", size: 20 %><br></br>     
     </h3>  
-      <%= submit_tag "Update E-mail" %>
+      <input class="btn btn-info" name="commit" type="submit" value="Update E-mail"><br></br>
+      <a href="<%= last_order_path %>">View Last Order</a>
   </div> 
 </div>
 </div>
+
 <% end %>

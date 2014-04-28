@@ -1,0 +1,43 @@
+<%= form_tag find_order_path do %>
+
+  Order number:
+<% if @past_order == nil %>
+ <%= view_order_number = Order.where(user_id: User.find_by(username: session[:username]).id).last.order_number %>
+<% else %>
+  <%= view_order_number = @past_order.order_number %>
+<% end %>
+
+<table class="table">
+  <tr>
+    <th>Products</th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
+  <% Order.where(user_id: User.find_by(username: session[:username]).id, order_number:
+    view_order_number).each do |o| %>
+    <% if o.product_id != nil %>
+      <tr>
+        <td><%= Product.find(o.product_id).name %></td>
+        <td>$<%= "%.2f" % Product.find(o.product_id).price %></td>
+        <td><%= Order.find_by(order_number: view_order_number, product_id: o.product_id).quantity %></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td>tax:</td>
+        <td><i>$<%= "%.2f" % o.tax %></i></td>
+      </tr>
+      <tr>
+        <td>shipping:</td>
+        <td><i>$<%= "%.2f" % o.ship_cost %></i></td>
+      </tr>
+      <tr>
+        <td><b>order total:</b></td>
+        <td><b>$<%= "%.2f" % o.order_total %></b></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+  <%= label_tag :order_number, "To view a previous order, enter order number" %><br>
+  <input class="input-sm" id="order_number" name="order_number" size="10" type="text" value="">
+  <input class="btn btn-primary" name="commit" type="submit" value="Submit"><br></br>
+<% end %>
