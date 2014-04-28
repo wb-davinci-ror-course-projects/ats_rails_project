@@ -1,11 +1,9 @@
-<%= form_tag find_order_path do %>
+<%= form_tag last_order_path do %>
 
-  Order number:
-<% if @past_order == nil %>
- <%= view_order_number = Order.where(user_id: User.find_by(username: session[:username]).id).last.order_number %>
-<% else %>
+Order number:
+  <% if @past_order != nil %>
   <%= view_order_number = @past_order.order_number %>
-<% end %>
+  <% end %>
 
 <table class="table">
   <tr>
@@ -13,6 +11,7 @@
     <th>Price</th>
     <th>Quantity</th>
   </tr>
+  <% if view_order_number != nil %>
   <% Order.where(user_id: User.find_by(username: session[:username]).id, order_number:
     view_order_number).each do |o| %>
     <% if o.product_id != nil %>
@@ -35,6 +34,7 @@
         <td><b>$<%= "%.2f" % o.order_total %></b></td>
       </tr>
     <% end %>
+  <% end %>
   <% end %>
 </table>
   <%= label_tag :order_number, "To view a previous order, enter order number" %><br>

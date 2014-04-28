@@ -220,8 +220,13 @@ def update_ship
 end
 
 def user_orders
-    @past_order = Order.find_by(order_number: params[:order_number])
+  if Order.find_by(user_id: User.find_by(username: session[:username]).id) == nil
+    flash.now[:info] = "There are no past orders to view"
     render :orders and return
+  else
+    @past_order = Order.where(user_id: User.find_by(username: session[:username]).id).last
+    render :orders and return
+  end
 end
 
 def past_order
