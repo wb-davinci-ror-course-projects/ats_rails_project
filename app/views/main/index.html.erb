@@ -17,17 +17,16 @@
   <h4>Or call 720-363-0163 to place an order</h4>
 </center>
 
-  <% if session[:username] != "" %>
-    <% user = User.find_by(username: session[:username]) %>
-      <% if user != nil %>
-        <% user_name = user.username %>
-      <% else %>
-        <% user_name = "new" %>
-      <% end %>
-      <% if user_name == "wendy" %>
-        <a href="/admin">Admin Links</a>
-      <% end %>
-  <% end %>
+<% if session[:username] != "" %>
+  <% user = User.find_by(username: session[:username]) %>
+    <% if user != nil %>
+      <% user_name = user.username %>
+    <% else %>
+      <% user_name = "new" %>
+    <% end %>
+    <% if user_name == "wendy" %>
+      <a href="/admin">Admin Links</a>
+    <% end %>
+<% end %>
   
-        
 <% end %>

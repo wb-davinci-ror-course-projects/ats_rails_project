@@ -25,5 +25,9 @@ class MainController < ApplicationController
   def contact
     render :contact and return
   end
+  
+  def big_image
+    redirect_to big_image_path and return
+  end
 
 end
