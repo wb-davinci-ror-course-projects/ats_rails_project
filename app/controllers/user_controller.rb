@@ -220,13 +220,8 @@ def update_ship
 end
 
 def user_orders
-  if Order.find_by(order_number: params[:order_number]) != nil
     @past_order = Order.find_by(order_number: params[:order_number])
     render :orders and return
-  else
-    flash.now[:info] = "You don't have any orders to view"
-    render :edit and return
-  end
 end
 
 def past_order
