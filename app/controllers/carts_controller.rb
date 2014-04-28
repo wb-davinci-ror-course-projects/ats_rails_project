@@ -142,8 +142,8 @@ class CartsController < ApplicationController
     product = Product.find(params[:product_id])
     if params["quantity_#{product.id}"].to_i > product.quantity && params[:button] == "update"
       @carts = Cart.where(cart_id: session[:cart_id])
-      flash.now[:info] = "We apologize, only <b style='color: rgba(3, 3, 100, 0.8)'>#{product.quantity.to_i}</b>
-      or less of product <b>#{product.name}</b>, can be ordered at this time".html_safe
+      flash.now[:info] = "We apologize, the quantity can only be increased by <b style='color: rgba(3, 3, 100, 0.8)'>#{product.quantity.to_i}</b>
+      or less of product <b>#{product.name}</b>, at this time".html_safe
       render :index and return
       elsif
         params["quantity_#{product.id}"].to_i > product.quantity
