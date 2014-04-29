@@ -5,7 +5,6 @@ get "/main/about"                    => "main#about"
 get "/main/contact"                  => "main#contact"
 get "/main/:id"                      => "main#product_category",   as: "category" 
 get "/main/more_info/:id"            => "main#more_info_id"
-post "/main/images/se-ltxg-lg-strmd.jpg/" => "main#big_image",           as: "big_image" 
 
 get "/user"                     => "user#index",                  as: "user_signin"
 post "/user/sign_in"            => "user#sign_in",                as: "user_signin1"
