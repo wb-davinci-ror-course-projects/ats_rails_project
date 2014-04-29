@@ -173,7 +173,7 @@ end
 private
 
 def set_admin
-  if Admin.find_by(username: session[:admin_user]) == nil
+  if session[:username] != "wendy"
     render :index, layout: false and return
   end
 end

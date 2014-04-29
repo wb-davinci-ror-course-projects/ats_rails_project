@@ -61,10 +61,10 @@ cart_table {
 border: 10px solid #FFFFFF;
 box-shadow: 5px 5px 5px #666;
 float: left;
-height: 250px;
+height: 230px;
 margin: 10px;
 overflow: hidden;
-width: 300px;
+width: 275px;
 cursor:pointer;
 }
 
