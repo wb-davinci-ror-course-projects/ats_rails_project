@@ -57,6 +57,28 @@ cart_table {
   border-spacing: 0;
 }
 
+.image{
+border: 10px solid #FFFFFF;
+box-shadow: 5px 5px 5px #666;
+float: left;
+height: 250px;
+margin: 10px;
+overflow: hidden;
+width: 300px;
+cursor:pointer;
+}
+
+.big_image{
+border: 10px solid #FFFFFF;
+box-shadow: 5px 5px 5px #666;
+float: left;
+height: 500px;
+margin: 10px;
+overflow: hidden;
+width: 700px;
+cursor:pointer;
+}
+
 .thumbnail_img:hover {
     background-color: transparent;
     z-index: 100;
