@@ -26,7 +26,7 @@ def image_display (p)
       </a>".html_safe
   else
     image = Image.find_by(name: p.product_code)
-      "<a href='/images/#{p.image}_big.jpg/'>
+      "<a href='/images/#{p.image}.jpg/'>
         <img class='image' src='#{image_data_path(image.id, image.extension)}' width='250' height='187'>
        </a>".html_safe
   end 
