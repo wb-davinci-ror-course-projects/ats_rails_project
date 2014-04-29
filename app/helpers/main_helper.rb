@@ -21,12 +21,12 @@ end
 
 def image_display (p)
   if Image.find_by(name: p.product_code) == nil
-      "<a href='/images/#{p.image}.jpg/'>
+      "<a href='/images/#{p.image}_big.jpg/'>
         <img class='image' src='/images/#{p.image}.jpg/' width='250' height='187'></img>
       </a>".html_safe
   else
     image = Image.find_by(name: p.product_code)
-      "<a href='/images/#{p.image}.jpg/'>
+      "<a href='/images/#{p.image}_big.jpg/'>
         <img class='image' src='#{image_data_path(image.id, image.extension)}' width='250' height='187'>
        </a>".html_safe
   end 
