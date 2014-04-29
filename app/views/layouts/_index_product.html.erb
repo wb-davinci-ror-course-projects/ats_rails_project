@@ -6,7 +6,7 @@
           <table class="table">
            <td> <center><h3 style="color: #550808"><%= p.name %></h3>
               <%= image_display (p) %><br></br>
-              <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>
+              <p class="sale_price"><%= "Sale Price! $ #{"%.2f" % price}" %></p>
               <p style="color: gray; font-size: 8pt;"><i>regular price $
                 <%= "%.2f" % p.price %></i></p>
               <h4><a href="/main/more_info/<%= p.id %>">More details...</a></h4>
@@ -20,7 +20,7 @@
                 <table class="table">
                   <td> <center><h3 style="color: #550808"><%= p.name %></h3>
                     <%= image_display (p) %><br></br>
-                    <p class="sale_price"><%= "Sales Price! $ #{"%.2f" % price}" %></p>
+                    <p class="sale_price"><%= "Sale Price! $ #{"%.2f" % price}" %></p>
                     <p style="color: gray; font-size: 8pt;"><i>regular price $
                       <%= "%.2f" % p.price %></i></p>
                     <h4><a href="/main/more_info/<%= p.id %>">More details...</a></h4>

@@ -1,34 +1,36 @@
 <%= form_tag carts_path do %>
-<center><h2 style="color: black"><%= @header %></h2></center>
+
 <div class="pad_col">
   <div class="row">
     <div class="col-md-12">
+      <center><b><h3 class="pad" style="color: #550808; text-shadow: 2px 1px 1px white;">
+                    <%= @product.name.upcase %></h3></b>
+      </center>
       <table> 
         <th>
           <a href='/images/<%= @product.image %>_big.jpg/'>
-            <img src="/images/<%= @product.image %>.jpg/" width="350" height="350"></img>
+            <img class="image_big" src="/images/<%= @product.image %>.jpg/"></img>
           </a>
         </th>
-          <td><b><h3 class="pad" style="color: rgb(129, 16, 1)"><%= @product.name.upcase %></h3></b>
-            <p class="pad" style="color: rgb(9, 9, 145)"><%= @product.more_info %></p>
-              <h4 class="pad" style="color=black"><i>price  </i>$<%= "%.2f" % @product.price %></h4>
-              <h4 class="pad"><%= @product.description %></h4>
-              <% CategorySale.where(category_id: @product.category_id).each do |s| %>
-                <% if s.percent_off > 1 %>
-                  <% price = (@product.price) * ((100-s.percent_off)/100) %>
-                    <h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4>
-                <% else %>
-                  <% if @product.percent_off > 1 %>
-                    <% price = (@product.price) * ((100-@product.percent_off)/100) %>
-                    <h4 class="pad" style="color: red"><%= "Sales Price! $ #{"%.2f" % price}" %></h4>
-                  
-                  <% end %>
+        <td><p class="pad" style="color: rgb(9, 9, 145); background: white;"><%= @product.more_info %></p>
+            <h4 class="pad" style="color=black"><i>price  </i>$<%= "%.2f" % @product.price %></h4>
+            <h4 class="pad"><%= @product.description %></h4>
+            <% CategorySale.where(category_id: @product.category_id).each do |s| %>
+              <% if s.percent_off > 1 %>
+                <% price = (@product.price) * ((100-s.percent_off)/100) %>
+                  <h4 class="sale_price""><%= "Sale Price! $ #{"%.2f" % price}" %></h4>
+              <% else %>
+                <% if @product.percent_off > 1 %>
+                  <% price = (@product.price) * ((100-@product.percent_off)/100) %>
+                  <h4 class="sale_price"><%= "Sale Price! $ #{"%.2f" % price}" %></h4>
                 <% end %>
               <% end %>
-              <%= add_to_cart (@product) %>
-          </td>
+            <% end %>
+            <%= add_to_cart (@product) %>
+        </td>
       </table>             
     </div>         
   </div>
 </div>
+
 <% end %>
