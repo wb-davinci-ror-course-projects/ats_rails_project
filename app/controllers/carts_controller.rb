@@ -34,7 +34,13 @@ class CartsController < ApplicationController
       @cart.product_id    = params[:product_id]
       @product            = Product.find(@cart.product_id)
       @cart.quantity      = params["quantity_#{@product.id}"]
-      @cart.price         = @product.price
+      category_percent_off = CategorySale.find_by(category_id: @product.category_id).percent_off
+      if @product.percent_off <= category_percent_off
+        price = @product.price * ((100-category_percent_off)/100)
+      else
+        price = @product.price * ((100-@product.percent_off)/100)
+      end
+      @cart.price         = price
       respond_to do |format|
       if @cart.save
         flash[:success] = "#{@product.name.titlecase} has been added to the cart"
