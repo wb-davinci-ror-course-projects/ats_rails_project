@@ -12,7 +12,7 @@
 .body_b {
   width: 1000px;
   margin: 5px auto;
-  background-color: rgba(231, 196, 10, 0.14);
+  background-color: rgba(0, 0, 0, 0.16);
   border: 10px black solid;
   padding: 5px;
   font-family: sans-serif;
@@ -59,23 +59,12 @@ cart_table {
 
 .image{
 border: 10px solid #FFFFFF;
-box-shadow: 5px 5px 5px #666;
+box-shadow: 5px 5px 5px  #550808;
 float: left;
 height: 230px;
 margin: 10px;
 overflow: hidden;
 width: 275px;
-cursor:pointer;
-}
-
-.big_image{
-border: 10px solid #FFFFFF;
-box-shadow: 5px 5px 5px #666;
-float: left;
-height: 500px;
-margin: 10px;
-overflow: hidden;
-width: 700px;
 cursor:pointer;
 }
 
@@ -86,13 +75,30 @@ cursor:pointer;
 
 a:hover
 { 
-width: 70;
-height: 52;
+width: 400;
+height: 350;
 }
 
 .zoom {
-  zoom: 100%;
+  zoom: 200%;
 }
+
+/* zoom in image */
+.zoomin_img { // definition the values for the image that is in the area with the class name zoomin! 
+height: 125px; // i set a default value for the height
+width: 125px; // i set a default value for the width also
+// below the cross-browser transition
+-webkit-transition: all 1s ease;
+-moz-transition: all 1s ease;
+-o-transition: all 1s ease;
+-ms-transition: all 1s ease;
+transition: all 1s ease;
+} // and below i set new dimensions when the user roll the mouse over the image
+.zoomin_img:hover {
+width: 600px;
+height: 600px;
+} 
+
 .shadow_big {
   font-size: 30pt;
   text-align: center;
@@ -103,7 +109,7 @@ height: 52;
   font-size: 25pt;
   margin: -20px auto 20px auto;
   text-align: left;
-  color: #927017;
+  color: rgba(3, 3, 100, 0.8);
   height: 45px;
   padding: 0px 0px 0px 300px;
   text-shadow: 2px 2px 5px white;
