@@ -34,10 +34,13 @@
           <% if o.product_id != nil %>
             <tr>
               <td><%= Product.find(o.product_id).name %></td>
-              <td><%= o.quantity %> <i>qty</i></td>
+              <td><%= o.quantity %> <i>qty</i><br></br>
+                  $<%= "%.2f" % o.price_paid_for_product %> price of each</td>
             <tr> 
           <% end %>
         <% end %> 
+          <td><%= "<b>tax</b>: $#{"%.2f" % orders.last.tax} <b>ship_cost</b>: $#{"%.2f" % orders.last.ship_cost} 
+            <b>total</b>: $#{"%.2f" % orders.last.order_total}".html_safe %></td><br></br>
     <% end %>
   <% end %>
   </table>
