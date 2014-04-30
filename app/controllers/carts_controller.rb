@@ -90,7 +90,7 @@ class CartsController < ApplicationController
     order_number = Order.last.id + 777
     Cart.all.each do |cart|
       Order.create! order_number: order_number, user_id: User.find_by(username: session[:username]).id, 
-      product_id: cart.product_id, quantity: cart.quantity
+      product_id: cart.product_id, price_paid_for_product: cart.price, quantity: cart.quantity
       cart.delete
     end
     Order.create! order_number: order_number, user_id: User.find_by(username: session[:username]).id,
@@ -118,8 +118,7 @@ class CartsController < ApplicationController
      html_body: test = "<b>Action Tool & Supply LLC</b>
                     <br></br>50 Rio Grande Blvd, Denver CO
                     <br></br>720-363-0163<br></br>
-                    
-                    Order#: #{order.order_number}<i>
+                    Order#: #{order.order_number}
                     <hr>
                     <br></br>Shipped to:
                     <br></br>           #{user.shipping_address1} #{user.shipping_address2}

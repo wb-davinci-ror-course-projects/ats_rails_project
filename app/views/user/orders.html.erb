@@ -17,7 +17,7 @@ Order number:
     <% if o.product_id != nil %>
       <tr>
         <td><%= Product.find(o.product_id).name %></td>
-        <td>$<%= "%.2f" % Product.find(o.product_id).price %></td>
+        <td>$<%= "%.2f" % o.price_paid_for_product %></td>
         <td><%= Order.find_by(order_number: view_order_number, product_id: o.product_id).quantity %></td>
       </tr>
     <% else %>

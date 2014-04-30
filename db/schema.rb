@@ -16,13 +16,6 @@ ActiveRecord::Schema.define(version: 20140424002940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: true do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "carts", force: true do |t|
     t.integer  "product_id"
     t.integer  "quantity"
@@ -56,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140424002940) do
     t.integer  "order_number"
     t.integer  "user_id"
     t.integer  "product_id"
+    t.float    "price_paid_for_product"
     t.integer  "quantity"
     t.float    "tax"
     t.float    "ship_cost"
@@ -65,16 +59,16 @@ ActiveRecord::Schema.define(version: 20140424002940) do
   end
 
   create_table "products", force: true do |t|
-    t.string "category"
-    t.string "product_code"
-    t.string "name"
-    t.float  "quantity"
-    t.string "description"
-    t.float  "price"
-    t.string "image"
-    t.float  "category_id"
-    t.float  "percent_off"
-    t.text   "more_info"
+    t.string  "category"
+    t.string  "product_code"
+    t.string  "name"
+    t.integer "quantity"
+    t.string  "description"
+    t.float   "price"
+    t.string  "image"
+    t.float   "category_id"
+    t.float   "percent_off"
+    t.text    "more_info"
   end
 
   create_table "users", force: true do |t|
