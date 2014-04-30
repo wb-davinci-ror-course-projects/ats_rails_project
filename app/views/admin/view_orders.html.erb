@@ -28,7 +28,7 @@
       <td><hr style="background-color:black;height:3px;border:none;" />
         <b>order number:</b><br></br> 
         <%= orders.last.order_number%><br></br>
-        <b>date:</b> <%= orders.last.created_at %></td>
+        <b>date:</b> <%= orders.last.created_at.getlocal.strftime("%A - %B %d, %Y -- %I:%M %p %Z") %></td>
       <tr><th>Products</th></tr>
         <% orders.order(:id).each do |o| %>
           <% if o.product_id != nil %>
