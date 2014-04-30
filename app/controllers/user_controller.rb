@@ -53,7 +53,7 @@ def reset
 end
 
 def reset_password
-  user = User.find_by(email_address: "1234@yahoo.com")#session[:email])
+  user = User.find_by(email_address: session[:email])
   user.password               = params[:password]
   user.password_confirmation  = params[:password_confirmation] 
   if user.password == user.password_confirmation
