@@ -1,0 +1,55 @@
+<%= render "layouts/admin" %>
+
+<div class="row">
+<div class="col-md-12">
+  <table class="table" style="background: white">
+  <% old_value = 0 %>
+  <% Order.order(:created_at).reverse.each do |get_number| %>
+    <% if get_number.order_number != old_value && old_value != nil %>
+      <% new_order_number = get_number.order_number %>
+      <% old_value = get_number.order_number %>
+    <% else %>
+      <% new_order_number = nil %>
+      <% old_value = get_number.order_number %>
+    <% end %>
+    <% if new_order_number != nil %>
+      <% orders = Order.where(order_number: new_order_number) %>
+      <% customer = User.find(orders.last.user_id) %>
+      <td><hr style="background-color:black;height:3px;border:none;" />
+         <b>Customer:</b><br>
+         <%= customer.shipping_first_name %>
+         <%= customer.shipping_last_name %><br>
+         <%= customer.shipping_address1 %>
+         <%= customer.shipping_address2 %></br>
+         <%= customer.shipping_city %>
+         <%= customer.shipping_state %>
+         <%= customer.shipping_zip %></br>
+         <%= customer.shipping_phone_number %></td>
+      <td><hr style="background-color:black;height:3px;border:none;" />
+        <b>order number:</b><br></br> 
+        <%= orders.last.order_number%><br></br>
+        <b>date:</b> <%= orders.last.created_at %></td>
+      <tr><th>Products</th></tr>
+        <% orders.order(:id).each do |o| %>
+          <% if o.product_id != nil %>
+            <tr>
+              <td><%= Product.find(o.product_id).name %></td>
+              <td><%= o.quantity %> <i>qty</i></td>
+            <tr> 
+          <% end %>
+        <% end %> 
+    <% end %>
+  <% end %>
+  </table>
+</div>
+</div>
+ 
+  
+      
+       
+      
+      
+      
+      
+      
+      

@@ -27,6 +27,10 @@ def links
   render :links, layout: false and return
 end
 
+def view_orders
+  render :view_orders, layout: false and return
+end
+
 def new
   @old_product = Product.new
   render :new_product, layout: false and return
