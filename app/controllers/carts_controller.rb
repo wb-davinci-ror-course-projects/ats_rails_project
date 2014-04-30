@@ -106,16 +106,20 @@ class CartsController < ApplicationController
      end
      product_names.pop
      link = last_order_url(user.id, order.order_number)
+#     <br></br>Sign into account and click this link 
+#     <a href='#{link}'>View Last Order</a> to view most recent order.
+#{last_order_url}
     Pony.mail(
      to:        user.email_address,
      subject:   "Action Tool & Supply LLC order receipt",
-     body:      "Sign into account and click this link #{last_order_url} to view your most recent order.
+     body:      "To view order online sign into your account, click your account link, 
+                  and click the view orders link. Enter #{order.order_number}
                   Order#: #{order.order_number}",
      html_body: test = "<b>Action Tool & Supply LLC</b>
                     <br></br>50 Rio Grande Blvd, Denver CO
-                    <br></br>720-363-0163
-                    <br></br>Sign into account and click this link 
-                    <a href='#{link}'>View Last Order</a> to view most recent order.
+                    <br></br>720-363-0163<br></br>
+                    
+                    Order#: #{order.order_number}<i>
                     <hr>
                     <br></br>Shipped to:
                     <br></br>           #{user.shipping_address1} #{user.shipping_address2}
@@ -126,7 +130,9 @@ class CartsController < ApplicationController
                     <br></br>Shipping: $#{"%.2f" % params[:ship_cost]}
                     <br></br>Taxes: $#{"%.2f" % params[:tax]}
                     <br></br><h4>Order Total: $#{"%.2f" % total_amount}</h4>
-                    <h3>Thank you for your order.</h3>".html_safe 
+                    <h3>Thank you for your order.</h3><br></br>
+                    <i>(To view this order or another online, sign into your account, click your account link, 
+                       and click the view orders link.)</i><br></br>".html_safe 
      )
     flash[:info] = "Thank you. Your order has been placed. A receipt has been e-mailed."
     Cart.where(cart_id: session[:cart_id]).each do |c|
