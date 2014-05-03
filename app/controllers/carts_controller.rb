@@ -125,7 +125,7 @@ class CartsController < ApplicationController
                     <br></br>           #{user.shipping_city}, #{user.shipping_state} #{user.shipping_zip}
                     <br></br>Date: #{order.created_at.strftime('%-m/%-d/%y')} Time: #{order.updated_at.getlocal.strftime('%I:%M %p %Z')}
                     <hr>
-                    <br></br>Products: <br></br>#{product_names.join(" ").split("^").to_yaml}
+                    <br></br>Products: <br></br>#{product_names.join(" ").split("^").join}
                     <br></br>Shipping: $#{"%.2f" % params[:ship_cost]}
                     <br></br>Taxes: $#{"%.2f" % params[:tax]}
                     <br></br><h4>Order Total: $#{"%.2f" % total_amount}</h4>

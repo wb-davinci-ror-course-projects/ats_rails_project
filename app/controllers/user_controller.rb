@@ -59,7 +59,7 @@ def reset_password
   if user.password == user.password_confirmation
     user.save!
     flash[:info] = "Your password has been updated"
-    redirect_to "/" and return
+    redirect_to user_signin_path and return
   else
     flash.now[:danger] = "Both passwords must match."
     render :reset and return
