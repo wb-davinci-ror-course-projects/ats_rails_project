@@ -4,9 +4,8 @@
 <div class="pad">
 <div class="row">
   <div class="col-md-6">
-  <h4><i>Enter new password</i></h4>
     <h3>
-       <%= label_tag "password", "New password" %><br>
+      <%= label_tag "password", "New password" %><br>
       <%= password_field_tag "password", "", size: 20 %><br></br>     
       
       <%= label_tag "password_confirmation", "Enter new password again"%><br>
@@ -14,12 +13,8 @@
     </h3>
   </div>
     </div> 
-      </h3>  
-      
-      <%= submit_tag "Submit", size: 40 %>
+      <input class="btn btn-primary" name="commit" type="submit" value="Submit"><br></br>
+    </div>
 </div>
-</div>
-
-<h4>(Testing: username: wendy password: 1234)</h4>
 
 <% end %>

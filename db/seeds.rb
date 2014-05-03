@@ -8,7 +8,8 @@
 
 User.create! username: "wendy", 
 first_name: "Wendy", 
-last_name: "Brannon", 
+last_name: "Brannon",
+company_name: "ATS", 
 phone_number: "303-921-6168", 
 email_address: "wb9753@gmail.com",
 password: "1234",
@@ -32,7 +33,8 @@ billing_phone_number: "303-921-6168"
 
 User.create! username: "grace", 
 first_name: "Grace", 
-last_name: "Hopper", 
+last_name: "Hopper",
+company_name: "US Navy",  
 phone_number: "908-555-0101", 
 email_address: "gh@g.com",
 password: "1234",
@@ -56,7 +58,8 @@ billing_phone_number: "908-555-0101"
 
 User.create! username: "carlos", 
 first_name: "Carlos", 
-last_name: "Martinez", 
+last_name: "Martinez",
+company_name: "Planet Granite",  
 phone_number: "303-555-1010", 
 email_address: "cm@gmail.com",
 password: "1234",
