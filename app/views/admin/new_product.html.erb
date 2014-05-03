@@ -1,5 +1,5 @@
 <%= render "layouts/admin" %>
-<%= form_tag "/admin" do %>
+<%= form_tag new_product1_path do %>
 
 <% if @error != nil %>
   <h2 style="color: blue"><%= @error %></h2>
@@ -17,26 +17,26 @@
       <%= label_tag "product_code", "Product Code" %> <i style="color: white">
       (Testing: use "abc-12<b style="color: rgba(159, 118, 341, 200)">3</b>"
       <b style="color: rgba(159, 118, 341, 200)"> ...4,5,6</b>)</i><br>
-      <%= text_field_tag "product_code", "", size: 20 %><br></br>
+      <%= text_field_tag "product_code", "", placeholder: "abc-123", size: 20 %><br></br>
      
 
       <%= label_tag "name", "Name" %><br>
-      <%= text_field_tag "name", "", size: 20 %><br></br> 
+      <%= text_field_tag "name", "", placeholder: "name", size: 20 %><br></br> 
       
       <%= label_tag "more_info", "More Infomation, Details and Applications" %><br>
-      <%= text_area_tag "more_info", "", size: 20 %><br></br>   
+      <%= text_area_tag "more_info", "", placeholder: "info", size: 20 %><br></br>   
     </h3>
   </div>
   <div class="col-md-3" style="color: rgba(3, 3, 100, 0.8)">
     <h3>
       <%= label_tag "quantity", "Quantity" %><br>
-      <%= text_field_tag "quantity", "", size: 20 %><br></br>
+      <%= text_field_tag "quantity", "", placeholder: "quantity", size: 20 %><br></br>
   
       <%= label_tag "description", "Description" %><br>
-      <%= text_area_tag "description", "", size: 100 %><br></br>
+      <%= text_area_tag "description", "", placeholder: "description", size: 100 %><br></br>
   
       <%= label_tag "price", "Price" %><br>
-      <%= text_field_tag "price", "", size: 20 %><br></br>
+      <%= text_field_tag "price", "", placeholder: "price", size: 20 %><br></br>
       <%= submit_tag "Submit" %>
     </h3> 
   </div>
