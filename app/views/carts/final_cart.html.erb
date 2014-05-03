@@ -5,9 +5,9 @@
   <table class="table-condensed table-striped table-border">
     <thead>
       <tr>
-        <th>Product Name</th>
-        <th>Price</th>
-        <th style="text-align: right">Quantity</th>
+          <th style="color: white">Product Name</th>
+          <th style="color: white">Price</th>
+          <th style="color: white">Quantity</th>
       </tr>
     </thead>
     <tbody>
@@ -55,23 +55,26 @@
       </b></h4></td></tr></h4>
   </table>   
 </div>
-<hr>
+
 <div class="pad pull-left">
-  <h5>Enter Payment Info:<br></br>
-    <div class="cols-md-3 pull-left">
+<hr style="background-color:white; height:2px;" />
+  <h4 style="color: white">Enter Payment Info:<h4>
+  <h5>
+    <div class="col-md-6 pull-left">
      <%= label_tag :number, "Credit Card Number" %>
-     <%= text_field_tag :number,'4111111111111111' %><br></br>
-     <%= label_tag :month, "Month of Expiration" %> 
-     <%= text_field_tag :month,'8' %><br></br>
+     <%= text_field_tag :number,'' %><br></br>
+     <%= label_tag :month, "Month of Expiration" %>
+        <%= select_tag :month, options_for_select(months, 1), 
+            prompt: "" %><br></br>
      <%= label_tag :year, "Year of Expiration" %>
-     <%= text_field_tag :year, '2009' %><br></br>
+     <%= text_field_tag :year, '2009', size: 5 %><br></br>
     </div>
-    <div class="cols-md-3 pull-right">
-     <%= label_tag :first_name, "First Name" %>
-     <%= text_field_tag :first_name,'Tobias' %><br></br>
-     <%= label_tag :last_name, "Last Name" %>
-     <%= text_field_tag :last_name, 'Luetke' %><br></br>
-     <%= label_tag :verification_value, "Security Code" %>
+    <div class="col-md-6 pull-right">
+     <%= label_tag :first_name, "  First Name" %>
+     <%= text_field_tag :first_name,'Wendy' %><br></br>
+     <%= label_tag :last_name, "  Last Name" %>
+     <%= text_field_tag :last_name, 'Brannon' %><br></br>
+     <%= label_tag :verification_value, "  Security Code" %>
      <%= text_field_tag :verification_value, '123'%>
   </h5>
  </div>
