@@ -128,7 +128,7 @@ class CartsController < ApplicationController
            total_amount = params[:order_total] 
            product_names =  total_order.collect do |p|
              if p.product_id != nil
-               product_names=["#{Product.find(p.product_id).name}, price of each: $ #{"%.2f" % Product.find(p.product_id).price}, qty: #{p.quantity}        "'<br></br>'"^"]
+               product_names=["#{Product.find(p.product_id).name}, price of each: $ #{"%.2f" % p.price_paid_for_product}, qty: #{p.quantity}        "'<br></br>'"^"]
              end
            end
            product_names.pop
