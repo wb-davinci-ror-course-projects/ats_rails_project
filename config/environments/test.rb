@@ -33,4 +33,12 @@ App::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+  
+require 'rubygems'
+require 'active_merchant' 
+  config.after_initialize do
+  ActiveMerchant::Billing::Base.mode = :test
+  ::GATEWAY = ActiveMerchant::Billing::BogusGateway.new
+end
+
 end

@@ -77,4 +77,16 @@ App::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  
+require 'rubygems'
+require 'active_merchant'  
+  config.after_initialize do
+  ActiveMerchant::Billing::Base.mode = :production
+  ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+    :login => "seller_1229899173_biz_api1.railscasts.com",
+    :password => "FXWU58S7KXFC6HBE",
+    :signature => "AGjv6SW.mTiKxtkm6L9DcSUCUgePAUDQ3L-kTdszkPG8mRfjaRZDYtSu"
+  )
+end
+
 end

@@ -24,6 +24,11 @@ class Users < ActiveRecord::Migration
           t.string :billing_state
           t.string :billing_zip
           t.string :billing_phone_number
+          t.string :credit_first_name
+          t.string :credit_last_name
+          t.integer :credit_month
+          t.integer :credit_year
+          t.integer :credit_security_code
           t.timestamp
       end
   end

@@ -95,6 +95,15 @@ cursor:pointer;
     z-index: 100;
 }
 
+.full_image {
+  width: 2000px;
+}
+
+.full_image img {
+  width: 1000;
+  margin: auto;
+}
+
 a:hover
 { 
 width: 400;
@@ -121,6 +130,12 @@ width: 600px;
 height: 600px;
 } 
 
+.product_name{
+text-align: center;
+font-size: 30pt;
+color: #550808;
+text-shadow: 2px 1px 1px white;
+}
 .shadow_big {
   font-size: 30pt;
   text-align: center;

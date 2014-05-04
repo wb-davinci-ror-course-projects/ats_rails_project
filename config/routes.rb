@@ -1,10 +1,12 @@
 App::Application.routes.draw do
 
 get "/"                              => "main#index",              as: "home_page"
+get "/main/full_image"               => "main#full_image",         as: "full_image" 
 get "/main/about"                    => "main#about"
 get "/main/contact"                  => "main#contact"
 get "/main/:id"                      => "main#product_category",   as: "category" 
 get "/main/more_info/:id"            => "main#more_info_id"
+
 
 get "/user"                     => "user#index",                  as: "user_signin"
 post "/user/sign_in"            => "user#sign_in",                as: "user_signin1"

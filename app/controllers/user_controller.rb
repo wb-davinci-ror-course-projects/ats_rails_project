@@ -179,6 +179,7 @@ def update_ship
     render :ship_bill_info and return
   end
     edit_user = User.find_by(username: session[:username])
+    edit_user.company_name          = params[:company_name]
     edit_user.shipping_first_name   = params[:shipping_first_name]
     edit_user.shipping_last_name    = params[:shipping_last_name]
     edit_user.shipping_address1     = params[:shipping_address1]

@@ -58,26 +58,48 @@
 
 <div class="pad pull-left">
 <hr style="background-color:white; height:2px;" />
-  <h4 style="color: white">Enter Payment Info:<h4>
+  <h4>(During this testing phase, if you want the transaction 
+      to complete use credit info already entered)
+  <h4 style="color: white">Enter payment information as it is shown on card::<h4>
   <h5>
     <div class="col-md-6 pull-left">
-     <%= label_tag :number, "Credit Card Number" %>
-     <%= text_field_tag :number,'' %><br></br>
-     <%= label_tag :month, "Month of Expiration" %>
-        <%= select_tag :month, options_for_select(months, 1), 
+     <% if User.find_by(username: session[:username]) == "bob" %>
+     <%= label_tag :credit_number, "Credit Card Number" %>
+     <%= text_field_tag :credit_number,'4242424242424242' %><br></br>
+     <%= label_tag :credit_month, "Month of Expiration" %>
+        <%= select_tag :credit_month, user.credit_month, 
             prompt: "" %><br></br>
-     <%= label_tag :year, "Year of Expiration" %>
-     <%= text_field_tag :year, '2009', size: 5 %><br></br>
+     <%= label_tag :credit_year, "Year of Expiration" %>
+     <%= text_field_tag :credit_year, '2015', size: 5 %><br></br>
     </div>
-    <div class="col-md-6 pull-right">
-     <%= label_tag :first_name, "  First Name" %>
-     <%= text_field_tag :first_name,'Wendy' %><br></br>
-     <%= label_tag :last_name, "  Last Name" %>
-     <%= text_field_tag :last_name, 'Brannon' %><br></br>
-     <%= label_tag :verification_value, "  Security Code" %>
-     <%= text_field_tag :verification_value, '123'%>
+    <div class="col-md-3 pull-right">
+        <%= label_tag :credit_first_name, "First Name" %>
+        <%= text_field_tag :credit_first_name, user.credit_first_name %><br></br>
+        <%= label_tag :credit_last_name, "Last Name" %>
+        <%= text_field_tag :credit_last_name, user.credit_last_name %><br></br>
+        <%= label_tag :credit_security_code, "Security Code" %>
+        <%= text_field_tag :credit_security_code, user.credit_security_code %>
+    </div>
+      <% else %>
+    <div class="col-md-6 pull-left">
+       <%= label_tag :credit_number, "Credit Card Number" %>
+       <%= text_field_tag :credit_number,'4242424242424242' %><br></br>
+       <%= label_tag :credit_month, "Month of Expiration" %>
+          <%= select_tag :credit_month, options_for_select(months, 8), 
+              prompt: "" %><br></br>
+       <%= label_tag :credit_year, "Year of Expiration" %>
+       <%= text_field_tag :credit_year, '2015', size: 5 %><br></br>
+    </div>
+    <div class="col-md-3 pull-right">
+        <%= label_tag :credit_first_name, "First Name" %>
+        <%= text_field_tag :credit_first_name,'Bob' %><br></br>
+        <%= label_tag :credit_last_name, "Last Name" %>
+        <%= text_field_tag :credit_last_name, 'Bobsen' %><br></br>
+        <%= label_tag :credit_security_code, "Security Code" %>
+        <%= text_field_tag :credit_security_code, '000' %>
+     </div> 
+      <% end %>
   </h5>
- </div>
  </div>
 </div>
 <center>

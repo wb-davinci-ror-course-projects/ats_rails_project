@@ -25,5 +25,9 @@ class MainController < ApplicationController
   def contact
     render :contact and return
   end
+  
+  def full_image 
+    render :full_image, layout: false and return
+  end
 
 end
