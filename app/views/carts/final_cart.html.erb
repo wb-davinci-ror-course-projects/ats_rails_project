@@ -5,9 +5,9 @@
   <table class="table-condensed table-striped table-border">
     <thead>
       <tr>
-          <th style="color: white">Product Name</th>
-          <th style="color: white">Price</th>
-          <th style="color: white">Quantity</th>
+        <th style="color: white">Product Name</th>
+        <th style="color: white">Price</th>
+        <th style="color: white">Quantity</th>
       </tr>
     </thead>
     <tbody>
@@ -81,7 +81,7 @@
         <%= text_field_tag :credit_security_code, user.credit_security_code %>
     </div>
       <% else %>
-    <div class="col-md-6 pull-left">
+    <div class="col-md-7 pull-left">
        <%= label_tag :credit_number, "Credit Card Number" %>
        <%= text_field_tag :credit_number,'4242424242424242' %><br></br>
        <%= label_tag :credit_month, "Month of Expiration" %>
@@ -90,7 +90,7 @@
        <%= label_tag :credit_year, "Year of Expiration" %>
        <%= text_field_tag :credit_year, '2015', size: 5 %><br></br>
     </div>
-    <div class="col-md-3 pull-right">
+    <div class="col-md-5 pull-right">
         <%= label_tag :credit_first_name, "First Name" %>
         <%= text_field_tag :credit_first_name,'Bob' %><br></br>
         <%= label_tag :credit_last_name, "Last Name" %>

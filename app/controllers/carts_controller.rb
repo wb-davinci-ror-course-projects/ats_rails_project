@@ -160,7 +160,7 @@ class CartsController < ApplicationController
                           <i>(To view this order or another online, sign into your account, click your account link, 
                              and click the view orders link.)</i><br></br>".html_safe 
            )
-          flash[:info] = "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number} Thank you. Your order has been placed. A receipt has been e-mailed."
+          flash[:info] = "Your order has been charged to the credit card #{credit_card.display_number} Thank you. A receipt has been e-mailed to: #{user.email_address}."
           Cart.where(cart_id: session[:cart_id]).each do |c|
             c.delete
           end
