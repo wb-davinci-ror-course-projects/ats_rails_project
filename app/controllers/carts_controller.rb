@@ -20,48 +20,61 @@ class CartsController < ApplicationController
 #   def edit
 #   end
 
-  def create
-    if Cart.find_by(product_id: params[:product_id], cart_id: session[:cart_id]) != nil
-      @product = Product.find(params[:product_id])
+  def create 
+    @product = Product.find(params[:product_id])
+    if params["quantity_#{@product.id}"].to_i < 1
       c_id = Category.find_by(name: @product.category).id
-      flash[:info] = "#{@product.name.titlecase} has already been added to the cart.
-                      The product's quantity can be adjusted in the cart."
+      flash[:danger] = "Please enter a positive number for quantity"
       redirect_to "/main/#{c_id}" and return
-    else
-      session[:cart_id]   = params[:authenticity_token]
-      @cart               = Cart.new#(cart_params)
-      @cart.cart_id       = params[:authenticity_token]
-      @cart.product_id    = params[:product_id]
-      @product            = Product.find(@cart.product_id)
-      @cart.quantity      = params["quantity_#{@product.id}"]
-      category_percent_off = CategorySale.find_by(category_id: @product.category_id).percent_off
-      if @product.percent_off <= category_percent_off
-        price = @product.price * ((100-category_percent_off)/100)
-      else
-        price = @product.price * ((100-@product.percent_off)/100)
-      end
-      @cart.price         = price
-      respond_to do |format|
-      if @cart.save
-        flash[:success] = "#{@product.name.titlecase} has been added to the cart"
+    end
+      if Cart.find_by(product_id: params[:product_id], cart_id: session[:cart_id]) != nil
         c_id = Category.find_by(name: @product.category).id
-        @product.quantity = @product.quantity - @cart.quantity
-        @product.save!
-        redirect_to "/main/#{c_id}" and return
-        format.json { render action: 'show', status: :created, location: @cart }
-        #format.html { render action: 'new' }
-        #format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
-    end   
-  end
+        flash[:info] = "#{@product.name.titlecase} has already been added to the cart.
+                        The product's quantity can be adjusted in the cart."
+        redirect_to "/main/#{c_id}" and return 
+      else
+        session[:cart_id]   = params[:authenticity_token]
+        @cart               = Cart.new#(cart_params)
+        @cart.cart_id       = params[:authenticity_token]
+        @cart.product_id    = params[:product_id]
+        @cart.quantity      = params["quantity_#{@product.id}"].to_i
+        category_percent_off = CategorySale.find_by(category_id: @product.category_id).percent_off
+        if @product.percent_off <= category_percent_off
+          price = @product.price * ((100-category_percent_off)/100)
+        else
+          price = @product.price * ((100-@product.percent_off)/100)
+        end
+        @cart.price         = price
+        respond_to do |format|
+        if @cart.save
+          flash[:success] = "#{@product.name.titlecase} has been added to the cart"
+          c_id = Category.find_by(name: @product.category).id
+          @product.quantity = @product.quantity - @cart.quantity
+          @product.save!
+          redirect_to "/main/#{c_id}" and return
+          format.json { render action: 'show', status: :created, location: @cart }
+          #format.html { render action: 'new' }
+          #format.json { render json: @cart.errors, status: :unprocessable_entity }
+        end
+      end   
+    end
   end
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
+    @product = Product.find(params[:product_id])
+    if params["quantity_#{@product.id}"].to_i < 0
+      flash[:danger] = "Please enter a positive number for quantity or 0"
+      redirect_to carts_path and return
+    end
     old_cart = Cart.find_by(product_id: params[:product_id], cart_id: session[:cart_id])
     @product = Product.find(params[:product_id])
     @cart = Cart.find_by(product_id: params[:product_id], cart_id: session[:cart_id])
-    @cart.quantity = params["quantity_#{@product.id}"]
+    @cart.quantity = params["quantity_#{@product.id}"].to_i
+    if @cart.quantity == 0
+      @cart.delete
+      redirect_to carts_path and return
+    end
     if @cart.quantity.to_i >= old_cart.quantity.to_i
       @product.quantity = @product.quantity.to_i - (@cart.quantity.to_i - old_cart.quantity.to_i)
     else
