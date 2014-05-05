@@ -1,10 +1,10 @@
 <%= render "layouts/admin" %>
 <ul>
-  <h2><li><a style="color: rgba(3, 3, 100, 0.8)" href="/admin/orders">view orders for shipping</a></li>
+  <h2><li><a style="color: rgba(3, 3, 100, 0.8)" href="/admin/orders">view orders for shipping</a></li><br>
       <li><a style="color: #927017" href="/admin/new">add a new product</a></li>
-      <li><a style="color: #927017" href="/admin/:id/edit">edit and existing product</a></li>
-      <li><a style="color: #1E5A53" href="/admin/product_sale">put a single product on sale</a></li>
-      <li><a style="color: #1E5A53" href="/admin/category_sale">put an entire category on sale</a></li>
+      <li><h2 style="color: #927017"><%= link_to "edit and existing product", edit_product_path(Product.first) %></h2></li>
+      <li><a style="color: #1E5A53" href="/admin/product_sale">put a single product on sale</a></li><br>
+      <li><a style="color: #1E5A53" href="/admin/category_sale">put an entire category on sale</a></li><br>
       <li><a style="color: #550808" href="/admin/form">upload an image</a></li>
   </h2>
 </ul>

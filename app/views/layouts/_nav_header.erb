@@ -4,8 +4,8 @@
   <a class="pull-right pad" href="<%= user_signin_path %>"><h4 style="color: white">Sign in</h4></a>
   <a class="pull-right pad" href="/carts"><h4 style="color: white">View Cart</h4></a>
   <% if session[:username] != nil %>
-    <a class="pull-right pad" href="/user/:id/edit"><u style="color: white">
-    <%= session[:username]%></u></a>
+    <% user = User.find_by(username: session[:username]) %>
+    <h3 class="pull-right pad"><u><%= link_to "#{user.username}", user_edit_path(user.id) %></h3></u>
   <% end %>
   <p class="ats_header">Action Tool & Supply</p>
     <form class="navbar-form navbar-right"> 
