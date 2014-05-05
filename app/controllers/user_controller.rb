@@ -237,6 +237,9 @@ end
 def logout
   flash[:warning] = "You have been logged out. Come visit our showroom located at <b>50 Rio Grande Blvd, Denver CO</b>.".html_safe
     Cart.where(cart_id: session[:cart_id]).each do |c|
+      @product = Product.find_by(id: c.product_id)
+      @product.quantity = @product.quantity.to_i + c.quantity
+      @product.save!
       c.delete
       end
     session.clear

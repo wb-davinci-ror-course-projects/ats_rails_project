@@ -149,7 +149,7 @@ description: "Cream hardener, 4 oz tube",
 price: "6.00",
 image: "cp-ch-4oz",
 category_id: 4,
-more_info: "",
+more_info: "Cream hardener, 4 oz tube",
 percent_off: 0
 
 Product.create! product_code: "ms-mrk-wht-skm",
@@ -192,11 +192,11 @@ Product.create! product_code: "pp4-acp-0050",
 category: "Pads",
 name: "ACP Polishing Pads",
 quantity: 50,
-description: "50 grit",
+description: "50 - 3000 grit",
 price: "12.00",
 image: "pp4-acp-0050",
 category_id: 5,
-more_info: "",
+more_info: "ACP polishing pads, 50 - 3000 grit",
 percent_off: 0
 
 Product.create! product_code: "4bp-fl",

@@ -72,6 +72,8 @@ class CartsController < ApplicationController
     @cart = Cart.find_by(product_id: params[:product_id], cart_id: session[:cart_id])
     @cart.quantity = params["quantity_#{@product.id}"].to_i
     if @cart.quantity == 0
+      @product.quantity = @product.quantity.to_i + (old_cart.quantity.to_i - @cart.quantity.to_i)
+      @product.save!
       @cart.delete
       redirect_to carts_path and return
     end
