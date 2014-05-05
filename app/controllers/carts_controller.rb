@@ -165,7 +165,7 @@ class CartsController < ApplicationController
                           <br></br>           #{user.shipping_city}, #{user.shipping_state} #{user.shipping_zip}
                           <br></br>Date: #{order.created_at.strftime('%-m/%-d/%y')} Time: #{order.updated_at.getlocal.strftime('%I:%M %p %Z')}
                           <hr>
-                          <br></br>Products: <br></br>
+                          <br></br>Products:<br></br>
                           <br></br>#{product_names.join(" ").split("^").join}
                           <br></br>Shipping: $#{"%.2f" % params[:ship_cost]}
                           <br></br>Taxes: $#{"%.2f" % params[:tax]}
@@ -220,7 +220,7 @@ class CartsController < ApplicationController
   def product_quantity_update
     Cart.all.each do |cart|
       product = Product.find(cart.product_id)
-      if Time.now > cart.updated_at + (30 * 60)
+      if Time.now > cart.updated_at + (10 * 60)
         product.quantity = product.quantity + cart.quantity
         product.save!
         cart.delete

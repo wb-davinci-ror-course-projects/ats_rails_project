@@ -161,7 +161,7 @@ def ship_bill_info
       redirect_to home_page_path and return
     end
   if session[:username] == nil
-    flash.now[:info] = "Please signin or create account and return to view cart."
+    flash.now[:info] = "Please sign in or create account and return to view cart."
     render :index and return
   else
     @user = User.find_by(username: session[:username])
