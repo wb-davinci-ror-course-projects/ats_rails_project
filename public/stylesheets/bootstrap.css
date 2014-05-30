@@ -3077,12 +3077,12 @@ input[type="button"].btn-block {
   content: "\e178";
 }
 
-.glyphion-cutlery:before {
+.glyphicon-cutlery:before {
   content: "\e179";
 }
 
 .glyphicon-header:before {
-  content: "\e180";
+  content: "\e180";   
 }
 
 .glyphicon-compressed:before {
