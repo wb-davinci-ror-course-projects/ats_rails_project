@@ -73,7 +73,7 @@ GEM
     multi_json (1.9.3)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
-    pg (0.17.1)
+    pg (0.17.0)
     polyglot (0.3.4)
     pony (1.8)
       mail (>= 2.0)
@@ -152,7 +152,7 @@ DEPENDENCIES
   dynamic_form
   jbuilder (~> 1.2)
   jquery-rails
-  pg
+  pg (~> 0.17.0)
   pony
   pry-rails
   rails (= 4.0.0)
