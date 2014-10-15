@@ -7,6 +7,95 @@ def index
   render :index and return
 end
 
+def new
+  @user = User.new
+  render :new and return
+end
+
+def create
+  @user = User.new
+  @user.username = params[:username]
+  if @user.username == ""
+    flash.now[:danger] = "Username can not be blank. Please try again."
+    render :new and return
+    elsif
+      User.find_by(username: @user.username) != nil
+      flash.now[:danger] = "Username already exists. Please try again." 
+      render :new and return
+  end
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
+  if @user.password_confirmation != @user.password
+    flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
+                      Please try again."
+    render :new and return
+  end
+    @user.email_address = params[:email_address]
+  if @user.email_address == ""
+    flash.now[:danger] = "Please enter an e-mail address."
+    render :new and return
+  end
+  if @user.save == true
+     session[:username] = @user.username 
+     flash[:info] = "You are logged in as: <b>#{@user.username}</b>".html_safe
+     redirect_to "/" and return
+  else
+    if User.find_by(email_address: @user.email_address) != nil
+      flash.now[:danger] = "The e-mail address entered already exists. Please try again." 
+      render :new and return
+      else
+    flash.now[:danger] = "The e-mail entered is invalid, please try again."
+    render :new and return
+    end
+  end
+end
+
+def edit
+  @old_user = User.find_by(username: session[:username])
+  render :edit and return
+end
+
+def update_user
+  if params[:commit] == "Update Username"
+    edit_user = User.find_by(username: session[:username])
+    edit_user.username = params[:username]
+    session[:username] = edit_user.username
+    if edit_user.save == true
+      redirect_to home_page_path and return
+    else
+      flash.now[:danger] = "Username is already taken, please try another"
+      @old_user = User.find_by(username: session[:username])
+      render :edit and return
+    end
+   elsif params[:commit] == "Update E-mail"
+      edit_user = User.find_by(username: session[:username])
+      edit_user.email_address = params[:email_address]
+     if edit_user.save == true
+      redirect_to home_page_path and return
+    else
+      flash.now[:danger] = "An account with that e-mail already exists"
+      @old_user = User.find_by(username: session[:username])
+      render :edit and return
+    end
+  else
+    @old_user = User.find_by(username: session[:username])
+    edit_user = User.find_by(username: session[:username])
+    edit_user.username = params[:username]
+    edit_user.password = params[:password]
+    edit_user.password_confirmation =  params[:password_confirmation]
+    if edit_user.password_confirmation != edit_user.password
+      flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
+                           Please try again."
+      render :edit and return
+    else
+      if edit_user.save != false
+        flash[:warning] = "Your password has been updated"
+        redirect_to home_page_path and return
+      end
+    end
+  end
+end
+
 def sign_in
   if params[:commit] == "Create account"
     render :new and return
@@ -66,94 +155,7 @@ def reset_password
   end
 end
 
-def edit
-  @old_user = User.find_by(username: session[:username])
-  render :edit and return
-end
 
-def update_user
-  if params[:commit] == "Update Username"
-    edit_user = User.find_by(username: session[:username])
-    edit_user.username = params[:username]
-    session[:username] = edit_user.username
-    if edit_user.save == true
-      redirect_to home_page_path and return
-    else
-      flash.now[:danger] = "Username is already taken, please try another"
-      @old_user = User.find_by(username: session[:username])
-      render :edit and return
-    end
-   elsif params[:commit] == "Update E-mail"
-      edit_user = User.find_by(username: session[:username])
-      edit_user.email_address = params[:email_address]
-     if edit_user.save == true
-      redirect_to home_page_path and return
-    else
-      flash.now[:danger] = "An account with that e-mail already exists"
-      @old_user = User.find_by(username: session[:username])
-      render :edit and return
-    end
-  else
-    @old_user = User.find_by(username: session[:username])
-    edit_user = User.find_by(username: session[:username])
-    edit_user.username = params[:username]
-    edit_user.password = params[:password]
-    edit_user.password_confirmation =  params[:password_confirmation]
-    if edit_user.password_confirmation != edit_user.password
-      flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
-                           Please try again."
-      render :edit and return
-    else
-      if edit_user.save != false
-        flash[:warning] = "Your password has been updated"
-        redirect_to home_page_path and return
-      end
-    end
-  end
-end
-
-def new
-  @user = User.new
-  render :new and return
-end
-
-def create
-  @user = User.new
-  @user.username = params[:username]
-  if @user.username == ""
-    flash.now[:danger] = "Username can not be blank. Please try again."
-    render :new and return
-    elsif
-      User.find_by(username: @user.username) != nil
-      flash.now[:danger] = "Username already exists. Please try again." 
-      render :new and return
-  end
-    @user.password = params[:password]
-    @user.password_confirmation = params[:password_confirmation]
-  if @user.password_confirmation != @user.password
-    flash.now[:danger] = "There was a problem with the passwords, they must be entered and match.
-                      Please try again."
-    render :new and return
-  end
-    @user.email_address = params[:email_address]
-  if @user.email_address == ""
-    flash.now[:danger] = "Please enter an e-mail address."
-    render :new and return
-  end
-  if @user.save == true
-     session[:username] = @user.username 
-     flash[:info] = "You are logged in as: <b>#{@user.username}</b>".html_safe
-     redirect_to "/" and return
-  else
-    if User.find_by(email_address: @user.email_address) != nil
-      flash.now[:danger] = "The e-mail address entered already exists. Please try again." 
-      render :new and return
-      else
-    flash.now[:danger] = "The e-mail entered is invalid, please try again."
-    render :new and return
-    end
-  end
-end
 
 def ship_bill_info
   if Cart.find_by(cart_id: session[:cart_id]) == nil

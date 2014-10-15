@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html>  
-
-
-<head>
-  <title>App</title>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/ats.css">
-  <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
-  <%= csrf_meta_tags %>
-</head> 
-
+  <head>
+    <title>App</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/ats.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <%= csrf_meta_tags %>
+  </head> 
+  <body>
     <%= render partial: "layouts/nav_header" %>
-
     <%= flash_alert "primary" %>
     <%= flash_alert "success" %>
     <%= flash_alert "info" %>
     <%= flash_alert "warning" %>
     <%= flash_alert "danger" %>
-
-  <div class="container">
-    <%= yield %>
-  </div>
-
+    <div class="container">
+      <%= yield %>
+    </div>
     <nav class="navbar navbar-default navbar-static-bottom" role="navigation">
-      <p class="ats_footer">720-363-0163 &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp ats.biz@live.com  &nbsp &nbsp &nbsp &nbsp &nbsp 50 Rio Grande Blvd, Denver CO</p>
+      <p class="ats_footer">720-363-0163 &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp ats.biz@live.com  
+        &nbsp &nbsp &nbsp &nbsp &nbsp 50 Rio Grande Blvd, Denver CO</p>
     </nav>
   </body>
 </html>
