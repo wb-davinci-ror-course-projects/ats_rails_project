@@ -1,32 +1,32 @@
 <%= form_tag carts_path, method: "POST" do %>
-
-<div class="row">
-  <div class="col-md-12">
-    <h1><p class="ats_header_c">On Sale This Month...</p1></h1>
+  <em> (Note: this is a project site, contact information and prices may not be accurate)</em>
+  <div class="row">
+    <div class="col-md-12">
+      <h1><p class="ats_header_c">On Sale This Month...</p1></h1>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <%= render partial: "layouts/index_product" %>
-</div>
+  <div class="row">
+    <%= render partial: "layouts/index_product" %>
+  </div>
 
-<center>
-  <h3 class="shadow">Come visit our showroom to view our selection of sinks,<br>
-     stone tools and supplies at:</h3>
-  <h3 style="color: #550808">50 Rio Grande Blvd, Denver CO</h3>
-  <h4>Or call 720-363-0163 to place an order</h4>
-</center>
+  <center>
+    <h3 class="shadow">Come visit our showroom to view our selection of sinks,<br>
+       stone tools and supplies at:</h3>
+    <h3 style="color: #550808">555 Rio Grande Blvd, Denver CO</h3>
+    <h4>Or call 303-555-1212 to place an order</h4>
+  </center>
 
-<% if session[:username] != "" %>
-  <% user = User.find_by(username: session[:username]) %>
-    <% if user != nil %>
-      <% user_name = user.username %>
-    <% else %>
-      <% user_name = "new" %>
-    <% end %>
-    <% if user_name == "wendy" %>
-      <a href="/admin">Admin Links</a>
-    <% end %>
-<% end %>
+  <% if session[:username] != "" %>
+    <% user = User.find_by(username: session[:username]) %>
+      <% if user != nil %>
+        <% user_name = user.username %>
+      <% else %>
+        <% user_name = "new" %>
+      <% end %>
+      <% if user_name == "wendy" %>
+        <a href="/admin">Admin Links</a>
+      <% end %>
+  <% end %>
   
 <% end %>
